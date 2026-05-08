@@ -1,0 +1,5 @@
+hash-format = "sha256"
+
+[[files]]
+file = "CLAUDE.md"
+hash = "214a2921da47ef731b5152a7d9b917a54ffd5ed70a2fc824ae0cdc90d76f1d41"
