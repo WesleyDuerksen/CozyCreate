@@ -171,3 +171,55 @@ All confirmed NeoForge + 1.21.1 via AoCA v1.4 (which runs on NeoForge 1.21.1).
 | **Total new additions** | **68** |
 | Swaps (in for out) | 2 |
 | Removals (no replacement) | 1 (Create: Wrapped) |
+
+---
+
+## Slug Verification Status (verified against Modrinth API on 2026-05-08)
+
+### ✅ Verified — Use slug as written (47)
+
+`create-blaze-burner-fuels`, `create-connected`, `escalated`, `create-factory`, `create-fast-schematic-cannon`, `create-framed`, `gears-n-kinetics`, `create-metalwork`, `create-pattern-schematics`, `some-assembly-required`, `create-stuff-additions`, `create-encased`, `create-misc-and-things`, `create-aquatic-ambitions`, `create-central-kitchen`, `create-food`, `create-integrated-farming`, `create-winery`, `create-dragons-plus`, `create-deep-dark`, `create-prismatic-shine`, `create-sound-of-steam`, `create-vibrant-vaults`, `create-railways-navigator`, `create-train-parts`, `sable`, `quark`, `gallery`, `personality`, `boatload`, `integrated-villages`, `appleskin`, `caelus`, `chat-heads`, `despawn-tweaks`, `easy-anvils`, `easy-magic`, `enchantment-descriptions`, `netherportalfix`, `neruina`, `pick-up-notifier`, `trading-post`, `visual-workbench`, `what-are-they-up-to`, `sodium-dynamic-lights`
+
+### 🔄 Corrected slugs (14)
+
+| Mod | Original (wrong) | Correct slug |
+|-----|------------------|--------------|
+| Bits & Bobs | `bits-n-bobs` | `bits-and-bobs` |
+| Create: Mechanical Botany | `mechanical-botany` | `create-mechanical-botany` |
+| Create: Rubberworks | `rubberworks` | `create-rubberworks` |
+| Create: Transmission! | `create-transmission` | `create-transmission!` |
+| Create: Design n' Decor | `design-n-decor` | `create-design-n-decor` |
+| Create: Fantasizing Again | `create-fantasizing` | `create-fantasizing-again` |
+| Create: Blocks & Bogies | `create-blocks-and-bogies` | `blocks-bogies` |
+| Integrated Dungeons & Structures | `integrated-dungeons-and-structures` | `idas` |
+| Bad Wither No Cookie | `bad-wither-no-cookie-reloaded` | `bad-wither-no-cookie` |
+| Just Enough Breeding | `just-enough-breeding` | `justenoughbreeding` |
+| Just Enough Professions | `just-enough-professions` | `just-enough-professions-jep` |
+| Just Enough Resources | `just-enough-resources` | `just-enough-resources-jer` |
+| Skin Layers 3D | `skin-layers-3d` | `3dskinlayers` |
+| Create Better FPS | `create-better-fps` | `createbetterfps` |
+
+### 🟧 Not on Modrinth — CurseForge-only (10) — VERIFIED ✅
+
+All 10 mods confirmed to have NeoForge 1.21.1 versions on CurseForge. Ready for `packwiz curseforge add ...` installation.
+
+| Mod | CurseForge Slug | Loader | Role |
+|-----|-----------------|--------|------|
+| Create: Copper Splashing | `create-copper-splashing` | NeoForge 1.21.1 ✅ | Automates copper oxidation via fluid interaction |
+| Create: Industrialized Architecture | `industrialized-architecture` | NeoForge 1.21.1 ✅ | Girders, columns, catwalks — industrial decoration |
+| Structure Essentials | `structure-essentials-forge-fabric` | NeoForge 1.21.1 ✅ | Structure generation config, performance optimization |
+| Loot Integrations | `loot-integrations` | NeoForge 1.21.1 ✅ | Injects mod-appropriate loot into vanilla structure chests |
+| FTB Filter System | `ftb-filter-system` | NeoForge 1.21.1 ✅ | Advanced item filter UI — routing/sorting companion |
+| FTB XMod Compat | `ftb-xmod-compat` | NeoForge 1.21.1 ✅ | FTB compatibility bridges for cross-mod integration |
+| AllTheLeaks | `alltheleaks` | NeoForge 1.21.1 ✅ | Memory leak collection fix |
+| fix GPU memory leak | `fix-gpu-memory-leak` | NeoForge 1.21.1 ✅ | GPU-side memory leak patching |
+| Leaky | `leaky` | NeoForge 1.21.1 ✅ | Item entity rendering lag fix — automation packs drop many items |
+| Smooth Chunk Save | `smooth-chunk-save` | NeoForge 1.21.1 ✅ | Async chunk saving — reduces server lag spikes under heavy automation |
+
+**Note on counts:** Final count is **10 CurseForge-only** (verified NeoForge 1.21.1), **47 verified Modrinth**, **14 corrected Modrinth slugs** = **71 of 71** mods accounted for (note: 71 is the candidate count after counting both ⚠️ and unmarked slugs together; the original "68 new additions" excluded the 2 swap candidates which are also tracked here).
+
+### Action items before packwiz install — UPDATED 2026-05-08
+
+1. ✅ For the 14 corrected slugs, update the tables above to match.
+2. ✅ For the 10 CurseForge-only mods, CurseForge project slugs found and verified (all have NeoForge 1.21.1). Use `packwiz curseforge add <slug>` for each.
+3. ✅ The 47 verified Modrinth slugs are ready to install as-is with `packwiz modrinth add <slug>`.

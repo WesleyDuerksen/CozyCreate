@@ -172,8 +172,6 @@ The cooking loop is the social layer. Create automates the supply; the player de
 | Mod | Slug | Why it's here |
 |-----|------|---------------|
 | Sophisticated Backpacks | sophisticated-backpacks | Tiered upgradeable backpacks |
-| Sophisticated Storage | sophisticated-storage | Tiered storage with upgrades |
-| Storage Drawers | storagedrawers | High-density bulk item storage |
 | Tom's Simple Storage | toms-storage | Network-based centralized storage |
 | Trash Cans | trash-cans | Void bins |
 | TrashSlot | trashslot | Inventory delete slot |
