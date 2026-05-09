@@ -311,6 +311,11 @@ hash = "74a9c6f2f890649eb693c9f48c3d99148b5526e23371cf1a9a6276bd3b21b214"
 metafile = true
 
 [[files]]
+file = "mods/ferrite-core.pw.toml"
+hash = "73360e397134d238ee8fd21d33fd7f9275e9441f74f8f1b6ed92278877c0b9f1"
+metafile = true
+
+[[files]]
 file = "mods/forgified-fabric-api.pw.toml"
 hash = "962d29692894d0139720989cc21e7f0dc27fcf092404cff5395505399ebad1c3"
 metafile = true
@@ -433,6 +438,11 @@ metafile = true
 [[files]]
 file = "mods/mo-glass.pw.toml"
 hash = "72c0545ede21e60484648a5c0802e137864c1c824e691f1439414e119bf1952e"
+metafile = true
+
+[[files]]
+file = "mods/modernfix.pw.toml"
+hash = "7862ee4443273e49cd365331f05e0514d3f798a9ced3e5d8b6dd103dd7e92e1a"
 metafile = true
 
 [[files]]
