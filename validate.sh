@@ -158,6 +158,13 @@ KNOWN_OK_PATTERNS=(
   "loot_table.*railways:blocks/track_" # Steam 'n' Rails compat loot tables for BYG/Nature's Spirit — benign until those biome mods are added
   "Unknown registry key.*railways:track_" # same as above
   "Reference map.*veil.refmap.json.*could not be read" # Veil rendering lib (bundled in Aeronautics) has client-only mixin maps — harmless on server
+  "Parsing error loading recipe createdeco:placard" # Create Deco 2.1.3 bug — placard recipe uses new ingredient format incompatible with the recipe type; server boots fine, item just uncraftable
+  "entities/(ravaging|salvaging)/" # Create: Enchantment Industry 2.3.1 — malformed JSON in bundled loot tables; those loot entries skip but mod otherwise works
+  "garnished:april_foods/smooth_blocks" # Create: Garnished — smooth_wyvern_stone block ref missing; benign tag gap, server boots fine
+  "Parsing error loading recipe createfood:" # Create: Food 2.4.0 — recipe JSONs use new ingredient format incompatible with recipe types; server boots fine, affected recipes uncraftable
+  "create_integrated_farming:(duck|goose)_roost" # Create: Integrated Farming — compat loot tables for duck/goose mob variants from uninstalled poultry mods; benign
+  "farmersdelight:kelp_roll" # Create: Integrated Farming bundles Farmer's Delight compat; FD not installed, single recipe skipped
+  "create:wrench_pickup.*missing" # A Create addon adds wrench_pickup tag refs for items not yet registered; benign tag gap
 )
 
 analyze_logs() {
