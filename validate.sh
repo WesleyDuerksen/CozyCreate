@@ -186,6 +186,7 @@ KNOWN_OK_PATTERNS=(
   "is a Fabric mod and cannot be loaded" # Decorative Lamps is a Fabric mod; Sinytra Connector handles client load, server skips it safely
   "Failed to load plugin.*KubeJSPlugin.*create_aquatic_ambitions" # Create: Aquatic Ambitions optional KubeJS plugin class missing in this build — integration unavailable, mod loads fine
   "Tried to load invalid item.*alexsmobs:" # Alex's Mobs not installed; food mods with compat recipes skip affected items gracefully
+  "Couldn't load fabric:overlays metadata" # Sinytra Connector parses optional Fabric overlay metadata; missing entry is benign, server loads fine
 )
 
 analyze_logs() {
