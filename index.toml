@@ -401,11 +401,6 @@ hash = "bce8c167c6667ae6da9763618c56d9c4c763c94139327c5cf6aa7f97f73d72a6"
 metafile = true
 
 [[files]]
-file = "mods/despawn-tweaks.pw.toml"
-hash = "f87cddf768f4601ffb789cb76425121aaf077d86b23c2e42d9b8574a3ced7a0b"
-metafile = true
-
-[[files]]
 file = "mods/diagonal-walls.pw.toml"
 hash = "bbc15c019fd260bbb9058b14a8e03232a55df77608d9aca466d051007d62abd2"
 metafile = true
