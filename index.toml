@@ -87,7 +87,7 @@ metafile = true
 
 [[files]]
 file = "mods/blueprint.pw.toml"
-hash = "0ab9d26c800d8bfc998341bf2d34c91238dbcba1f646f2c57705c1760148cc17"
+hash = "cb564821fb109f3cd53c9e82d3604685d5a9414098c293bc95618e6776315dce"
 metafile = true
 
 [[files]]
@@ -201,6 +201,11 @@ hash = "13095f719e466c9187ed385ea7b709226da71143cf192a932d8ec7b27e0c7288"
 metafile = true
 
 [[files]]
+file = "mods/create-blaze-burner-fuels.pw.toml"
+hash = "cf2f91931925be47f0db6435d9878945f880258d579f3840496644cd940e6f05"
+metafile = true
+
+[[files]]
 file = "mods/create-central-kitchen.pw.toml"
 hash = "c8b2e60b789885854508c674ba0630cdc8dc2a880302d8475cdc5ae06c44f64a"
 metafile = true
@@ -241,8 +246,18 @@ hash = "c308b557b01b6e6cc25ee8d6a1a7c78bca2b71be3ae645e40d10cf25259fabcd"
 metafile = true
 
 [[files]]
+file = "mods/create-encased.pw.toml"
+hash = "eef3ee7ba1a3731edf183824a30c720132fcec5d55d83c734dd846bd2ebf92f4"
+metafile = true
+
+[[files]]
 file = "mods/create-enchantment-industry.pw.toml"
 hash = "52f8600e5c7ab7358bee923cfff7cd2428d7599cb1ff3c0fdbd373330f770587"
+metafile = true
+
+[[files]]
+file = "mods/create-factory.pw.toml"
+hash = "98254f2a21610591829644e067bcd86af78b7b8429c9a15e7470a11f453ab7fe"
 metafile = true
 
 [[files]]
@@ -251,8 +266,18 @@ hash = "d54f2dd43fadaeb23ab3871757f598b749dd6a70321e3caf61ac9024b2f6aba5"
 metafile = true
 
 [[files]]
+file = "mods/create-fast-schematic-cannon.pw.toml"
+hash = "4ae12eddd34252c6e344dd3fcc91d3d701b5cd56cdd2cea7f16fd341527cfb2e"
+metafile = true
+
+[[files]]
 file = "mods/create-food.pw.toml"
 hash = "9659152903c07ccc018e00e09ffe021d78da8be78a83a19ffe269c251e0cd191"
+metafile = true
+
+[[files]]
+file = "mods/create-framed.pw.toml"
+hash = "c6f449a5dbd6640cef3a2d46f198af505b1d3fe7cb38c43057bb16ea055c3d7f"
 metafile = true
 
 [[files]]
@@ -263,6 +288,26 @@ metafile = true
 [[files]]
 file = "mods/create-integrated-farming.pw.toml"
 hash = "fc49d6cf786feaabbb26ae0109498f5dab7c20fc939bdd650a38d46a31803e7c"
+metafile = true
+
+[[files]]
+file = "mods/create-mechanical-botany.pw.toml"
+hash = "630feeabf3de4223066190d35fb5956a8b74cfeddca2f9601932aa507c354002"
+metafile = true
+
+[[files]]
+file = "mods/create-metalwork.pw.toml"
+hash = "2ccd7b4207893b19787f1d94c6df2d41ab114a93d3fffebf51f6914a009c8650"
+metafile = true
+
+[[files]]
+file = "mods/create-misc-and-things.pw.toml"
+hash = "e0eea3fa3d5911be14d85fcc5ded11206f7ea5c71adfb98a34e5fd08de693d0d"
+metafile = true
+
+[[files]]
+file = "mods/create-pattern-schematics.pw.toml"
+hash = "faddfa6807d11014c93bbfd8e543e8843e6d44e53f70d54e0b7e3e95766d2021"
 metafile = true
 
 [[files]]
@@ -286,8 +331,18 @@ hash = "fa7e815272f183ccdeac6baff3690f6291c4117646af8912123b705fde64dbef"
 metafile = true
 
 [[files]]
+file = "mods/create-stuff-additions.pw.toml"
+hash = "7bdf3b6cbe0579a034372ce1eec83e3c1888134f19beb6b17fbf2005706453be"
+metafile = true
+
+[[files]]
 file = "mods/create-train-parts.pw.toml"
 hash = "c6abf0b9e9455e965b3a5a8b0e02e69da749fe39ba3ca35c32bd72fecdfb6e32"
+metafile = true
+
+[[files]]
+file = "mods/create-transmission!.pw.toml"
+hash = "7e0ebe1712b52906dd37f9b75d73d5f841d9a8407b0214876881d659172aa772"
 metafile = true
 
 [[files]]
@@ -302,7 +357,12 @@ metafile = true
 
 [[files]]
 file = "mods/create.pw.toml"
-hash = "4b0ca63279620ec9ba4c63820a9d4f9ceea9b717227137ea19e5c420c820f858"
+hash = "dcaf5f2e28db0b9a127d0167456832341045ddc9aec058c3d9fcf53f618d2404"
+metafile = true
+
+[[files]]
+file = "mods/createbetterfps.pw.toml"
+hash = "28e720db43464fe32b9ce591fb02b824ebf691c578fb694f87a98421d3207022"
 metafile = true
 
 [[files]]
@@ -416,6 +476,11 @@ hash = "5b64fa213a8fc7175490682b51c961528142092104b105e2021ceff648152936"
 metafile = true
 
 [[files]]
+file = "mods/escalated.pw.toml"
+hash = "33a5a487efc06e4dc8484e49a5707a52597c5a1dc716f2ec1dfe7bdfb5392187"
+metafile = true
+
+[[files]]
 file = "mods/euphoria-patches.pw.toml"
 hash = "37995c0f2abd249cc36579043316e0e9f45e38b9e6c3b0b8c1cdbaa25c5d6537"
 metafile = true
@@ -488,6 +553,11 @@ metafile = true
 [[files]]
 file = "mods/gallery.pw.toml"
 hash = "abab6d2386547e55cc5efce1c0e64d1f18bb3ce106e2dd011693f70508da6751"
+metafile = true
+
+[[files]]
+file = "mods/gears-n-kinetics.pw.toml"
+hash = "ca9a6e860a062bf02cdc222775e8adaa2c0d9a38891464eeb55a12eecef69ce4"
 metafile = true
 
 [[files]]
@@ -701,6 +771,11 @@ hash = "5da18814472be5dc93a21886983646da3a7236413800075ac75229be82d114fa"
 metafile = true
 
 [[files]]
+file = "mods/noisium.pw.toml"
+hash = "d424a9260ef51bc102e56f0423d91dfabb739ccca8a86eb1c450ea631b739280"
+metafile = true
+
+[[files]]
 file = "mods/not-enough-animations.pw.toml"
 hash = "03bfdca138de9c56b29b120a3a1693269951d261916a8bc16e48d0c3576e72fe"
 metafile = true
@@ -733,6 +808,11 @@ metafile = true
 [[files]]
 file = "mods/patchouli.pw.toml"
 hash = "d7f360ebb9f009d6dc0b368cd8fa399bdff70c0f6ef931687b2a35137f72715d"
+metafile = true
+
+[[files]]
+file = "mods/personality.pw.toml"
+hash = "d8fb5ce59b1ab11bb782466e5937cdba0a95eb14a68c3d6704103a73bcbaaefc"
 metafile = true
 
 [[files]]
@@ -848,6 +928,11 @@ metafile = true
 [[files]]
 file = "mods/sodium.pw.toml"
 hash = "0281ed9713f3141bdac363056a791845510e14761ea65b4b2813cf96d664b20a"
+metafile = true
+
+[[files]]
+file = "mods/some-assembly-required.pw.toml"
+hash = "04f06b630fb9479786c6b86696af543d7108b3dba50f651437c865d02e773a0f"
 metafile = true
 
 [[files]]

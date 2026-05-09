@@ -188,6 +188,9 @@ KNOWN_OK_PATTERNS=(
   "Tried to load invalid item.*alexsmobs:" # Alex's Mobs not installed; food mods with compat recipes skip affected items gracefully
   "Couldn't load fabric:overlays metadata" # Sinytra Connector parses optional Fabric overlay metadata; missing entry is benign, server loads fine
   "AllTheLeaks.*Failed to instantiate constructor" # AllTheLeaks conflicts with ModernFix/FerriteCore patching the same memory paths; server runs fine, leak fix partially applied
+  "Parsing error loading recipe create_factory:" # Create: Factory has compat recipes for Create: Confectionery (not installed); affected recipes skip, server boots fine
+  "Couldn't load tag create_factory:sweet_berries_jam" # Create: Factory tag gap for confectionery compat — benign missing reference
+  "create_things_and_misc:deleted_mod_element" # Create: Misc & Things leftover reference to a removed item; those recipes skip, mod loads fine
 )
 
 analyze_logs() {
