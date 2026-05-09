@@ -184,6 +184,8 @@ KNOWN_OK_PATTERNS=(
   "Parsing error loading recipe create:crafting/kinetics/" # Create 6.0.10 gearbox/vertical_gearbox recipes use new ingredient format; server boots fine
   "Parsing error loading recipe dndesires:crafting/" # Dreams & Desires omni_gearbox recipe format mismatch; server boots fine
   "is a Fabric mod and cannot be loaded" # Decorative Lamps is a Fabric mod; Sinytra Connector handles client load, server skips it safely
+  "Failed to load plugin.*KubeJSPlugin.*create_aquatic_ambitions" # Create: Aquatic Ambitions optional KubeJS plugin class missing in this build — integration unavailable, mod loads fine
+  "Tried to load invalid item.*alexsmobs:" # Alex's Mobs not installed; food mods with compat recipes skip affected items gracefully
 )
 
 analyze_logs() {

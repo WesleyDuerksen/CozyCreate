@@ -270,7 +270,7 @@ Exploration, structures, mobs. Full list in research files.
 - _(alex's-mobs skipped — no 1.21.1 release)_
 - _(personality skipped — no 1.21.1 release)_
 
-**New KNOWN_OK_PATTERNS added:**
+**New KNOWN_OK_PATTERNS added (Phase 4):**
 
 - `Reference map.*could not be read` — broadened from Veil-specific to cover all dev-env mixin refmap warnings
 - `Error loading class:.*ClassNotFoundException` — mixin compat shims for optional mods
@@ -289,20 +289,88 @@ Exploration, structures, mobs. Full list in research files.
 **Phase 4 gate — must pass before Phase 5:**
 
 - [x] `./validate.sh` → PASSED (122 server jars)
-- [ ] Client: title screen + world load — no crash
+- [x] Client: title screen + world load — no crash
 - [ ] Client: connect to local test server → no crash
 
 ---
 
-### Phase 5 — QoL & Performance (not yet started)
+### Phase 5 — QoL, Performance & Food (not yet started)
 
-Sodium, Iris, and friends. Install alongside Phase 2 to make client testing playable.
-Confirmed slugs (no ⚠️): `sodium-dynamic-lights`
+Remaining mods from the shortlist: performance optimisers, QoL infrastructure, storage, and the food/farming layer.
+Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier phases.
+
+**Batch A — Performance**
+
+- `entityculling` — skip rendering hidden entities
+- `immediately-fast` — immediate mode rendering speed
+- `lithium` — game logic optimisations (NeoForge port)
+- _(noisium skipped — Fabric-only, no NeoForge port)_
+- _(debugify skipped — verify NeoForge availability before adding)_
+
+**Batch B — Core QoL**
+
+- `jade` — block/entity info HUD
+- `jei` — recipe viewer
+- `no-chat-reports` — chat privacy from Mojang reporting
+- `xaeros-minimap` — minimap
+- `xaeros-world-map` — full world map
+
+**Batch C — Multiplayer Infrastructure**
+
+- `simple-voice-chat` — proximity voice for collaborative engineering
+- `spark` — performance profiling
+- `universal-graves` — preserve items on death
+- `polymorph` — resolve conflicting recipes
+- `curios-api` — NeoForge accessory standard (Curios)
+- `elytra-slot` — dedicated elytra slot (depends on Curios)
+
+**Batch D — Storage & Inventory**
+
+- `sophisticated-backpacks` — tiered upgradeable backpacks
+- `toms-storage` — network-based centralised storage
+- `carry-on` — pick up and carry chests and tile entities
+- `trashslot` — inventory delete slot
+- _(trash-cans — verify NeoForge slug)_
+
+**Batch E — Food & Farming**
+
+- `comforts` — sleeping bags and hammocks
+- `chef's-delight`, `ocean's-delight`, `end's-delight`, `nature's-delight`, `crate-delight` — Farmer's Delight expansions
+- `lets-do-beachparty`, `lets-do-meadow`, `lets-do-wildernature` — Let's Do food series
+- `duckling` — tameable ducks
+- `realistic-bees` — better bee mechanics
+- `rightclickharvest` — right-click to harvest crops
+- `crops-love-rain` — rain speeds crop growth
+- `universal-bone-meal` — bone meal on everything
+- `flower-tweaks` — flower breeding and crafting
+
+**Batch F — Progression & Scripting**
+
+- `patchouli` — in-game guidebook for engineering progression
+- `kubejs` + `rhino` dep — recipe and event scripting
+- `crafttweaker` — recipe customisation
+- _(ftb-quests — CurseForge-only, not on Modrinth; skipped)_
+
+**Mods skipped (no NeoForge 1.21.1 release):**
+- `duckling` — no NeoForge release
+- `debugify` — no NeoForge release
+- `universal-graves` / `gravestones` — no NeoForge 1.21.1 (replaced by `corpse`)
+- `ftb-quests` — CurseForge-only
+
+**Mods cut (compat crash):**
+- `natures-delight` — broken mixin targeting Farmer's Delight `RichSoilBlock`; no refMap, hard crash on load
+
+**New KNOWN_OK_PATTERNS added (Phase 5):**
+
+- `Failed to load plugin.*KubeJSPlugin.*create_aquatic_ambitions` — Aquatic Ambitions optional KubeJS plugin class missing; mod loads fine
+- `Tried to load invalid item.*alexsmobs:` — food compat recipes reference Alex's Mobs items not installed; recipes skip gracefully
 
 **Phase 5 gate — must pass before Phase 6:**
 
-- [ ] `./validate.sh` → PASSED
-- [ ] Client: all of the above, now with shaders enabled (Iris) — no crash, acceptable FPS
+- [x] `./validate.sh` → PASSED (162 server jars)
+- [ ] Client: title screen + world load — no crash
+- [ ] Client: connect to local test server → no crash
+- [ ] Client: minimap visible, JEI accessible, voice chat present in settings
 
 ---
 
