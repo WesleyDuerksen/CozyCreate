@@ -10,6 +10,7 @@ server/moonlight-global-datapacks/
 server/patchouli_books/
 server/.mixin.out/
 server/.sable/
+server/config/spark/tmp-client/
 
 # Server installer and runtime state
 server/neoforge-installer.jar

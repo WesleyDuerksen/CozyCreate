@@ -101,6 +101,8 @@ Track which configs have been reviewed and tuned. Work through tiers in order â€
 | [ ] | `create_connected-common.toml` | Connected textures settings |
 | [ ] | `create_connected-server.toml` | Connected textures server side |
 | [ ] | `create_deep_dark-common.toml` | Deep dark Create content |
+| [ ] | `dragonlib-common.toml` | Dragon lib framework common |
+| [ ] | `dragonlib-server.toml` | Dragon lib framework server |
 | [ ] | `create_dragons_plus-common.toml` | Dragons Plus content |
 | [ ] | `create_dragons_plus-server.toml` | Dragons Plus server |
 | [ ] | `create_dragons_plus-simulated-extension-common.toml` | Simulated extension common |
