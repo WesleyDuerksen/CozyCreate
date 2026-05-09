@@ -89,7 +89,7 @@ sync_mods() {
 
   # file:// avoids needing packwiz serve — simpler and no timing issues
   (cd "$SERVER_DIR" && java -jar packwiz-installer-bootstrap.jar \
-    "file://${SCRIPT_DIR}/pack.toml" 2>&1) \
+    --side server "file://${SCRIPT_DIR}/pack.toml" 2>&1) \
     | grep -vE "^(Considering|Checking|Loading)" || true
 
   local mod_count
@@ -165,6 +165,11 @@ KNOWN_OK_PATTERNS=(
   "create_integrated_farming:(duck|goose)_roost" # Create: Integrated Farming — compat loot tables for duck/goose mob variants from uninstalled poultry mods; benign
   "farmersdelight:kelp_roll" # Create: Integrated Farming bundles Farmer's Delight compat; FD not installed, single recipe skipped
   "create:wrench_pickup.*missing" # A Create addon adds wrench_pickup tag refs for items not yet registered; benign tag gap
+  "Fabric API detected.*Moonlight"  # Moonlight Lib logs ERROR when it detects Forgified Fabric API (pulled in by Decorative Lamps via Sinytra Connector); cosmetic only
+  "Couldn't parse element.*beautify:blocks/" # Beautify 2.0.2 loot tables use old MapLike format; blocks install fine, affected drops uncraftable
+  "Parsing error loading recipe create:crafting/kinetics/" # Create 6.0.10 gearbox/vertical_gearbox recipes use new ingredient format; server boots fine
+  "Parsing error loading recipe dndesires:crafting/" # Dreams & Desires omni_gearbox recipe format mismatch; server boots fine
+  "is a Fabric mod and cannot be loaded" # Decorative Lamps is a Fabric mod; Sinytra Connector handles client load, server skips it safely
 )
 
 analyze_logs() {
