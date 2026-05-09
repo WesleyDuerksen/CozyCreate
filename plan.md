@@ -169,12 +169,14 @@ Verified 2026-05-08: 6 install, 2 skip.
 Drawn from the Homestead shortlist. Full list in `research/homestead-phase4-shortlist.md`.
 
 **Batch A — Core Ambience**
+
 - `ambientsounds` + `creativecore` dep
 - `sound-physics-remastered`
 - `particle-rain`
 - `sodium-dynamic-lights` + `sodium`, `sodium-options-api`, `reeses-sodium-options` deps
 
 **Batch B — Core Decoration**
+
 - `supplementaries` + `moonlight` dep
 - `supplementaries-squared`
 - `handcrafted` + `resourceful-lib` dep
@@ -182,35 +184,39 @@ Drawn from the Homestead shortlist. Full list in `research/homestead-phase4-shor
 - `farmers-delight`
 
 **Batch C — Let's Do Series**
+
 - `lets-do-vinery`
 - `lets-do-herbalbrews`
 
 **Batch D — Decoration & Furniture (19 mods)**
+
 - `amendments`, `beautify`, `camerapture`
 - `dark-paintings` + `prickle`, `bookshelf` deps
-- `decorative-lamps` + `sinytra-connector`, `forgified-fabric-api` deps *(Fabric mod via Connector; server-side jar skipped safely)*
+- `decorative-lamps` + `sinytra-connector`, `forgified-fabric-api` deps _(Fabric mod via Connector; server-side jar skipped safely)_
 - `diagonal-walls`, `diagonal-windows` + `puzzles-lib` dep
 - `double-doors` + `collective` dep
-- `dusty-decorations` + `geckolib` dep *(geckolib dep was not auto-detected; added manually)*
+- `dusty-decorations` + `geckolib` dep _(geckolib dep was not auto-detected; added manually)_
 - `immersive-furniture`
 - `macaws-paintings`, `macaws-paths-and-pavings`, `macaws-holidays`
 - `mo-glass`, `serene-shrubbery`
 - `simple-hats` + `accessories`, `owo-lib` deps
 - `sooty-chimneys`, `armor-statues`
-- `antique-atlas-4` + `surveyor`, `mcqoy` deps + `yacl` dep *(mcqoy client-only; yacl not auto-detected, added manually)*
+- `antique-atlas-4` + `surveyor`, `mcqoy` deps + `yacl` dep _(mcqoy client-only; yacl not auto-detected, added manually)_
 
 **Batch E — Visual Polish**
+
 - `iris` (replaces `oculus` — oculus only goes to 1.20.1)
 - `not-enough-animations`
 - `subtle-effects` + `fzzy-config` dep
 - `tiny-item-animations`
 - `euphoria-patches`
 - `continuity` (confirmed NeoForge 1.21.1 support)
-- *(embeddium skipped — official Sodium was already auto-installed as dep of sodium-dynamic-lights)*
+- _(embeddium skipped — official Sodium was already auto-installed as dep of sodium-dynamic-lights)_
 
 **Installer fix applied:** Added `--side server` flag to packwiz-installer-bootstrap call in `validate.sh`. Without this, the installer cached "client" side and deployed client-only mods to the server.
 
 **New KNOWN_OK_PATTERNS added:**
+
 - `Fabric API detected.*Moonlight` — Moonlight Lib cosmetic error when Sinytra Connector is present
 - `Couldn't parse element.*beautify:blocks/` — Beautify 2.0.2 malformed loot table format (same as Create Deco/Food)
 - `Parsing error loading recipe create:crafting/kinetics/` — Create 6.0.10 gearbox recipe format mismatch
@@ -220,8 +226,8 @@ Drawn from the Homestead shortlist. Full list in `research/homestead-phase4-shor
 **Phase 3 gate — must pass before Phase 4:**
 
 - [x] `./validate.sh` → PASSED (79 server jars; client-only mods correctly excluded)
-- [ ] Client: title screen + world load — no crash
-- [ ] Client: connect to local test server → no crash
+- [x] Client: title screen + world load — no crash
+- [x] Client: connect to local test server → no crash
 
 ---
 

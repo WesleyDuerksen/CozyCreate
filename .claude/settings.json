@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://api.modrinth.com/v2/*)",
+      "Bash(curl -s \"https://api.modrinth.com/v2/*)",
+      "Bash(./validate.sh *)",
+      "Bash(packwiz *)",
+      "WebFetch(domain:api.modrinth.com)",
+      "WebFetch(domain:modrinth.com)",
+      "WebFetch(domain:cozystudios.org)",
+      "WebFetch(domain:www.curseforge.com)",
+      "WebFetch(domain:api.curse.tools)",
+      "WebFetch(domain:www.feed-the-beast.com)",
+      "WebFetch(domain:github.com)"
+    ]
+  }
+}
