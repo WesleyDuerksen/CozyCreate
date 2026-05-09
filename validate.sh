@@ -1,0 +1,246 @@
+#!/usr/bin/env bash
+# CozyCreate server smoke test
+# Usage: ./validate.sh
+# First run installs NeoForge server automatically; subsequent runs just sync mods and test.
+set -uo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SERVER_DIR="$SCRIPT_DIR/server"
+NEOFORGE_VERSION="21.1.228"
+INSTALLER_URL="https://maven.neoforged.net/releases/net/neoforged/neoforge/${NEOFORGE_VERSION}/neoforge-${NEOFORGE_VERSION}-installer.jar"
+BOOTSTRAP_URL="https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
+SERVER_PORT=25575   # dedicated test port — avoids conflict with any real server on 25565
+SERVER_TIMEOUT=300
+
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'; NC='\033[0m'
+log()  { echo -e "${BLUE}[validate]${NC} $*"; }
+ok()   { echo -e "${GREEN}✔ PASS${NC}  $*"; }
+fail() { echo -e "${RED}✖ FAIL${NC}  $*"; }
+warn() { echo -e "${YELLOW}⚠ WARN${NC}  $*"; }
+hr()   { echo "────────────────────────────────────────────"; }
+
+SERVER_PID=""
+
+cleanup() {
+  if [[ -n "$SERVER_PID" ]] && kill -0 "$SERVER_PID" 2>/dev/null; then
+    log "Stopping server..."
+    kill "$SERVER_PID" 2>/dev/null || true
+    wait "$SERVER_PID" 2>/dev/null || true
+  fi
+}
+trap cleanup EXIT
+
+kill_port() {
+  local port=$1
+  local pid
+  pid=$(lsof -ti :"$port" 2>/dev/null || true)
+  if [[ -n "$pid" ]]; then
+    warn "Port $port in use by PID $pid — killing stale process..."
+    kill "$pid" 2>/dev/null || true
+    sleep 1
+  fi
+}
+
+# ── First-run server setup ────────────────────────────────────────────────────
+
+setup_server() {
+  log "Checking server setup..."
+  mkdir -p "$SERVER_DIR"
+
+  if [[ ! -f "$SERVER_DIR/neoforge-installer.jar" ]]; then
+    log "Downloading NeoForge $NEOFORGE_VERSION installer..."
+    curl -fL --progress-bar -o "$SERVER_DIR/neoforge-installer.jar" "$INSTALLER_URL"
+  fi
+
+  if [[ ! -f "$SERVER_DIR/run.sh" ]]; then
+    log "Installing NeoForge server (takes ~1 min on first run)..."
+    (cd "$SERVER_DIR" && java -jar neoforge-installer.jar --installServer 2>&1) \
+      | grep -E "^(Considering|Extracting|Successfully)" || true
+    [[ -f "$SERVER_DIR/run.sh" ]] || { fail "NeoForge install failed — run.sh not created"; exit 1; }
+    chmod +x "$SERVER_DIR/run.sh"
+  fi
+
+  # Always re-write eula — safe to repeat
+  echo "eula=true" > "$SERVER_DIR/eula.txt"
+
+  # Always write server.properties so port stays correct even if file existed before
+  cat > "$SERVER_DIR/server.properties" <<EOF
+online-mode=false
+max-players=4
+view-distance=8
+simulation-distance=6
+motd=CozyCreate validate
+spawn-protection=0
+server-port=${SERVER_PORT}
+EOF
+
+  if [[ ! -f "$SERVER_DIR/packwiz-installer-bootstrap.jar" ]]; then
+    log "Downloading packwiz-installer-bootstrap..."
+    curl -fL --progress-bar -o "$SERVER_DIR/packwiz-installer-bootstrap.jar" "$BOOTSTRAP_URL"
+  fi
+
+  ok "Server setup ready"
+}
+
+# ── Mod sync ──────────────────────────────────────────────────────────────────
+
+sync_mods() {
+  log "Syncing mods to server..."
+
+  # file:// avoids needing packwiz serve — simpler and no timing issues
+  (cd "$SERVER_DIR" && java -jar packwiz-installer-bootstrap.jar \
+    "file://${SCRIPT_DIR}/pack.toml" 2>&1) \
+    | grep -vE "^(Considering|Checking|Loading)" || true
+
+  local mod_count
+  mod_count=$(find "$SERVER_DIR/mods" -name "*.jar" 2>/dev/null | wc -l | tr -d ' ')
+  if (( mod_count == 0 )); then
+    fail "No mods found in server/mods/ after sync — check packwiz-installer output above"
+    exit 1
+  fi
+  ok "Mods synced ($mod_count jars in server/mods/)"
+}
+
+# ── Server startup & monitoring ───────────────────────────────────────────────
+
+run_server() {
+  kill_port "$SERVER_PORT"
+  log "Starting server..."
+  local log_file="$SERVER_DIR/logs/latest.log"
+
+  rm -f "$log_file"
+  mkdir -p "$SERVER_DIR/logs"
+
+  (cd "$SERVER_DIR" && ./run.sh --nogui > /dev/null 2>&1) &
+  SERVER_PID=$!
+
+  log "Waiting for ready signal (timeout: ${SERVER_TIMEOUT}s)..."
+
+  local elapsed=0 ready=0 crashed=0
+  while (( elapsed < SERVER_TIMEOUT )); do
+    if [[ -f "$log_file" ]]; then
+      if grep -q "Done (" "$log_file" 2>/dev/null; then
+        ready=1; break
+      fi
+      if grep -qE "\[.+/FATAL\]" "$log_file" 2>/dev/null; then
+        crashed=1; break
+      fi
+    fi
+    if ! kill -0 "$SERVER_PID" 2>/dev/null; then
+      crashed=1; break
+    fi
+    sleep 2
+    (( elapsed += 2 ))
+  done
+
+  if (( ready )); then
+    local startup_time
+    startup_time=$(grep "Done (" "$log_file" | tail -1 | grep -oE '[0-9]+\.[0-9]+s' || echo "?")
+    ok "Server ready in $startup_time"
+    return 0
+  else
+    fail "Server did not reach ready state (elapsed: ${elapsed}s)"
+    return 1
+  fi
+}
+
+# ── Log analysis ──────────────────────────────────────────────────────────────
+
+# Patterns that are expected/acceptable and should not trigger failure.
+# Add to this list as you discover false positives during testing.
+KNOWN_OK_PATTERNS=(
+  "Failed to load config"              # configs created on first load, normal
+  "DistExecutor.*safely"               # forge internals
+  "Unable to find biome.*datapack"     # expected on fresh world
+  "Skipping.*optional dep"
+  "RuntimeDistCleaner/DISTXFORM"       # client-only classes scanned on server — NeoForge filters these, not a real error
+  "Native backend failed to load"      # Power Grid native acceleration unavailable on macOS, falls back to software solver
+  "loot_table.*railways:blocks/track_" # Steam 'n' Rails compat loot tables for BYG/Nature's Spirit — benign until those biome mods are added
+  "Unknown registry key.*railways:track_" # same as above
+  "Reference map.*veil.refmap.json.*could not be read" # Veil rendering lib (bundled in Aeronautics) has client-only mixin maps — harmless on server
+)
+
+analyze_logs() {
+  local log_file="$SERVER_DIR/logs/latest.log"
+  [[ -f "$log_file" ]] || { warn "No log file found"; return 1; }
+
+  local ignore_regex
+  ignore_regex=$(printf '%s|' "${KNOWN_OK_PATTERNS[@]}"); ignore_regex="${ignore_regex%|}"
+
+  local errors warnings
+  errors=$(grep -E "\[.+/(ERROR|FATAL)\]" "$log_file" \
+    | grep -vE "$ignore_regex" || true)
+  warnings=$(grep -E "\[.+/WARN\]" "$log_file" \
+    | grep -vE "$ignore_regex" \
+    | head -15 || true)
+
+  local error_count=0 warn_count=0
+  [[ -n "$errors"   ]] && error_count=$(echo "$errors"   | wc -l | tr -d ' ')
+  [[ -n "$warnings" ]] && warn_count=$(echo  "$warnings" | wc -l | tr -d ' ')
+
+  if (( error_count > 0 )); then
+    fail "$error_count error(s) / fatal(s):"
+    echo "$errors" | sed 's/^/    /'
+  else
+    ok "No errors or fatals in log"
+  fi
+
+  if (( warn_count > 0 )); then
+    warn "$warn_count warning(s) — first 15 shown (review manually):"
+    echo "$warnings" | sed 's/^/    /'
+  else
+    ok "No warnings in log"
+  fi
+
+  return $(( error_count > 0 ? 1 : 0 ))
+}
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+main() {
+  hr
+  log "CozyCreate — Server Smoke Test"
+  log "Pack:   $(grep '^name' "$SCRIPT_DIR/pack.toml" | cut -d'"' -f2)"
+  log "MC:     $(grep 'minecraft' "$SCRIPT_DIR/pack.toml" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
+  log "Loader: NeoForge $NEOFORGE_VERSION"
+  hr
+
+  setup_server
+  sync_mods
+  hr
+
+  local server_ok=0 log_ok=0
+
+  if run_server; then
+    server_ok=1
+    hr
+    analyze_logs && log_ok=1
+
+    log "Sending stop command..."
+    kill "$SERVER_PID" 2>/dev/null || true
+    wait "$SERVER_PID" 2>/dev/null || true
+    SERVER_PID=""
+  else
+    hr
+    warn "Crash context (last 40 lines of log):"
+    tail -40 "$SERVER_DIR/logs/latest.log" 2>/dev/null | sed 's/^/  /' || true
+    SERVER_PID=""
+  fi
+
+  hr
+  if (( server_ok && log_ok )); then
+    ok "RESULT: PASSED — server is stable"
+    echo ""
+    echo "  Full log: $SERVER_DIR/logs/latest.log"
+    echo ""
+    exit 0
+  else
+    fail "RESULT: FAILED — see output above"
+    echo ""
+    echo "  Full log: $SERVER_DIR/logs/latest.log"
+    echo ""
+    exit 1
+  fi
+}
+
+main

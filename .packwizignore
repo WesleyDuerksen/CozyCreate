@@ -1,0 +1,8 @@
+CLAUDE.md
+plan.md
+validate.sh
+.gitignore
+.packwizignore
+research/
+server/
+.claude/
