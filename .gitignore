@@ -1,2 +1,22 @@
-server/
+# Server runtime and generated dirs — do not track
+server/world/
+server/mods/
+server/libraries/
+server/logs/
+server/crash-reports/
+server/local/
+server/dynamic-data-pack-cache/
+server/moonlight-global-datapacks/
+server/patchouli_books/
+server/.mixin.out/
+server/.sable/
+
+# Server installer and runtime state
+server/neoforge-installer.jar
+server/neoforge-installer.jar.log
+server/*.jar
+server/usercache.json
+server/usernamecache.json
+server/can-be-zeus.json
+
 *.mrpack
