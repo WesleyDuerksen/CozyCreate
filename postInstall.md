@@ -31,11 +31,12 @@ The entire Create Automation & Machinery section was missing from the initial in
 | CreateBetterFps | `createbetterfps` |
 | Personality | `personality` |
 
-### Dropped — mixin incompatibility
+### Dropped — incompatibility
 
 | Mod | Reason |
 |-----|--------|
 | Nature's Delight | `RichSoilBlockMixin` targets a method removed in Farmer's Delight 1.3.1 — hard crash on boot. No fix available at current versions. |
+| Despawn Tweaks | Registers `despawntweaks:despawntweaker_picked` as a data component type while marked server-side only. NeoForge syncs the component registry on login, blocking clients without the mod. |
 
 ### Not available for NeoForge 1.21.1
 
@@ -305,7 +306,6 @@ These mods were in `results.md` but have no NeoForge 1.21.1 release on Modrinth 
 | Bad Wither No Cookie | `bad-wither-no-cookie` | Suppresses boss spawn sounds server-wide |
 | Caelus API | `caelus` | Required dependency for Elytra Slot |
 | Chat Heads | `chat-heads` | Player head icon in chat |
-| Despawn Tweaks | `despawn-tweaks` | Configurable item despawn timers |
 | Easy Anvils | `easy-anvils` | Removes anvil level cap |
 | Easy Magic | `easy-magic` | Re-roll enchanting table options |
 | Enchantment Descriptions | `enchantment-descriptions` | Enchant descriptions in tooltips |

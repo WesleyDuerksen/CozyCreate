@@ -352,12 +352,14 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 - _(ftb-quests — CurseForge-only, not on Modrinth; skipped)_
 
 **Mods skipped (no NeoForge 1.21.1 release):**
+
 - `duckling` — no NeoForge release
 - `debugify` — no NeoForge release
 - `universal-graves` / `gravestones` — no NeoForge 1.21.1 (replaced by `corpse`)
 - `ftb-quests` — CurseForge-only
 
 **Mods cut (compat crash):**
+
 - `natures-delight` — broken mixin targeting Farmer's Delight `RichSoilBlock`; no refMap, hard crash on load
 
 **New KNOWN_OK_PATTERNS added (Phase 5):**
@@ -368,9 +370,9 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 **Phase 5 gate — must pass before Phase 6:**
 
 - [x] `./validate.sh` → PASSED (162 server jars)
-- [ ] Client: title screen + world load — no crash
-- [ ] Client: connect to local test server → no crash
-- [ ] Client: minimap visible, JEI accessible, voice chat present in settings
+- [x] Client: title screen + world load — no crash
+- [x] Client: connect to local test server → no crash
+- [x] Client: minimap visible, JEI accessible, voice chat present in settings
 
 ---
 
