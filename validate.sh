@@ -187,6 +187,7 @@ KNOWN_OK_PATTERNS=(
   "Failed to load plugin.*KubeJSPlugin.*create_aquatic_ambitions" # Create: Aquatic Ambitions optional KubeJS plugin class missing in this build — integration unavailable, mod loads fine
   "Tried to load invalid item.*alexsmobs:" # Alex's Mobs not installed; food mods with compat recipes skip affected items gracefully
   "Couldn't load fabric:overlays metadata" # Sinytra Connector parses optional Fabric overlay metadata; missing entry is benign, server loads fine
+  "AllTheLeaks.*Failed to instantiate constructor" # AllTheLeaks conflicts with ModernFix/FerriteCore patching the same memory paths; server runs fine, leak fix partially applied
 )
 
 analyze_logs() {
