@@ -231,14 +231,64 @@ Drawn from the Homestead shortlist. Full list in `research/homestead-phase4-shor
 
 ---
 
-### Phase 4 — Adventure & World (not yet started)
+### Phase 4 — Adventure & World ✅
 
 Exploration, structures, mobs. Full list in research files.
-Install after Phase 3 is stable.
+
+**Batch A — World Gen Libraries**
+
+- `terrablender`, `lithostitched` — biome/worldgen compat libs
+- `yungs-api` — YUNG's structure lib
+- `serene-seasons` + `glitchcore` dep — seasons system
+- `biolith` — required by Regions Unexplored (NeoForge port exists)
+
+**Batch B — Biomes**
+
+- `tectonic`, `natures-spirit`, `geophilic`, `regions-unexplored` — overworld terrain
+- `oh-the-biomes-weve-gone` + `corgilib`, `oh-the-trees-youll-grow` deps
+- `incendium` — nether biomes
+- `autumnity` + `blueprint` dep, `environmental`, `ecologics` — seasonal/evocative biomes
+- _(eldritch-end skipped — no 1.21.1 release)_
+
+**Batch C — Structures**
+
+- YUNG's suite: `yungs-better-dungeons`, `yungs-better-mineshafts`, `yungs-better-nether-fortresses`, `yungs-better-strongholds`, `yungs-better-end-island`, `yungs-bridges`, `yungs-extras`
+- `towns-and-towers` + `cristel-lib` dep, `dungeons-and-taverns`
+- `repurposed-structures` (NeoForge variant)
+- `valhelsia-structures` + `valhelsia-core` dep
+- `idas` + `quark`, `zeta`, `integrated-api` deps (Quark pulled in as IDAS dep)
+- `integrated-villages`
+- `structure-essentials` (CurseForge) + `cupboard` dep, `loot-integrations` (CurseForge)
+
+**Batch D — Mobs, Navigation & World QoL**
+
+- `friends-and-foes-forge`, `upgrade-aquatic` — new creatures
+- `lootr` — per-player loot chests
+- `explorers-compass`, `natures-compass` — find structures/biomes
+- `travellers-titles` — biome/dimension title cards
+- `gallery`, `boatload` — vanilla+ art display and boat types
+- _(alex's-mobs skipped — no 1.21.1 release)_
+- _(personality skipped — no 1.21.1 release)_
+
+**New KNOWN_OK_PATTERNS added:**
+
+- `Reference map.*could not be read` — broadened from Veil-specific to cover all dev-env mixin refmap warnings
+- `Error loading class:.*ClassNotFoundException` — mixin compat shims for optional mods
+- `Error loading class:.*invalid dist DEDICATED_SERVER` — client-only classes scanned by mixin processor
+- `Method overwrite conflict` / `Discarding @Unique` — mixin dedup/conflict, benign
+- `JarJar.*passed in as source` — externally provided dep jar (architectury)
+- `modid:example.*data map.*dimension` — Blueprint 8.1.0 leaves example placeholder in modded_biome_slice_sizes.json
+- `idas:chests/` / `idas:has_structure/` — IDAS compat tables for Ice and Fire / Ars Nouveau / BYG/BOP
+- `valhelsia_structures:chests/spawner_dungeon_dispenser` — uses removed set_nbt loot function
+- `bei_ExtraDragonFight` — YUNG's Better End Island missing world key on fresh worlds
+- `garnished:dye_blowing/quark/` — Garnished × Quark compat recipe format mismatch
+- `Couldn't load advancements:.*wander_add_map` — vanilla trader advancements fail with structure mods
+- `Integrated API Error: Couldn't parse spawner mob list idas:` — IDAS mob lists for uninstalled mods
+- `LootrServiceRegistry.*not found` — Quark's Lootr compat mixin, Lootr not installed
 
 **Phase 4 gate — must pass before Phase 5:**
 
-- [ ] `./validate.sh` → PASSED
+- [x] `./validate.sh` → PASSED (122 server jars)
 - [ ] Client: title screen + world load — no crash
 - [ ] Client: connect to local test server → no crash
 

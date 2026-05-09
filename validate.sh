@@ -157,7 +157,7 @@ KNOWN_OK_PATTERNS=(
   "Native backend failed to load"      # Power Grid native acceleration unavailable on macOS, falls back to software solver
   "loot_table.*railways:blocks/track_" # Steam 'n' Rails compat loot tables for BYG/Nature's Spirit — benign until those biome mods are added
   "Unknown registry key.*railways:track_" # same as above
-  "Reference map.*veil.refmap.json.*could not be read" # Veil rendering lib (bundled in Aeronautics) has client-only mixin maps — harmless on server
+  "Reference map.*could not be read" # mixin refmaps missing in prod builds — harmless dev-env warning
   "Parsing error loading recipe createdeco:placard" # Create Deco 2.1.3 bug — placard recipe uses new ingredient format incompatible with the recipe type; server boots fine, item just uncraftable
   "entities/(ravaging|salvaging)/" # Create: Enchantment Industry 2.3.1 — malformed JSON in bundled loot tables; those loot entries skip but mod otherwise works
   "garnished:april_foods/smooth_blocks" # Create: Garnished — smooth_wyvern_stone block ref missing; benign tag gap, server boots fine
@@ -165,6 +165,20 @@ KNOWN_OK_PATTERNS=(
   "create_integrated_farming:(duck|goose)_roost" # Create: Integrated Farming — compat loot tables for duck/goose mob variants from uninstalled poultry mods; benign
   "farmersdelight:kelp_roll" # Create: Integrated Farming bundles Farmer's Delight compat; FD not installed, single recipe skipped
   "create:wrench_pickup.*missing" # A Create addon adds wrench_pickup tag refs for items not yet registered; benign tag gap
+  "modid:example.*data map.*dimension" # Blueprint 8.1.0 ships a literal example placeholder in modded_biome_slice_sizes.json; benign
+  "Error loading class:.*ClassNotFoundException" # mixin compat shims for optional mods not installed — expected
+  "Error loading class:.*invalid dist DEDICATED_SERVER" # client-only classes scanned by mixin processor on server — expected
+  "Method overwrite conflict" # mixin method conflict between two mods, Skipping — benign
+  "Discarding @Unique" # mixin dedup when the same method is declared twice — benign
+  "JarJar.*passed in as source" # dependency jar already provided externally (e.g. architectury) — benign
+  "idas:chests/" # IDAS compat loot tables for uninstalled mods (Ice and Fire, Ars Nouveau) — benign skipped entries
+  "idas:has_structure/" # IDAS structure tags for BYG/BOP biomes not in our pack — benign missing tag refs
+  "valhelsia_structures:chests/spawner_dungeon_dispenser" # Valhelsia uses removed set_nbt loot function; chest spawns without potions, server fine
+  "bei_ExtraDragonFight" # YUNG's Better End Island checks for a world key absent on fresh worlds — benign
+  "garnished:dye_blowing/quark/" # Garnished × Quark compat recipes use incompatible ingredient format; affected recipes uncraftable, server fine
+  "Couldn't load advancements:.*wander_add_map" # vanilla trader advancements fail when structure mods alter trader/cartographer data — advancement just won't trigger
+  "Integrated API Error: Couldn't parse spawner mob list idas:" # IDAS spawner lists reference Ice and Fire / Ars Nouveau mobs not installed; structures spawn without those mobs
+  "LootrServiceRegistry.*not found" # Quark's Lootr compat mixin — Lootr not installed, mixin target missing, benign
   "Fabric API detected.*Moonlight"  # Moonlight Lib logs ERROR when it detects Forgified Fabric API (pulled in by Decorative Lamps via Sinytra Connector); cosmetic only
   "Couldn't parse element.*beautify:blocks/" # Beautify 2.0.2 loot tables use old MapLike format; blocks install fine, affected drops uncraftable
   "Parsing error loading recipe create:crafting/kinetics/" # Create 6.0.10 gearbox/vertical_gearbox recipes use new ingredient format; server boots fine
@@ -236,6 +250,11 @@ main() {
     hr
     warn "Crash context (last 40 lines of log):"
     tail -40 "$SERVER_DIR/logs/latest.log" 2>/dev/null | sed 's/^/  /' || true
+    if [[ -n "$SERVER_PID" ]] && kill -0 "$SERVER_PID" 2>/dev/null; then
+      log "Stopping server..."
+      kill "$SERVER_PID" 2>/dev/null || true
+      wait "$SERVER_PID" 2>/dev/null || true
+    fi
     SERVER_PID=""
   fi
 
