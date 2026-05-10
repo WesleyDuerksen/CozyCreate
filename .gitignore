@@ -11,6 +11,7 @@ server/patchouli_books/
 server/.mixin.out/
 server/.sable/
 server/config/spark/tmp-client/
+server/config/waila/
 
 # Server installer and runtime state
 server/neoforge-installer.jar
