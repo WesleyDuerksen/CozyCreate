@@ -7,9 +7,9 @@
 
 ## Differences from results.md
 
-### Added this pass (17 mods)
+### Added this pass (19 mods)
 
-The entire Create Automation & Machinery section was missing from the initial install. All available mods were added and validated against the server:
+The entire Create Automation & Machinery section was missing from the initial install. All available mods were added and validated against the server. Additionally added Distant Horizons and Measurements:
 
 | Mod | Slug |
 |-----|------|
@@ -30,6 +30,8 @@ The entire Create Automation & Machinery section was missing from the initial in
 | Noisium | `noisium` |
 | CreateBetterFps | `createbetterfps` |
 | Personality | `personality` |
+| Distant Horizons | `distanthorizons` |
+| Measurements | `measurements` |
 
 ### Dropped — incompatibility
 
@@ -69,7 +71,7 @@ These mods were in `results.md` but have no NeoForge 1.21.1 release on Modrinth 
 
 ## Full Modlist
 
-**Total: 228 mods** (including auto-pulled dependencies)
+**Total: 230 mods** (including auto-pulled dependencies)
 
 ### Create Ecosystem
 
@@ -293,6 +295,7 @@ These mods were in `results.md` but have no NeoForge 1.21.1 release on Modrinth 
 | FTB Filter System | `ftb-filter-system` **[CurseForge]** | Advanced item filter UI |
 | FTB XMod Compat | `ftb-xmod-compat` **[CurseForge]** | FTB compatibility bridges |
 | Jade | `jade` | Block/entity info HUD |
+| Measurements | `measurements` | In-world distance and area measurement tool |
 | JEI | `jei` | Recipe viewer |
 | Just Enough Breeding | `justenoughbreeding` | JEI add-on: animal breeding |
 | Just Enough Professions | `just-enough-professions-jep` | JEI add-on: villager trades |
@@ -330,6 +333,7 @@ These mods were in `results.md` but have no NeoForge 1.21.1 release on Modrinth 
 
 | Mod | Slug | Role |
 |-----|------|------|
+| Distant Horizons | `distanthorizons` | Level of Detail (LOD) renderer — distant terrain at low cost |
 | Sodium | `sodium` | NeoForge rendering engine |
 | Lithium | `lithium` | Game logic optimizations |
 | ModernFix | `modernfix` | Memory and startup improvements |

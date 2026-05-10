@@ -1,5 +1,7 @@
 CLAUDE.md
 plan.md
+postInstall.md
+config-review.md
 validate.sh
 .gitignore
 .packwizignore
