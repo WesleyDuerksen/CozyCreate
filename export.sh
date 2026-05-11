@@ -64,12 +64,13 @@ EOF
 
 cat > "$CLIENT_DIR/instance.cfg" <<EOF
 InstanceType=OneSix
-name=Cozy Create $PACK_VERSION
+name=Cozy Create
+iconKey=cozycreate
 EOF
 
-# Prism instance thumbnail
+# Prism instance thumbnail — filename must match iconKey
 if [[ -f icon.png ]]; then
-  cp icon.png "$CLIENT_DIR/icon.png"
+  cp icon.png "$CLIENT_DIR/cozycreate.png"
 fi
 
 # Collect mods for client + both sides; CurseForge mods have no URL, copy from server/mods/
@@ -131,7 +132,7 @@ fi
 
 log "Zipping client instance..."
 rm -f "$ZIP_FILE"
-(cd "$CLIENT_DIR" && zip -qr "../../$ZIP_FILE" .)
+(cd "$CLIENT_DIR" && zip -qr "../../$ZIP_FILE" instance.cfg mmc-pack.json cozycreate.png .minecraft)
 log "Generated: $ZIP_FILE"
 
 # ── 6. Summary ────────────────────────────────────────────────────────────────
