@@ -28,7 +28,7 @@ GitHub Repository: [NEED TO MAKE ONE]
 		"frequency": 0.2,
 		"salt": 213742069,
 		// DEFAULT 24
-		"separation": 12,
+		"separation": 24,
 		// DEFAULT 48
 		"spacing": 48
 	},
@@ -36,7 +36,7 @@ GitHub Repository: [NEED TO MAKE ONE]
 	"towns": {
 		"salt": 213742069,
 		// DEFAULT 24
-		"separation": 12,
+		"separation": 24,
 		// DEFAULT 48
 		"spacing": 51
 	}

@@ -378,9 +378,9 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 
 ### Phase 6 — Multiplayer Hardening (not yet started)
 
-- Server-side config tuning (progress tracker at config-review.md)
-- Claim/grief protection review (no teleportation, no auto-claims — transport philosophy)
-- Export final mrpack for Modrinth
+- [ ] Server-side config tuning (progress tracker at config-review.md)
+- [ ] Claim/grief protection review (no teleportation, no auto-claims — transport philosophy)
+- [ ] Export final mrpack for Modrinth
 
 **Phase 6 gate — ship criteria:**
 

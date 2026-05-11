@@ -21,6 +21,6 @@
   },
   "chatnotification": {
     "desc:": "Set the chat notification type, one of these: PLAYER(closest player), EVERYONE(all players), NONE, OP(operator). default: PLAYER",
-    "chatnotification": "PLAYER"
+    "chatnotification": "OP"
   }
 }
