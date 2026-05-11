@@ -23,3 +23,6 @@ server/usernamecache.json
 server/can-be-zeus.json
 
 *.mrpack
+*.zip
+build/
+config/

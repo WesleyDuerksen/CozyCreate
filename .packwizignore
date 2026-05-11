@@ -3,8 +3,13 @@ plan.md
 postInstall.md
 config-review.md
 validate.sh
+export.sh
 .gitignore
 .packwizignore
+README.md
+*.png
+*.jpg
 research/
 server/
+build/
 .claude/
