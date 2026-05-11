@@ -10,6 +10,7 @@ server/moonlight-global-datapacks/
 server/patchouli_books/
 server/.mixin.out/
 server/.sable/
+server/.pg-native/
 server/config/spark/tmp-client/
 server/config/waila/
 
