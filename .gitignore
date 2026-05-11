@@ -25,4 +25,4 @@ server/can-be-zeus.json
 *.mrpack
 /CozyCreate-*.zip
 build/
-config/
+/config/

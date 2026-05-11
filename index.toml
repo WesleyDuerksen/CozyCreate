@@ -529,6 +529,10 @@ file = "config/integrated_villages-neoforge-1_21.toml"
 hash = "008ef7ca6fa759b865a0df2371724f78e4b6e85fb1a449c52d720b2215da2d39"
 
 [[files]]
+file = "config/iris.properties"
+hash = "1e950dbcae56ed0cd2795730fbce74155d51f21abdfd1c2343612e9d7c697df4"
+
+[[files]]
 file = "config/jade/server-plugin-overrides.json"
 hash = "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
 
