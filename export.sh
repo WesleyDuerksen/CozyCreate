@@ -15,32 +15,17 @@ warn() { echo -e "${YELLOW}[warn]${NC} $1"; }
 fail() { echo -e "${RED}[fail]${NC} $1"; exit 1; }
 
 # ── 1. Ensure packwiz CLI ──────────────────────────────────────────────────────
-PACKWIZ_BIN=$(command -v packwiz 2>/dev/null || echo "")
-if [[ -z "$PACKWIZ_BIN" ]]; then
-  ARCH=$(uname -m)
-  case "$ARCH" in
-    x86_64)  PW_ARCH="amd64" ;;
-    aarch64) PW_ARCH="arm64" ;;
-    *) fail "Unsupported architecture: $ARCH — install packwiz manually: https://packwiz.infra.link" ;;
-  esac
-  mkdir -p "$TOOLS_DIR"
-  PACKWIZ_BIN="$TOOLS_DIR/packwiz"
-  if [[ ! -f "$PACKWIZ_BIN" ]]; then
-    log "Downloading packwiz CLI (linux/$PW_ARCH)..."
-    PW_URL="https://github.com/packwiz/packwiz/releases/latest/download/packwiz_linux_${PW_ARCH}"
-    curl -fL --progress-bar -o "$PACKWIZ_BIN" "$PW_URL"
-    chmod +x "$PACKWIZ_BIN"
-  fi
+PACKWIZ_BIN=$(command -v packwiz 2>/dev/null || echo "${HOME}/go/bin/packwiz")
+if [[ ! -x "$PACKWIZ_BIN" ]]; then
+  fail "packwiz not found — install with: go install github.com/packwiz/packwiz@latest"
 fi
 log "packwiz: $PACKWIZ_BIN"
 
 # ── 2. Sync configs to pack root ───────────────────────────────────────────────
 log "Syncing server/config/ → config/ ..."
-mkdir -p config
-rsync -a --delete \
-  --exclude='spark/tmp-client/' \
-  --exclude='waila/' \
-  server/config/ config/
+rm -rf config
+cp -r server/config config
+rm -rf config/spark/tmp-client config/waila
 
 # ── 3. Refresh packwiz index (picks up config/ files) ─────────────────────────
 log "Refreshing packwiz index..."
@@ -87,29 +72,43 @@ if [[ -f icon.png ]]; then
   cp icon.png "$CLIENT_DIR/icon.png"
 fi
 
-# Collect download URLs for client + both side mods
+# Collect mods for client + both sides; CurseForge mods have no URL, copy from server/mods/
 log "Resolving client mod list (skipping server-only mods)..."
-declare -a MOD_URLS=()
+declare -a DOWNLOAD_ENTRIES=()   # "url filename"
+declare -a COPY_FILENAMES=()     # filenames to copy from server/mods/
 for toml in mods/*.pw.toml; do
   side=$(grep '^side = ' "$toml" | sed 's/side = "\(.*\)"/\1/')
   [[ "$side" == "server" ]] && continue
-  url=$(grep '^url = ' "$toml" | sed 's/url = "\(.*\)"/\1/')
   filename=$(grep '^filename = ' "$toml" | sed 's/filename = "\(.*\)"/\1/')
-  MOD_URLS+=("$url $filename")
+  url=$(grep '^url = ' "$toml" 2>/dev/null | sed 's/url = "\(.*\)"/\1/' || echo "")
+  if [[ -n "$url" ]]; then
+    DOWNLOAD_ENTRIES+=("$url $filename")
+  else
+    COPY_FILENAMES+=("$filename")
+  fi
 done
-log "Downloading ${#MOD_URLS[@]} mods (up to 8 parallel)..."
+log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/mods/"
 
-# Parallel download with a bounded job pool
+# Copy CurseForge mods from server/mods/
+for filename in "${COPY_FILENAMES[@]}"; do
+  src="server/mods/$filename"
+  if [[ -f "$src" ]]; then
+    cp "$src" "$CLIENT_DIR/.minecraft/mods/$filename"
+  else
+    warn "Missing in server/mods/: $filename"
+  fi
+done
+
+# Parallel download for Modrinth mods
 DOWNLOAD_FAIL=0
 declare -a PIDS=()
-for entry in "${MOD_URLS[@]}"; do
+for entry in "${DOWNLOAD_ENTRIES[@]}"; do
   url="${entry%% *}"
   filename="${entry##* }"
   dest="$CLIENT_DIR/.minecraft/mods/$filename"
   if [[ ! -f "$dest" ]]; then
     (curl -fsSL -o "$dest" "$url" || { echo "FAIL: $filename" >&2; exit 1; }) &
     PIDS+=($!)
-    # Drain pool when it hits 8
     while [[ ${#PIDS[@]} -ge 8 ]]; do
       if ! wait "${PIDS[0]}"; then DOWNLOAD_FAIL=1; fi
       PIDS=("${PIDS[@]:1}")
@@ -123,6 +122,12 @@ done
 
 log "Copying configs..."
 cp -r config/. "$CLIENT_DIR/.minecraft/config/"
+
+# Shader packs
+if [[ -d shaderpacks ]]; then
+  mkdir -p "$CLIENT_DIR/.minecraft/shaderpacks"
+  cp shaderpacks/* "$CLIENT_DIR/.minecraft/shaderpacks/"
+fi
 
 log "Zipping client instance..."
 rm -f "$ZIP_FILE"
