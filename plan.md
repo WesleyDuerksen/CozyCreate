@@ -378,7 +378,7 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 
 ### Phase 6 — Multiplayer Hardening (not yet started)
 
-- [ ] Server-side config tuning (progress tracker at config-review.md)
+- [x] Server-side config tuning (progress tracker at config-review.md)
 - [ ] Claim/grief protection review (no teleportation, no auto-claims — transport philosophy)
 - [ ] Export final mrpack for Modrinth
 
@@ -390,6 +390,10 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 - [ ] Server runs for 10 minutes under light load — no memory leak, no OOM
 
 ---
+
+**Phase 7 Quests - Launch day critical**
+
+We need quests to help the users understand that this is a cozy container around steam/diesel punk create
 
 ## Key Decisions Log
 

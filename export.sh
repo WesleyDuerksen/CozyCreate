@@ -38,7 +38,7 @@ log "Exporting .mrpack..."
 log "Generated: $MRPACK_FILE"
 
 # ── 5. Build self-contained client zip ────────────────────────────────────────
-ZIP_FILE="${PACK_NAME}-${PACK_VERSION}-client.zip"
+ZIP_FILE="${PACK_NAME}-${PACK_VERSION}.zip"
 log "Building self-contained client zip..."
 
 rm -rf "$CLIENT_DIR"
