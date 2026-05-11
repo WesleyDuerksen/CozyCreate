@@ -135,8 +135,72 @@ rm -f "$ZIP_FILE"
 (cd "$CLIENT_DIR" && zip -qr "../../$ZIP_FILE" instance.cfg mmc-pack.json cozycreate.png .minecraft)
 log "Generated: $ZIP_FILE"
 
-# ── 6. Summary ────────────────────────────────────────────────────────────────
+# ── 6. Build server zip ───────────────────────────────────────────────────────
+SERVER_ZIP="${PACK_NAME}-${PACK_VERSION}-server.zip"
+SERVER_DIR="$BUILD_DIR/server"
+log "Building server zip..."
+
+rm -rf "$SERVER_DIR"
+mkdir -p "$SERVER_DIR"
+
+# Pack metadata — packwiz-installer reads these to download mods
+cp pack.toml index.toml "$SERVER_DIR/"
+cp -r mods "$SERVER_DIR/mods"
+
+# Configs and server icon
+cp -r config "$SERVER_DIR/config"
+[[ -f server-icon.png ]] && cp server-icon.png "$SERVER_DIR/server-icon.png"
+
+# Bootstrap jar for syncing mods on first run
+[[ -f server/packwiz-installer-bootstrap.jar ]] && \
+  cp server/packwiz-installer-bootstrap.jar "$SERVER_DIR/"
+
+# Start script: installs NeoForge once, syncs mods, starts server
+cat > "$SERVER_DIR/start.sh" <<'STARTSCRIPT'
+#!/usr/bin/env bash
+set -euo pipefail
+
+NF_VERSION="21.1.228"
+MC_VERSION="1.21.1"
+NF_INSTALLER="neoforge-${NF_VERSION}-installer.jar"
+NF_URL="https://maven.neoforged.net/releases/net/neoforged/neoforge/${NF_VERSION}/neoforge-${NF_VERSION}-installer.jar"
+BOOTSTRAP_URL="https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
+
+# Install NeoForge server once
+if [[ ! -f "libraries/net/neoforged/neoforge/${NF_VERSION}/unix_args.txt" ]]; then
+  echo "[start] Installing NeoForge ${NF_VERSION}..."
+  [[ ! -f "$NF_INSTALLER" ]] && curl -fL --progress-bar -o "$NF_INSTALLER" "$NF_URL"
+  java -jar "$NF_INSTALLER" --install-server . --http-proxy "" 2>&1
+  rm -f "$NF_INSTALLER"
+fi
+
+# Accept EULA
+echo "eula=true" > eula.txt
+
+# Download bootstrap if missing (e.g. fresh clone)
+if [[ ! -f packwiz-installer-bootstrap.jar ]]; then
+  echo "[start] Downloading packwiz-installer-bootstrap..."
+  curl -fL --progress-bar -o packwiz-installer-bootstrap.jar "$BOOTSTRAP_URL"
+fi
+
+# Sync mods from pack metadata
+echo "[start] Syncing mods..."
+java -jar packwiz-installer-bootstrap.jar --side server -g "file://$(pwd)/pack.toml"
+
+# Start server
+exec java @user_jvm_args.txt \
+  @libraries/net/neoforged/neoforge/${NF_VERSION}/unix_args.txt "$@"
+STARTSCRIPT
+chmod +x "$SERVER_DIR/start.sh"
+
+log "Zipping server package..."
+rm -f "$SERVER_ZIP"
+(cd "$SERVER_DIR" && zip -qr "../../$SERVER_ZIP" .)
+log "Generated: $SERVER_ZIP"
+
+# ── 7. Summary ────────────────────────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}Done!${NC}"
-echo "  .mrpack  →  $MRPACK_FILE   (import into Prism; mods download automatically)"
-echo "  .zip     →  $ZIP_FILE   (import into Prism; all mods bundled, no downloads)"
+echo "  .mrpack       →  $MRPACK_FILE   (import into Prism; mods download automatically)"
+echo "  client .zip   →  $ZIP_FILE   (import into Prism; all mods bundled, no downloads)"
+echo "  server .zip   →  $SERVER_ZIP   (unzip, run ./start.sh)"
