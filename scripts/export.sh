@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="1.0.1"
+PACK_VERSION="0.1.0"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
@@ -35,6 +35,8 @@ log "Refreshing packwiz index..."
 # ── 4. Export .mrpack ─────────────────────────────────────────────────────────
 MRPACK_FILE="$BUILD_DIR/${PACK_NAME}-${PACK_VERSION}.mrpack"
 mkdir -p "$BUILD_DIR"
+log "Cleaning previous build artifacts..."
+rm -f "$BUILD_DIR"/*.mrpack "$BUILD_DIR"/*.zip
 log "Exporting .mrpack..."
 "$PACKWIZ_BIN" modrinth export -o "$MRPACK_FILE"
 log "Generated: $MRPACK_FILE"
