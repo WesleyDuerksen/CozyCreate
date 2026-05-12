@@ -9,3 +9,4 @@
 - [Verify mod installed before flagging a conflict](feedback_verify_installed_before_lens_call.md) — check /mods/ not just plan.md, which can be stale
 - [Config review anchors](project_config_review_anchors.md) — load-bearing Create/CDG/Aeronautics/Power Grid settings that define the pack identity
 - [Jetpacks accepted](project_jetpacks_accepted.md) — Create: Stuff 'n Additions jetpacks are kept at defaults; explicit exception to "Aeronautics only" rule, do not re-litigate
+- [SP is build-only on superflat](project_sp_build_only.md) — SP exists for schematic prototyping; no exploration → server-only worldgen/QoL is fine
