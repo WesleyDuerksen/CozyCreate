@@ -4,6 +4,7 @@ postInstall.md
 config-review.md
 validate.sh
 export.sh
+release.sh
 .gitignore
 .packwizignore
 README.md
