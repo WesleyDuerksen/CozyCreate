@@ -1,0 +1,13 @@
+name = "Create: New Additional Recipes"
+filename = "additionalrecipes-0.0.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/F02eNbIv/versions/rjdMOuai/additionalrecipes-0.0.3.jar"
+hash-format = "sha512"
+hash = "5c599e3ce0bb18896b0b8c8fda9d923500406e51309774b5ed7729e100c5cb809b9f2d54d550872ba9f82c175291f0f957b1fbd4fb53697027402c902acaee89"
+
+[update]
+[update.modrinth]
+mod-id = "F02eNbIv"
+version = "rjdMOuai"

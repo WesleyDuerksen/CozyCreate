@@ -5,7 +5,8 @@
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SERVER_DIR="$SCRIPT_DIR/server"
+PACK_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+SERVER_DIR="$PACK_ROOT/server"
 NEOFORGE_VERSION="21.1.228"
 INSTALLER_URL="https://maven.neoforged.net/releases/net/neoforged/neoforge/${NEOFORGE_VERSION}/neoforge-${NEOFORGE_VERSION}-installer.jar"
 BOOTSTRAP_URL="https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
@@ -89,7 +90,7 @@ sync_mods() {
 
   # file:// avoids needing packwiz serve — simpler and no timing issues
   (cd "$SERVER_DIR" && java -jar packwiz-installer-bootstrap.jar \
-    --side server "file://${SCRIPT_DIR}/pack.toml" 2>&1) \
+    --side server "file://${PACK_ROOT}/pack.toml" 2>&1) \
     | grep -vE "^(Considering|Checking|Loading)" || true
 
   local mod_count
@@ -191,6 +192,15 @@ KNOWN_OK_PATTERNS=(
   "Parsing error loading recipe create_factory:" # Create: Factory has compat recipes for Create: Confectionery (not installed); affected recipes skip, server boots fine
   "Couldn't load tag create_factory:sweet_berries_jam" # Create: Factory tag gap for confectionery compat — benign missing reference
   "create_things_and_misc:deleted_mod_element" # Create: Misc & Things leftover reference to a removed item; those recipes skip, mod loads fine
+  "@Mixin target.*AbstractClientPlayer.*create_sa" # Create: Stuff & Additions targets a client-only class; mixin skipped on server, benign
+  "fml.modloadingissue.brokenfile.fabric" # Decorative Lamps is a Fabric mod loaded via Sinytra Connector; NeoForge flags it, server loads fine
+  "Assets URL.*uses unexpected schema" # vanilla server JAR uses union:// paths that NeoForge's pack builder doesn't recognise; assets load fine
+  "Could not find Sign for wood" # Supplementaries can't generate way-sign recipes for modded wood types not yet registered at that point; benign
+  "Static binding violation.*PRIVATE @Overwrite.*modernfix" # ModernFix widens visibility of overwritten methods; harmless internal mixin detail
+  "BuiltinKubeJSClientPlugin does not load on server" # KubeJS client plugin intentionally skipped on dedicated server
+  "FTBChunksKubeJSPlugin.*does not have required mod.*ftbchunks" # FTB Xmod Compat skips FTB Chunks bridge because ftbchunks is not installed
+  "Failed to process update information" # NeoForge version checker couldn't reach update server; no gameplay impact
+  "The following mods have version differences that were not resolved" # version-range mismatches between mod deps; informational only, server runs fine
 )
 
 analyze_logs() {
@@ -233,8 +243,8 @@ analyze_logs() {
 main() {
   hr
   log "CozyCreate — Server Smoke Test"
-  log "Pack:   $(grep '^name' "$SCRIPT_DIR/pack.toml" | cut -d'"' -f2)"
-  log "MC:     $(grep 'minecraft' "$SCRIPT_DIR/pack.toml" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
+  log "Pack:   $(grep '^name' "$PACK_ROOT/pack.toml" | cut -d'"' -f2)"
+  log "MC:     $(grep 'minecraft' "$PACK_ROOT/pack.toml" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')"
   log "Loader: NeoForge $NEOFORGE_VERSION"
   hr
 

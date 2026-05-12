@@ -268,7 +268,8 @@ Exploration, structures, mobs. Full list in research files.
 - `travellers-titles` — biome/dimension title cards
 - `gallery`, `boatload` — vanilla+ art display and boat types
 - _(alex's-mobs skipped — no 1.21.1 release)_
-- _(personality skipped — no 1.21.1 release)_
+- `personality` — NPC personality/mood variety (found 1.21.1 release on CurseForge; added as `personality-1.21.1-5.0.2.jar`)
+- `tidal-towns` — coastal ocean village structures (Modrinth; added as `tidal-towns-1.3.4.jar`)
 
 **New KNOWN_OK_PATTERNS added (Phase 4):**
 
@@ -376,33 +377,30 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 
 ---
 
-### Phase 6 — Multiplayer Hardening (not yet started)
+**0.2.0**
+### Mod additions/removals
+- [x] ~~Add Valhasia~~ — mod does not exist; was a mistake
+- [x] Add `create-new-additional-recipes` — Create recipe expansions (added `additionalrecipes-0.0.3.jar`)
+- [x] Add `create-power-loader` — Create-powered andesite/brass chunk loaders (added `create_power_loader-2.0.4-mc1.21.1.jar`)
+- [x] Dedup map mods — removed Xaero's Minimap + World Map; Antique Atlas kept as sole map system
+- [x] Overlap audit — no other duplicates found; Tidal Towns + Personality documented in Phase 4
 
-- [x] Server-side config tuning (progress tracker at config-review.md)
+### Configurations
+- [x] Change garbage collector — ZGC flags added to `instance.cfg` in `export.sh`
+- [x] Chunky safe — `continueOnRestart=false` already set; overworld task is `cancelled=true`; no changes needed
+- [x] Side classification audit applied — 15 mods reclassified per `client-mod-audit.md` (Phase A + C)
+- [ ] Do an optimization pass for the client to see what we can do to help potato computers (for example, disabling Distant horizons by default on the client)
+- [x] Default 6GB RAM — `MaxMemAlloc=6144` + `MinMemAlloc=2048` added to `instance.cfg` in `export.sh`
+
+**1.0.0**
+- [ ] Verified VC functionality with two clients
 - [ ] We need quests to help the users understand that this is a cozy container around steam/diesel punk create. See postInstall.md for the core mods. You see there will be a lot of veteran Minecraft players who have played the game for over a decade and know it inside out and this'll be their first modpack so have some guidance on what is in this modpack would be good. And perhaps quests is a poor way of explaining this. But at the bare minimum a book they spawn in with that explained what all was in this "Minecraft 2.0" and how to find more information so to speak would go a long way.
-- [ ] Claim/grief protection review (no teleportation, no auto-claims — transport philosophy)
-- [ ] Export final mrpack for Modrinth
+- [ ] Discord one time server
+- [ ] Brainstorm ingame bulletin board or notices
 
-**Phase 6 gate — ship criteria:**
-
-- [ ] `./validate.sh` → PASSED
-- [ ] Two clients connect to server simultaneously — no desync, no crash, and can hear each other on vc
-- [ ] Fresh install from exported `.mrpack` works in Prism — no manual steps required
-- [ ] Server runs for 10 minutes under light load — no memory leak, no OOM
-
----
-
-**Phase 7 1.1.0**
-Valhasia - Structure mod missing, see Moe's screenshot
-Change garbage collector
-Double check chunky doesn't do anything unless after the original generate
-Discord one time server
-Double check Bro's mods from video
-Brainstorm ingame bulletin board or notices
-Chunk loaders
-additional recipies - from Jk discord
-Follow the optimization plan in client-mod-audit.md
-
+**1.1.0** 
+- [ ] Add https://modrinth.com/mod/create-railways-navigator
+- [ ] Add https://modrinth.com/mod/create-track-map
 
 ## Key Decisions Log
 

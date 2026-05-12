@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="0.1.0"
+PACK_VERSION="0.2.0"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
@@ -70,6 +70,11 @@ cat > "$CLIENT_DIR/instance.cfg" <<EOF
 InstanceType=OneSix
 name=Cozy Create
 iconKey=cozycreate
+OverrideMemory=true
+MinMemAlloc=2048
+MaxMemAlloc=6144
+OverrideJavaArgs=true
+JvmArgs=-XX:+UnlockExperimentalVMOptions -XX:+UseZGC -XX:+ZGenerational -XX:+AlwaysPreTouch
 EOF
 
 # Prism instance thumbnail — filename must match iconKey
