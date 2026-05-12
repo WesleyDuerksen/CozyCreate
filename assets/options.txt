@@ -3,5 +3,7 @@ simulationDistance:8
 particles:2
 graphicsMode:1
 entityShadows:true
-soundCategory_music:0.3
+soundCategory_music:0.1
 fov:0.5
+guiScale:3
+maxFps:60

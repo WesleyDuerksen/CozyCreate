@@ -399,6 +399,12 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 **0.2.2**
 Dockerized the server and optimized
 
+**0.2.3**
+- [x] Gui scale = 3x 
+- [x] Music = 10%
+- [x] Max framerate 60fps
+- [x] minimized DH settings
+
 **1.0.0**
 - [ ] Verified VC functionality with two clients
 - [ ] We need quests to help the users understand that this is a cozy container around steam/diesel punk create. See postInstall.md for the core mods. You see there will be a lot of veteran Minecraft players who have played the game for over a decade and know it inside out and this'll be their first modpack so have some guidance on what is in this modpack would be good. And perhaps quests is a poor way of explaining this. But at the bare minimum a book they spawn in with that explained what all was in this "Minecraft 2.0" and how to find more information so to speak would go a long way.
