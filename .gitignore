@@ -22,7 +22,6 @@ server/usercache.json
 server/usernamecache.json
 server/can-be-zeus.json
 
-*.mrpack
 /CozyCreate-*.zip
 build/
 /config/
