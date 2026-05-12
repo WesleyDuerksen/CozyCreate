@@ -392,7 +392,15 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 
 ---
 
-**Phase 7 Quests - Launch day critical**
+**Phase 7 1.1.0**
+Valhasia - Structure mod missing, see Moe's screenshot
+Change garbage collector
+Double check chunky doesn't do anything unless after the original generate
+Discord one time server
+Double check Bro's mods from video
+Brainstorm ingame bulletin board or notices
+Chunk loaders
+additional recipies - from Jk discord
 
 
 ## Key Decisions Log
