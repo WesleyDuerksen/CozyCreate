@@ -379,13 +379,14 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 ### Phase 6 — Multiplayer Hardening (not yet started)
 
 - [x] Server-side config tuning (progress tracker at config-review.md)
+- [ ] We need quests to help the users understand that this is a cozy container around steam/diesel punk create. See postInstall.md for the core mods. You see there will be a lot of veteran Minecraft players who have played the game for over a decade and know it inside out and this'll be their first modpack so have some guidance on what is in this modpack would be good. And perhaps quests is a poor way of explaining this. But at the bare minimum a book they spawn in with that explained what all was in this "Minecraft 2.0" and how to find more information so to speak would go a long way.
 - [ ] Claim/grief protection review (no teleportation, no auto-claims — transport philosophy)
 - [ ] Export final mrpack for Modrinth
 
 **Phase 6 gate — ship criteria:**
 
 - [ ] `./validate.sh` → PASSED
-- [ ] Two clients connect to server simultaneously — no desync, no crash
+- [ ] Two clients connect to server simultaneously — no desync, no crash, and can hear each other on vc
 - [ ] Fresh install from exported `.mrpack` works in Prism — no manual steps required
 - [ ] Server runs for 10 minutes under light load — no memory leak, no OOM
 
@@ -393,7 +394,6 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 
 **Phase 7 Quests - Launch day critical**
 
-We need quests to help the users understand that this is a cozy container around steam/diesel punk create
 
 ## Key Decisions Log
 
