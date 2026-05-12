@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="0.2.3"
+PACK_VERSION="0.3.0"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
@@ -71,8 +71,8 @@ InstanceType=OneSix
 name=Cozy Create
 iconKey=cozycreate
 OverrideMemory=true
-MinMemAlloc=2048
-MaxMemAlloc=6144
+MinMemAlloc=4096
+MaxMemAlloc=12288
 OverrideJavaArgs=true
 JvmArgs=-XX:+UnlockExperimentalVMOptions -XX:+UseZGC -XX:+ZGenerational -XX:+AlwaysPreTouch
 EOF
