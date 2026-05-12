@@ -396,6 +396,9 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
   - DH renderer shipped as `rendererMode = "DISABLED"` in `DistantHorizons.toml` (jar still installed; user opts in)
   - Client zip now ships `assets/options.txt` baseline via `export.sh`: renderDistance=8, simulationDistance=8, particles=minimal, graphicsMode=fancy, entityShadows=on
 
+**0.2.2**
+Dockerized the server and optimized
+
 **1.0.0**
 - [ ] Verified VC functionality with two clients
 - [ ] We need quests to help the users understand that this is a cozy container around steam/diesel punk create. See postInstall.md for the core mods. You see there will be a lot of veteran Minecraft players who have played the game for over a decade and know it inside out and this'll be their first modpack so have some guidance on what is in this modpack would be good. And perhaps quests is a poor way of explaining this. But at the bare minimum a book they spawn in with that explained what all was in this "Minecraft 2.0" and how to find more information so to speak would go a long way.

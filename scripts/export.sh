@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="0.2.1"
+PACK_VERSION="0.2.2"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
@@ -198,6 +198,8 @@ exec java @user_jvm_args.txt \
 STARTSCRIPT
 chmod +x "$SERVER_DIR/start.sh"
 
+cp server/docker-compose.yml "$SERVER_DIR/docker-compose.yml"
+
 log "Zipping server package..."
 rm -f "$SERVER_ZIP"
 (cd "$SERVER_DIR" && zip -qr "$ROOT/$SERVER_ZIP" .)
@@ -208,4 +210,4 @@ echo ""
 echo -e "${GREEN}Done!${NC}"
 echo "  .mrpack       →  $MRPACK_FILE   (import into Prism; mods download automatically)"
 echo "  client .zip   →  $ZIP_FILE   (import into Prism; all mods bundled, no downloads)"
-echo "  server .zip   →  $SERVER_ZIP   (unzip, run ./start.sh)"
+echo "  server .zip   →  $SERVER_ZIP   (unzip, docker compose up)"

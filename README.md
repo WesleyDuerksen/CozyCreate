@@ -79,6 +79,35 @@ The decoration and ambience layer exists so engineering builds feel warm, not in
 - **Design rationale:** see `docs/research/homestead-phase5-design-rationale.md` and `docs/research/aeronautics-phase5-design-rationale.md`
 - **Config tracker:** see `docs/config-review.md`
 
+## Deploying the Server
+
+Production runs via `docker-compose.yml` (bundled in the server zip) using [itzg/minecraft-server](https://github.com/itzg/docker-minecraft-server). Validation (`scripts/validate.sh`) stays native Java and is unaffected.
+
+The server is configured for a 12-core / 16 GB host: 14 G JVM heap, ZGC with generational mode, 16 G container memory limit.
+
+**First-time setup**
+
+```bash
+unzip ~/path/to/CozyCreate-*-server.zip
+docker compose up -d
+```
+
+**Updating to a new pack version**
+
+Update version numbers in export.sh and pack.toml
+
+```bash
+# from the repo
+./scripts/export.sh
+
+# on the server
+docker compose down
+unzip -o ~/path/to/CozyCreate-*-server.zip 'mods/*' 'config/*' 'docker-compose.yml'
+docker compose up -d
+```
+
+World data, NeoForge libraries, and logs persist in the server directory across deploys.
+
 ## Understanding Version Numbers
 
 Version numbers follow the format `MAJOR.CONTENT.CONFIG`.

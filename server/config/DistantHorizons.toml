@@ -57,12 +57,12 @@ _version = 4
 	#
 	# Maximum per-player speed for uploading LODs to the clients, in KB/s.
 	# Value of 0 disables the limit.
-	playerBandwidthLimit = 500
+	playerBandwidthLimit = 0
 	#
 	# Enables adaptive transfer speed based on client performance.
 	# If true, DH will automatically adjust transfer rate to minimize connection lag.
 	# If false, transfer speed will remain fixed.
-	enableAdaptiveTransferSpeed = false
+	enableAdaptiveTransferSpeed = true
 
 	[server.experimental]
 		#
@@ -117,7 +117,7 @@ _version = 4
 	[common.multiThreading]
 		#
 		# How many threads should be used by Distant Horizons?
-		numberOfThreads = 5
+		numberOfThreads = 10
 		#
 		# A value between 1.0 and 0.0 that represents the percentage 
 		# of time each thread can run before going idle. 

@@ -1,0 +1,39 @@
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: cozycreate
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: NEOFORGE
+      VERSION: "1.21.1"
+      NEOFORGE_VERSION: "21.1.228"
+
+      INIT_MEMORY: 4G
+      MAX_MEMORY: 16G
+
+      # JVM tuning for 12-core / 16 GB host
+      JVM_OPTS: "-Dfml.loginTimeout=600"
+      JVM_XX_OPTS: >-
+        -XX:+UnlockExperimentalVMOptions
+        -XX:+UseZGC
+        -XX:+ZGenerational
+        -XX:+AlwaysPreTouch
+        -XX:+ParallelRefProcEnabled
+
+      ONLINE_MODE: "TRUE"
+      SPAWN_PROTECTION: "0"
+      MOTD: "CozyCreate"
+
+    volumes:
+      - .:/data
+
+    deploy:
+      resources:
+        limits:
+          memory: 16g
+          cpus: "12"
