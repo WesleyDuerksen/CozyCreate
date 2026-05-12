@@ -26,7 +26,7 @@ hash = "733a50c4a935c18257572c88cf0df06e85978671930984248d4dac1ffdfb6b19"
 
 [[files]]
 file = "config/alltheleaks.json"
-hash = "2437057bda7e53d91e7a8c400da308a8d848fbdcc80ed845a9c8dbdabd071482"
+hash = "c79931a9ffcc9aaf3d51a3bddad050bb5761b51498737684710f5cb3720ef365"
 
 [[files]]
 file = "config/amendments-client.toml"
@@ -590,7 +590,7 @@ hash = "ee24e2b1bc100942a1c605f996255742cd6a5bb3662877aa906bc301100ccf27"
 
 [[files]]
 file = "config/modernfix-mixins.properties"
-hash = "5505b1b16448e553f0ad2edce5fbab780f52854b48a55cbe0d5c659d40d08f45"
+hash = "597d73c5354d6600f5e2d76375ac7fcfef9c35ad3a044eb6ea3f11da695c2e9f"
 
 [[files]]
 file = "config/moonlight-common.toml"
