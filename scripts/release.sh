@@ -10,6 +10,17 @@ fail() { echo -e "${RED}[fail]${NC} $1"; exit 1; }
 
 command -v gh >/dev/null || fail "gh CLI not found — install from https://cli.github.com"
 
+# ── Git hygiene gate ───────────────────────────────────────────────────────────
+if [[ -n "$(git status --porcelain)" ]]; then
+  fail "Uncommitted changes present — commit or stash everything before releasing"
+fi
+git fetch --quiet
+BEHIND=$(git rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
+AHEAD=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
+[[ "$BEHIND" -gt 0 ]] && fail "Branch is behind remote — pull before releasing"
+[[ "$AHEAD"  -gt 0 ]] && fail "Unpushed commits present — push before releasing"
+log "Git status: clean and in sync with remote"
+
 # Derive version from whatever .mrpack export.sh produced
 MRPACK=$(ls "$BUILD_DIR/${PACK_NAME}"-*.mrpack 2>/dev/null | head -1)
 [[ -z "$MRPACK" ]] && fail "No .mrpack found in $BUILD_DIR/ — run scripts/export.sh first"
