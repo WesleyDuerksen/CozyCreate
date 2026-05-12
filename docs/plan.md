@@ -389,8 +389,12 @@ Sodium, Iris, Chunky, ModernFix, and FerriteCore were already added in earlier p
 - [x] Change garbage collector — ZGC flags added to `instance.cfg` in `export.sh`
 - [x] Chunky safe — `continueOnRestart=false` already set; overworld task is `cancelled=true`; no changes needed
 - [x] Side classification audit applied — 15 mods reclassified per `client-mod-audit.md` (Phase A + C)
-- [ ] Do an optimization pass for the client to see what we can do to help potato computers (for example, disabling Distant horizons by default on the client)
 - [x] Default 6GB RAM — `MaxMemAlloc=6144` + `MinMemAlloc=2048` added to `instance.cfg` in `export.sh`
+
+**0.2.1**
+- [x] Do an optimization pass for the client to see what we can do to help potato computers (for example, disabling Distant horizons by default on the client)
+  - DH renderer shipped as `rendererMode = "DISABLED"` in `DistantHorizons.toml` (jar still installed; user opts in)
+  - Client zip now ships `assets/options.txt` baseline via `export.sh`: renderDistance=8, simulationDistance=8, particles=minimal, graphicsMode=fancy, entityShadows=on
 
 **1.0.0**
 - [ ] Verified VC functionality with two clients

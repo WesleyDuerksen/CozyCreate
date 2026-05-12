@@ -303,10 +303,10 @@ _version = 4
 			#
 			# What renderer is active? 
 			# 
-			# DEFAULT: Default lod renderer 
-			# DEBUG_TRIANGLE: Debug testing renderer 
+			# DEFAULT: Default lod renderer
+			# DEBUG_TRIANGLE: Debug testing renderer
 			# DISABLED: Disable rendering
-			rendererMode = "DEFAULT"
+			rendererMode = "DISABLED"
 			#
 			# If true overlapping quads will be rendered as bright red for easy identification. 
 			# If false the quads will be rendered normally.

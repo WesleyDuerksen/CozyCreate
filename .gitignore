@@ -28,5 +28,8 @@ build/
 # Generated config snapshot (source of truth is server/config/)
 /config/
 
+# Client-only CurseForge jars — download manually, not tracked in git
+client/mods/*.jar
+
 # Shader packs — large binaries, not tracked in git
 shaderpacks/

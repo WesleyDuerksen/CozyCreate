@@ -18,6 +18,9 @@ assets/
 # Server files (not shipped to clients)
 server/
 
+# Client-only CurseForge jars (manually downloaded, not part of the pack index)
+client/
+
 # Build artifacts
 build/
 

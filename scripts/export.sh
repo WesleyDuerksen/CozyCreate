@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="0.2.0"
+PACK_VERSION="0.2.1"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
@@ -97,15 +97,16 @@ for toml in mods/*.pw.toml; do
     COPY_FILENAMES+=("$filename")
   fi
 done
-log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/mods/"
+log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/mods/ or client/mods/"
 
-# Copy CurseForge mods from server/mods/
+# Copy CurseForge mods — check server/mods/ first, then client/mods/ (for client-only jars)
 for filename in "${COPY_FILENAMES[@]}"; do
-  src="server/mods/$filename"
-  if [[ -f "$src" ]]; then
-    cp "$src" "$CLIENT_DIR/.minecraft/mods/$filename"
+  if [[ -f "server/mods/$filename" ]]; then
+    cp "server/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
+  elif [[ -f "client/mods/$filename" ]]; then
+    cp "client/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
   else
-    warn "Missing in server/mods/: $filename"
+    warn "Missing in server/mods/ and client/mods/: $filename"
   fi
 done
 
@@ -132,6 +133,11 @@ done
 
 log "Copying configs..."
 cp -r config/. "$CLIENT_DIR/.minecraft/config/"
+
+# Low-end baseline options.txt — Minecraft fills in any keys we don't set
+if [[ -f assets/options.txt ]]; then
+  cp assets/options.txt "$CLIENT_DIR/.minecraft/options.txt"
+fi
 
 # Shader packs
 if [[ -d shaderpacks ]]; then
