@@ -74,10 +74,10 @@ The decoration and ambience layer exists so engineering builds feel warm, not in
 
 - **Format:** packwiz (git-tracked, version-pinned) → Modrinth `.mrpack`
 - **Minecraft:** 1.21.1 / **Loader:** NeoForge 21.1.228
-- **Server validation:** `./validate.sh` — boots a NeoForge server with the live pack, checks logs for fatals
-- **Build plan:** see `plan.md` for phase-by-phase mod additions
-- **Design rationale:** see `research/homestead-phase5-design-rationale.md` and `research/aeronautics-phase5-design-rationale.md`
-- **Config tracker:** see `config-review.md`
+- **Server validation:** `./scripts/validate.sh` — boots a NeoForge server with the live pack, checks logs for fatals
+- **Build plan:** see `docs/plan.md` for phase-by-phase mod additions
+- **Design rationale:** see `docs/research/homestead-phase5-design-rationale.md` and `docs/research/aeronautics-phase5-design-rationale.md`
+- **Config tracker:** see `docs/config-review.md`
 
 ## Status
 

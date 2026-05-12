@@ -1,16 +1,25 @@
+# Root project files
 CLAUDE.md
-plan.md
-postInstall.md
-config-review.md
-validate.sh
-export.sh
-release.sh
+README.md
 .gitignore
 .packwizignore
-README.md
+
+# Documentation, research, and planning
+docs/
+
+# Scripts
+scripts/
+
+# Assets (pack icons — not part of the mod index)
+assets/
 *.png
 *.jpg
-research/
+
+# Server files (not shipped to clients)
 server/
+
+# Build artifacts
 build/
+
+# Claude memory and settings
 .claude/

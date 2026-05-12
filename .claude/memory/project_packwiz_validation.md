@@ -7,7 +7,7 @@ originSessionId: b9be44d2-2eda-41f8-8f08-179adfedd8e4
 ## Running the server smoke test
 
 ```bash
-./validate.sh
+./scripts/validate.sh
 ```
 
 Run from `/Users/wesley/Documents/CozyCreate`. First run installs NeoForge server automatically. Every run syncs mods via `file://` path to packwiz-installer-bootstrap, starts the server on port 25575, waits for `Done (` in logs, checks for errors/fatals, stops cleanly.
@@ -53,8 +53,14 @@ If the Prism pre-launch bootstrap only downloads CLAUDE.md or shows "(1/1)":
 
 ## .packwizignore is required
 
-Without `.packwizignore`, `packwiz refresh` sweeps everything into the index (research/, server/, CLAUDE.md, plan.md, etc.). The ignore file lives at `/Users/wesley/Documents/CozyCreate/.packwizignore` and excludes all non-mod files.
+Without `.packwizignore`, `packwiz refresh` sweeps everything into the index. The ignore file lives at `.packwizignore` in the repo root and excludes all non-mod content.
 
-**Always run `./validate.sh` before committing** — do not commit immediately after `packwiz refresh`. The validate run catches hash errors and confirms the server still starts cleanly.
+**Always run `./scripts/validate.sh` before committing** — do not commit immediately after `packwiz refresh`. The validate run catches hash errors and confirms the server still starts cleanly.
 
-**After adding new .md files to the project root, add them to `.packwizignore` immediately** — `packwiz refresh` will sweep any unignored root-level file into the index, causing hash validation errors on client installs. Current ignored root files: `CLAUDE.md`, `plan.md`, `postInstall.md`, `config-review.md`, `validate.sh`.
+**Repo structure — ignored by packwiz via directory entries:**
+- `docs/` — all planning, config-review, research, and audit docs
+- `scripts/` — export.sh, release.sh, validate.sh
+- `assets/` — icon.png, server-icon.png (plus `*.png`/`*.jpg` catch-all)
+- `server/`, `build/`, `.claude/` — runtime, artifacts, memory
+
+**After adding new files outside `mods/` or `config/`, verify `.packwizignore` covers them** before running `packwiz refresh` — any unignored file gets swept into the index and causes hash errors on client installs.

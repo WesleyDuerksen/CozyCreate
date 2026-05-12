@@ -22,7 +22,8 @@ server/usercache.json
 server/usernamecache.json
 server/can-be-zeus.json
 
-/CozyCreate-*.zip
-/CozyCreate-*.mrpack
+# Build artifacts (export.sh writes here)
 build/
+
+# Generated config snapshot (source of truth is server/config/)
 /config/

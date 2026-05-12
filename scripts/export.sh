@@ -8,6 +8,7 @@ PACK_NAME="CozyCreate"
 BUILD_DIR="build"
 TOOLS_DIR="$BUILD_DIR/tools"
 CLIENT_DIR="$BUILD_DIR/client"
+ROOT="$(pwd)"
 
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; NC='\033[0m'
 log()  { echo -e "${GREEN}[export]${NC} $1"; }
@@ -32,13 +33,14 @@ log "Refreshing packwiz index..."
 "$PACKWIZ_BIN" refresh
 
 # ── 4. Export .mrpack ─────────────────────────────────────────────────────────
-MRPACK_FILE="${PACK_NAME}-${PACK_VERSION}.mrpack"
+MRPACK_FILE="$BUILD_DIR/${PACK_NAME}-${PACK_VERSION}.mrpack"
+mkdir -p "$BUILD_DIR"
 log "Exporting .mrpack..."
 "$PACKWIZ_BIN" modrinth export -o "$MRPACK_FILE"
 log "Generated: $MRPACK_FILE"
 
 # ── 5. Build self-contained client zip ────────────────────────────────────────
-ZIP_FILE="${PACK_NAME}-${PACK_VERSION}.zip"
+ZIP_FILE="$BUILD_DIR/${PACK_NAME}-${PACK_VERSION}.zip"
 log "Building self-contained client zip..."
 
 rm -rf "$CLIENT_DIR"
@@ -69,8 +71,8 @@ iconKey=cozycreate
 EOF
 
 # Prism instance thumbnail — filename must match iconKey
-if [[ -f icon.png ]]; then
-  cp icon.png "$CLIENT_DIR/cozycreate.png"
+if [[ -f assets/icon.png ]]; then
+  cp assets/icon.png "$CLIENT_DIR/cozycreate.png"
 fi
 
 # Collect mods for client + both sides; CurseForge mods have no URL, copy from server/mods/
@@ -132,11 +134,11 @@ fi
 
 log "Zipping client instance..."
 rm -f "$ZIP_FILE"
-(cd "$CLIENT_DIR" && zip -qr "../../$ZIP_FILE" instance.cfg mmc-pack.json cozycreate.png .minecraft)
+(cd "$CLIENT_DIR" && zip -qr "$ROOT/$ZIP_FILE" instance.cfg mmc-pack.json cozycreate.png .minecraft)
 log "Generated: $ZIP_FILE"
 
 # ── 6. Build server zip ───────────────────────────────────────────────────────
-SERVER_ZIP="${PACK_NAME}-${PACK_VERSION}-server.zip"
+SERVER_ZIP="$BUILD_DIR/${PACK_NAME}-${PACK_VERSION}-server.zip"
 SERVER_DIR="$BUILD_DIR/server"
 log "Building server zip..."
 
@@ -159,7 +161,7 @@ done
 
 # Configs and server icon
 cp -r config "$SERVER_DIR/config"
-[[ -f server-icon.png ]] && cp server-icon.png "$SERVER_DIR/server-icon.png"
+[[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/server-icon.png"
 
 # Start script: installs NeoForge once, then starts
 cat > "$SERVER_DIR/start.sh" <<'STARTSCRIPT'
@@ -185,7 +187,7 @@ chmod +x "$SERVER_DIR/start.sh"
 
 log "Zipping server package..."
 rm -f "$SERVER_ZIP"
-(cd "$SERVER_DIR" && zip -qr "../../$SERVER_ZIP" .)
+(cd "$SERVER_DIR" && zip -qr "$ROOT/$SERVER_ZIP" .)
 log "Generated: $SERVER_ZIP"
 
 # ── 7. Summary ────────────────────────────────────────────────────────────────

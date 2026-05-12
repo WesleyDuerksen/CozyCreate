@@ -401,6 +401,7 @@ Double check Bro's mods from video
 Brainstorm ingame bulletin board or notices
 Chunk loaders
 additional recipies - from Jk discord
+Follow the optimization plan in client-mod-audit.md
 
 
 ## Key Decisions Log

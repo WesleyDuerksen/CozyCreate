@@ -7,7 +7,7 @@ originSessionId: fe85b186-9b56-401c-b345-ec51b80ed835
 Always follow this sequence after adding or removing mods, before committing:
 
 1. `packwiz refresh`
-2. `./validate.sh` — must pass before staging anything
+2. `./scripts/validate.sh` — must pass before staging anything
 3. `git status server/config --short` — check for new config files from new mods; stage them
 4. Check `.gitignore` for any leftover config folders from mods that were removed (e.g. waila/ from WTHIT)
 5. Check `.packwizignore` if any new non-mod files were added to the project root — add them before the next refresh
