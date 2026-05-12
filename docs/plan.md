@@ -407,6 +407,23 @@ Dockerized the server and optimized
 
 **0.3.0**
 - Removed DH
+- Change default ram numbers
+
+**0.3.1**
+Memory optimization pass — ModernFix perf/bugfix mixins enabled in `server/config/modernfix-mixins.properties`:
+- [x] `mixin.perf.dynamic_resources=true` — lazy block model loading (targets BakedQuad ~267 MB, ModelResourceLocation ~95 MB)
+- [x] `mixin.perf.dynamic_entity_renderers=true` — lazy entity renderer loading
+- [x] `mixin.perf.compact_entity_models=true` — compacted entity model storage
+- [x] `mixin.perf.dynamic_languages=true` — only load active language
+- [x] `mixin.perf.ingredient_item_deduplication=true` — recipe ingredient dedup
+- [x] `mixin.perf.deduplicate_climate_parameters=true` — biome climate dedup
+- [x] `mixin.perf.deduplicate_location=true` — resource location dedup
+- [x] `mixin.perf.faster_item_rendering=true` — model lookup optimization
+- [x] `mixin.bugfix.packet_leak=true` — fixes known packet-handler leak
+- [x] `mixin.bugfix.skip_redundant_saves=true` — avoids redundant chunk-write allocations
+- [ ] Measure post-change: `/spark heapsummary` from fresh launch + 5 min idle, compare against post-DH baseline (https://spark.lucko.me/GZEXVH7htZ)
+- [ ] If any mixin breaks a mod, comment it out and re-export
+- [ ] **Open:** investigate gson `LinkedTreeMap` retention (~153 MB unattributed) — requires Eclipse MAT on a heap dump to find culprit (likely KubeJS/FTB Quests/sophisticated-core)
 
 **1.0.0**
 - [ ] Verified VC functionality with two clients

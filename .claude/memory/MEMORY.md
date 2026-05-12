@@ -11,3 +11,4 @@
 - [Jetpacks accepted](project_jetpacks_accepted.md) — Create: Stuff 'n Additions jetpacks are kept at defaults; explicit exception to "Aeronautics only" rule, do not re-litigate
 - [SP is build-only on superflat](project_sp_build_only.md) — SP exists for schematic prototyping; no exploration → server-only worldgen/QoL is fine
 - [No pacman commands](feedback_no_pacman.md) — Don't run pacman search/install/query; suggest alternatives or have user install themselves
+- [Don't lower default Xmx](feedback_dont_lower_xmx.md) — Don't reduce MaxMemAlloc/MinMemAlloc in export.sh; focus RAM optimization on on-heap and off-heap not the ceiling

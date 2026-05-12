@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="0.3.0"
+PACK_VERSION="0.3.1"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
