@@ -425,8 +425,9 @@ Memory optimization pass — ModernFix perf/bugfix mixins enabled in `server/con
 More leak hunting configs
 
 **1.0.0**
-- [ ] We need quests to help the users understand that this is a cozy container around steam/diesel punk create. See postInstall.md for the core mods. You see there will be a lot of veteran Minecraft players who have played the game for over a decade and know it inside out and this'll be their first modpack so have some guidance on what is in this modpack would be good. And perhaps quests is a poor way of explaining this. But at the bare minimum a book they spawn in with that explained what all was in this "Minecraft 2.0" and how to find more information so to speak would go a long way.
+- [x] We need quests to help the users understand that this is a cozy container around steam/diesel punk create. See postInstall.md for the core mods. You see there will be a lot of veteran Minecraft players who have played the game for over a decade and know it inside out and this'll be their first modpack so have some guidance on what is in this modpack would be good. And perhaps quests is a poor way of explaining this. But at the bare minimum a book they spawn in with that explained what all was in this "Minecraft 2.0" and how to find more information so to speak would go a long way.
 - [ ] Verified VC functionality with two clients
+- [x] Set ram defaults to min 2G max 6G
 
 ### Server launch prep
 
@@ -459,8 +460,8 @@ More leak hunting configs
 ```
 
 **1.1.0** 
-- [ ] Add https://modrinth.com/mod/create-railways-navigator
-- [ ] Add https://modrinth.com/mod/create-track-map
+- [ ] Add https://modrinth.com/mod/create-bits-n-bobs
+- [ ] Add https://modrinth.com/mod/create-copper-zinc
 
 ## Key Decisions Log
 

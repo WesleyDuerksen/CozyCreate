@@ -1,0 +1,20 @@
+{
+  "name": "The Sky",
+  "icon": "create:encased_fan",
+  "category": "patchouli:create",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)There is no elytra.$()$(br2)Aerial travel in this pack is $(thing)airships$() — built, fueled, and flown. $(item)Create: Aeronautics$() turns assembled contraptions into real flying vehicles you steer.$(br2)Slower than an elytra. Cooler in every other way."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Building one.$()$(br2)Assemble a contraption with $(item)thrust bearings$() and $(item)propellers$(), bolt on a $(item)helm$() to steer, fuel it, and lift off. Add lights, anchors, cargo — whatever you'd put in a ship.$(br2)Ponder the parts. The mod is dense but generous with hints."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)What this opens up.$()$(br2)Crossing oceans without bridges. Reaching biomes that are otherwise a slog. Hauling cargo between bases that aren't on the rail network.$(br2)An airship is half vehicle, half base. People will live on theirs."
+    }
+  ]
+}

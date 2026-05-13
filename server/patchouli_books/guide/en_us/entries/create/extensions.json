@@ -1,0 +1,24 @@
+{
+  "name": "The Create Family",
+  "icon": "create:andesite_alloy",
+  "category": "patchouli:create",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Create has a family.$()$(br2)Cozy Create ships around $(thing)twenty-five extension mods$() built on top of Create — factories, kitchens, decoration sets, encased shafts, copycats, more.$(br2)Listing them all here would be a wall of text. JEI is the right tool."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Browse them.$()$(br2)Open JEI and type $(thing)@create$() in the search box. Every block from every Create add-on appears. Ponder the ones that look interesting.$(br2)A few worth poking at first:"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(item)Create: Factory$() — assembly presses, mold casting, late-game manufacturing.$(br2)$(item)Slice & Dice$() — automates Farmer's Delight cutting boards.$(br2)$(item)Central Kitchen$() — full kitchen automation.$(br2)$(item)Mechanical Botany$() — automated tree farms.$(br2)$(item)Copycats+$() — dress any Create block in any texture."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(item)Some Assembly Required$() — ordered, multi-step assembly lines.$(br2)$(item)Encased$() — encased shaft variants for cleaner builds.$(br2)$(item)Gears n' Kinetics$() — extended gear ratios, flywheels.$(br2)$(item)Transmission!$() — universal joints, telescoping shafts.$(br2)There's more. Wander JEI."
+    }
+  ]
+}

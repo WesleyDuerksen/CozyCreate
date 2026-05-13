@@ -1,0 +1,20 @@
+{
+  "name": "Seasons",
+  "icon": "minecraft:wheat",
+  "category": "patchouli:cozy",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)There are seasons.$()$(br2)$(item)Serene Seasons$() is active. Spring, summer, autumn, winter. Foliage shifts, temperature shifts, weather shifts. Each in-game season lasts about a week of real time.$(br2)You'll feel it before you see it on a calendar."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)What it means for farming.$()$(br2)Crops $(thing)grow at different rates$() depending on the season and the temperature where they're planted. Some won't grow at all in winter.$(br2)Plant accordingly. Or build a greenhouse — covered, warm farms shrug off the cold."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)What it means for travel.$()$(br2)Snow and ice show up in places they don't in vanilla. Rivers can freeze. Lakes can turn slick.$(br2)Plan for it. A warm coat would help, if a mod added one — none did. Just dress the part with whatever you build."
+    }
+  ]
+}

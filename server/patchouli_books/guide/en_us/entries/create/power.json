@@ -1,0 +1,28 @@
+{
+  "name": "Power, Step by Step",
+  "icon": "create:water_wheel",
+  "category": "patchouli:create",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Power has stages.$()$(br2)This pack lays out a deliberate progression — no jumping from a hand crank to electricity. Each tier earns the next.$(br2)Roughly: $(thing)hand → water/wind → steam → diesel → electrical$(). Build through them in order. The journey is the point."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Early — water and wind.$()$(br2)$(item)Hand Crank$() gets you bootstrapped. After that, a $(item)Water Wheel$() in flowing water or a $(item)Windmill Bearing$() with sail blocks gives steady, free rotation.$(br2)Plenty to automate a starter base. Limited only by what you can fit in the space."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Mid — steam.$()$(br2)Boilers, fluid tanks, steam pipes. The $(item)Steam Engine$() is the heart — feed it heat and water and it scales up. Bigger boilers, more output.$(br2)Steam 'n' Rails plugs straight in. Your trains run on the same steam your machines do."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Late — diesel.$()$(br2)Create: Diesel Generators adds combustion engines that drink crude oil and refined fuel. Find oil deposits, pipe it through a refinery, burn it for serious rotational power.$(br2)Dirty, loud, productive. The dieselpunk heart of the pack."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)End — electrical.$()$(br2)Create: Power Grid is the only electricity in this pack. Generators, batteries, wires, sockets — the works.$(br2)Use it for things rotation can't do well: lighting, on-demand machines, long-distance distribution. Earned, not granted."
+    }
+  ]
+}

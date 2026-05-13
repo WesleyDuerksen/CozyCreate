@@ -1,0 +1,24 @@
+{
+  "name": "What Create Is",
+  "icon": "create:cogwheel",
+  "category": "patchouli:create",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The spine of the pack.$()$(br2)Create is a mod about $(thing)kinetic engineering$() — rotational power, mechanical contraptions, conveyor belts, fluid pipes. The building blocks for automating anything you can imagine.$(br2)It rewards thinking like an engineer instead of grinding."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The Ponder system.$()$(br2)Hover any Create block in your inventory or in-world and press $(thing)W$(). You get a live, animated tutorial of how that block works, narrated step by step.$(br2)This is the single best feature in Create. If you only learn one thing from this book, learn that key."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Where to start building.$()$(br2)Craft a $(item)Wrench$() — it's the first tool you'll want. Then a $(item)Hand Crank$() or a $(item)Water Wheel$() for your first source of rotation.$(br2)From there, Ponder anything blue you see in JEI. The recipes branch out fast and they're all connected."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Stress and speed.$()$(br2)Every machine has a $(thing)stress cost$() and runs at a $(thing)speed$(). Big shafts move more power, small ones less. The $(item)Engineer's Goggles$() show the numbers in-world.$(br2)When something stops turning, the goggles tell you why."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+	"cozycreate.quests.chapter.getting_started.title": "Getting Started",
+	"cozycreate.quests.chapter.getting_started.subtitle": "A quick prep run before we head out together.",
+
+	"cozycreate.quests.gather_log.subtitle": "Wood is the start of everything.",
+	"cozycreate.quests.gather_log.desc.1": "Punch any tree.",
+	"cozycreate.quests.gather_log.desc.2": "That's it. The first thirty seconds of every Minecraft world, every time. Get an oak log in your inventory and the helmet and chestplate are yours.",
+
+	"cozycreate.quests.crafting_table.subtitle": "The most important block in the game.",
+	"cozycreate.quests.crafting_table.desc.1": "Put together a crafting table.",
+	"cozycreate.quests.crafting_table.desc.2": "Four planks. You know the move. This unlocks a backpack and a sleeping bag — everything you need to carry the haul and crash on the road.",
+
+	"cozycreate.quests.take_stock.subtitle": "Equipped. Time to find our spot.",
+	"cozycreate.quests.take_stock.desc.1": "Helmet, chestplate, backpack, sleeping bag. Solid kit.",
+	"cozycreate.quests.take_stock.desc.2": "Take this last reward — ten hot potatoes for the road and a small book that points at what's new in this pack.",
+	"cozycreate.quests.take_stock.desc.3": "Then we travel. The first place we landed isn't necessarily the place we're staying.",
+	"cozycreate.quests.take_stock.task.checkmark": "Take Stock"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "When You Die",
+  "icon": "minecraft:chest",
+  "category": "patchouli:world",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Your stuff is safe.$()$(br2)$(item)Corpse$() replaces vanilla item drops. When you die, your body stays where you fell, holding everything you had. Walk back, right-click, get it all back.$(br2)No more frantic five-minute scramble. No despawning piles."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The body lasts.$()$(br2)Corpses don't despawn on a timer — they wait. Take your time getting back. Bring a friend.$(br2)$(item)Lootr$() also gives every player their own copy of dungeon loot, so one server mate looting a chest doesn't empty it for everyone else. Death and discovery both got gentler."
+    }
+  ]
+}

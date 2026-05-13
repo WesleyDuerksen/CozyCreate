@@ -7,7 +7,6 @@ server/crash-reports/
 server/local/
 server/dynamic-data-pack-cache/
 server/moonlight-global-datapacks/
-server/patchouli_books/
 server/.mixin.out/
 server/.sable/
 server/.pg-native/
@@ -27,6 +26,9 @@ build/
 
 # Generated config snapshot (source of truth is server/config/)
 /config/
+
+# Generated kubejs snapshot (source of truth is server/kubejs/)
+/kubejs/
 
 # Client-only CurseForge jars — download manually, not tracked in git
 client/mods/*.jar

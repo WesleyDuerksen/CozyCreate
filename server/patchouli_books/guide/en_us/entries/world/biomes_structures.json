@@ -1,0 +1,20 @@
+{
+  "name": "Biomes & Structures",
+  "icon": "minecraft:grass_block",
+  "category": "patchouli:world",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The world is bigger.$()$(br2)Stacked overhauls: $(item)Tectonic$() reshapes terrain; $(item)Regions Unexplored$(), $(item)Oh The Biomes We've Gone$(), $(item)Nature's Spirit$(), $(item)Autumnity$(), $(item)Environmental$() all add biomes on top.$(br2)Walking far enough gets you somewhere new."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Structures everywhere.$()$(br2)$(item)YUNG's$() series overhauls dungeons, mineshafts, fortresses, strongholds, and the End island. $(item)Dungeons & Taverns$(), $(item)Repurposed Structures$(), $(item)Valhelsia Structures$(), $(item)Towns and Towers$(), $(item)Tidal Towns$() all scatter their own.$(br2)Worth exploring instead of mining straight down."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The Nether and End.$()$(br2)$(item)Incendium$() rebuilds the Nether end to end. $(item)YUNG's Better Nether Fortresses$() and $(item)YUNG's Better End Island$() overhaul the late-game structures.$(br2)Both dimensions reward going in prepared."
+    }
+  ]
+}

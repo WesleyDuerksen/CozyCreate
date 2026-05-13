@@ -1,0 +1,20 @@
+{
+  "name": "Trains & Rails",
+  "icon": "minecraft:rail",
+  "category": "patchouli:create",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Rails are real travel.$()$(br2)Steam 'n' Rails brings full-scale trains: locomotives, passenger cars, freight cars, stations, signals. The trains run on Create steam or diesel — same fuel as the rest of the pack.$(br2)Build a line between bases. It's worth the effort."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The Navigator.$()$(br2)$(item)Create Railways Navigator$() gives you a HUD for schedules, routes, and arrival times. Plug it into a station and the trains tell you where they're going and when they get there.$(br2)Like a real metro map. Open it from your inventory."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Bogies & parts.$()$(br2)$(item)Blocks & Bogies$() and $(item)Train Parts$() extend Steam 'n' Rails with more car types and bogies. Browse them in JEI under $(thing)@createrailways$().$(br2)Long trains are absolutely possible. Lay enough track and they'll follow."
+    }
+  ]
+}

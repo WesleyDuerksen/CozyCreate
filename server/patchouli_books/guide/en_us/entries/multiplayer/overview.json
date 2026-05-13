@@ -1,0 +1,28 @@
+{
+  "name": "Playing Together",
+  "icon": "minecraft:bell",
+  "category": "patchouli:multiplayer",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)This is a place with people in it.$()$(br2)The multiplayer layer is the most important part of this pack. Most things in it are sharper with someone else in the room.$(br2)Voice chat, shared bases, joint expeditions, trading. Build the kind of server worth remembering."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Voice chat.$()$(br2)$(item)Simple Voice Chat$() is on. Press $(thing)V$() to talk by default. It's $(thing)proximity-based$() — louder when close, quiet when far. Step into someone's base to chat.$(br2)The mod options handle push-to-talk vs voice activation, mic volume, all that."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Trust over claims.$()$(br2)This server has no claims, no protection blocks. It runs on trust — everyone here is welcome, everyone here is responsible.$(br2)If something goes sideways, talk it out in voice. The social fabric is the safety net."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Small comforts.$()$(br2)$(item)Comforts$() sleeping bags let you set up camp on the road and skip the night anywhere.$(br)$(item)Trading Post$() lets you trade with up to six villagers at once.$(br)$(item)Chat Heads$() puts a player face next to chat messages so you know who's talking."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)When stuck, ask.$()$(br2)The single most useful thing in this pack isn't a book, a JEI search, or a Ponder animation. It's typing in chat or saying out loud: $(italic)\"hey, has anyone done X yet?\"$()$(br2)Someone has. Or someone wants to figure it out with you. Either way, better off than alone."
+    }
+  ]
+}

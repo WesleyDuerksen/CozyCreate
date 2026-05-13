@@ -1,0 +1,24 @@
+{
+  "name": "About This Place",
+  "icon": "minecraft:writable_book",
+  "category": "patchouli:welcome",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)What this pack is.$()$(br2)Cozy Create is built around one mod: $(thing)Create$(). It replaces vanilla's manual loops with machines you design and build yourself — gears, steam pipes, diesel generators, conveyors, the works.$(br2)Underneath that, the world is decorated to the gills so the places you build feel $(italic)lived in$(), not industrial."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)What this pack isn't.$()$(br2)There is no $(thing)/tpa$(), no waystones, no teleport command. If you want to get somewhere, you build the way there — boats, trains, airships, your own two feet.$(br2)It's a choice that shapes the whole pack, and the things that fall out of it are half the charm."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)How to use this book.$()$(br2)Every chapter is short on purpose. This book isn't a tutorial — it points at $(italic)what's new$() and which in-game tool to press for the deeper docs.$(br2)Start with $(l:welcome/keybinds)Keys Worth Knowing$(). After that, wander."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)One more thing.$()$(br2)The best help here isn't this book — it's whoever else is online. Ask in $(thing)voice chat$(). Someone always knows. And when nobody knows, figuring it out together is half the fun.$(br2)~Wesley"
+    }
+  ]
+}

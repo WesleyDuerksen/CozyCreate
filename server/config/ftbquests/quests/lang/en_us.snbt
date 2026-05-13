@@ -1,0 +1,25 @@
+{
+	chapter.1A2B3C4D5E6F0001.chapter_subtitle: ["A quick prep run before we head out together."]
+	chapter.1A2B3C4D5E6F0001.title: "Getting Started"
+	quest.1A2B3C4D5E6F0010.quest_desc: [
+		"Punch any tree."
+		""
+		"That's it. The first thirty seconds of every Minecraft world, every time. Get any log in your inventory and the helmet and chestplate are yours."
+	]
+	quest.1A2B3C4D5E6F0010.quest_subtitle: "Wood is the start of everything."
+	quest.1A2B3C4D5E6F0020.quest_desc: [
+		"Put together a crafting table."
+		""
+		"Four planks. You know the move. This unlocks a backpack and a sleeping bag — everything you need to carry the haul and crash on the road."
+	]
+	quest.1A2B3C4D5E6F0020.quest_subtitle: "The most important block in the game."
+	quest.1A2B3C4D5E6F0050.quest_desc: [
+		"Helmet, chestplate, backpack, sleeping bag. Solid kit."
+		""
+		"Take this last reward — ten hot potatoes for the road and a small book that points at what's new in this pack."
+		""
+		"Then we travel. The first place we landed isn't necessarily the place we're staying."
+	]
+	quest.1A2B3C4D5E6F0050.quest_subtitle: "Equipped. Time to find our spot."
+	task.1A2B3C4D5E6F0051.title: "Take Stock"
+}

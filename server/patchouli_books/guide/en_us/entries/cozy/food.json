@@ -1,0 +1,24 @@
+{
+  "name": "Food, Cooking & Drink",
+  "icon": "minecraft:cooked_beef",
+  "category": "patchouli:cozy",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Cooking is a whole system.$()$(br2)$(item)Farmer's Delight$() is the foundation — cutting boards, cooking pots, real recipes with real ingredients.$(br2)Expansions stack on: ocean food, end food, beach food, meadow food, wine, tea, coffee. Look up $(item)Cooking Pot$() in JEI to start."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The Delights family.$()$(br2)$(item)Chef's Delight$() — adds a chef villager profession.$(br)$(item)Ocean's Delight$(), $(item)End's Delight$() — themed food chains.$(br)$(item)Crate Delight$() — decorative food storage.$(br2)Plus the Let's Do series: Vinery, HerbalBrews, Beachparty, Meadow, WilderNature."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Automating it.$()$(br2)Create's food expansions plug straight into Farmer's Delight. $(item)Slice & Dice$() automates cutting boards. $(item)Central Kitchen$() runs whole kitchens. $(item)Integrated Farming$() handles the crops.$(br2)Hand-cook to learn the recipes. Then build the factory."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Eat well.$()$(br2)$(item)AppleSkin$() shows hunger and saturation properly — food in this pack is generous, so there is no reason to eat raw potatoes.$(br2)$(item)Comforts$() adds sleeping bags and hammocks. Eat, sleep, get back out there."
+    }
+  ]
+}

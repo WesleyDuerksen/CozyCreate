@@ -1,0 +1,128 @@
+{
+	id: "1A2B3C4D5E6F0001"
+	group: ""
+	order_index: 0
+	filename: "getting_started"
+	title: "{cozycreate.quests.chapter.getting_started.title}"
+	icon: "minecraft:writable_book"
+	subtitle: ["{cozycreate.quests.chapter.getting_started.subtitle}"]
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	images: [ ]
+	quests: [
+		{
+			x: -2.0d
+			y: 0.0d
+			subtitle: "{cozycreate.quests.gather_log.subtitle}"
+			description: [
+				"{cozycreate.quests.gather_log.desc.1}"
+				""
+				"{cozycreate.quests.gather_log.desc.2}"
+			]
+			dependencies: [ ]
+			id: "1A2B3C4D5E6F0010"
+			tasks: [{
+				id: "1A2B3C4D5E6F0011"
+				type: "item"
+				item: { id: "minecraft:oak_log", count: 1 }
+			}]
+			rewards: [
+				{
+					id: "1A2B3C4D5E6F0012"
+					type: "item"
+					item: { id: "minecraft:leather_helmet", count: 1 }
+				}
+				{
+					id: "1A2B3C4D5E6F0013"
+					type: "item"
+					item: { id: "minecraft:leather_chestplate", count: 1 }
+				}
+				{
+					id: "1A2B3C4D5E6F0014"
+					type: "item"
+					item: { id: "minecraft:bread", count: 1 }
+					count: 4
+				}
+				{
+					id: "1A2B3C4D5E6F0015"
+					type: "item"
+					item: { id: "minecraft:torch", count: 1 }
+					count: 4
+				}
+			]
+		}
+		{
+			x: 0.0d
+			y: 0.0d
+			subtitle: "{cozycreate.quests.crafting_table.subtitle}"
+			description: [
+				"{cozycreate.quests.crafting_table.desc.1}"
+				""
+				"{cozycreate.quests.crafting_table.desc.2}"
+			]
+			dependencies: [ ]
+			id: "1A2B3C4D5E6F0020"
+			tasks: [{
+				id: "1A2B3C4D5E6F0021"
+				type: "item"
+				item: { id: "minecraft:crafting_table", count: 1 }
+			}]
+			rewards: [
+				{
+					id: "1A2B3C4D5E6F0022"
+					type: "item"
+					item: { id: "sophisticatedbackpacks:backpack", count: 1 }
+				}
+				{
+					id: "1A2B3C4D5E6F0023"
+					type: "item"
+					item: { id: "comforts:sleeping_bag_red", count: 1 }
+				}
+			]
+		}
+		{
+			x: 2.0d
+			y: 0.0d
+			shape: "diamond"
+			size: 1.5d
+			subtitle: "{cozycreate.quests.take_stock.subtitle}"
+			description: [
+				"{cozycreate.quests.take_stock.desc.1}"
+				""
+				"{cozycreate.quests.take_stock.desc.2}"
+				""
+				"{cozycreate.quests.take_stock.desc.3}"
+			]
+			dependencies: [
+				"1A2B3C4D5E6F0010"
+				"1A2B3C4D5E6F0020"
+			]
+			id: "1A2B3C4D5E6F0050"
+			tasks: [{
+				id: "1A2B3C4D5E6F0051"
+				type: "checkmark"
+				title: "{cozycreate.quests.take_stock.task.checkmark}"
+			}]
+			rewards: [
+				{
+					id: "1A2B3C4D5E6F0052"
+					type: "item"
+					item: { id: "minecraft:baked_potato", count: 1 }
+					count: 10
+				}
+				{
+					id: "1A2B3C4D5E6F0053"
+					type: "item"
+					item: {
+						id: "patchouli:guide_book"
+						count: 1
+						components: {
+							"patchouli:book": "patchouli:guide"
+						}
+					}
+				}
+			]
+		}
+	]
+	quest_links: [ ]
+}

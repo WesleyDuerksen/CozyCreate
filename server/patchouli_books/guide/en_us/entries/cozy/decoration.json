@@ -1,0 +1,24 @@
+{
+  "name": "Decoration, Top to Bottom",
+  "icon": "minecraft:flower_pot",
+  "category": "patchouli:cozy",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)This is the cozy half.$()$(br2)The pack ships somewhere around $(thing)eleven thousand decorative block variants$() across a dozen-plus decoration mods. Nobody is memorizing that.$(br2)JEI is the only sane way to browse. Type a mod name with $(thing)@$() to filter."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The big ones.$()$(br2)$(item)Chipped$() — 11k+ variants of vanilla blocks.$(br)$(item)Handcrafted$() — 250+ furniture pieces.$(br)$(item)Supplementaries$() — jars, sconces, signposts, planters.$(br)$(item)Macaw's$() — paths, paintings, holidays, more."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Building tools.$()$(br2)$(item)Diagonal Walls$() and $(item)Diagonal Windows$() let you break the grid.$(br)$(item)Double Doors$() pair vanilla doors.$(br)$(item)Mo Glass$() adds glass stairs and slabs.$(br)$(item)Beautify$() and $(item)Amendments$() round out vanilla building."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Personal touches.$()$(br2)$(item)Camerapture$() — in-game camera; screenshots that hang on walls.$(br)$(item)Gallery$() — frame artwork properly.$(br)$(item)Antique Atlas$() — decorative hand-drawn map (and useful too).$(br)$(item)Simple Hats$() — wear something silly."
+    }
+  ]
+}

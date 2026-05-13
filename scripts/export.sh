@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="0.3.2"
+PACK_VERSION="1.0.0"
 MINECRAFT_VERSION="1.21.1"
 NEOFORGE_VERSION="21.1.228"
 PACK_NAME="CozyCreate"
@@ -27,6 +27,10 @@ log "Syncing server/config/ → config/ ..."
 rm -rf config
 cp -r server/config config
 rm -rf config/spark/tmp-client config/waila
+
+log "Syncing server/kubejs/ → kubejs/ ..."
+rm -rf kubejs
+cp -r server/kubejs kubejs
 
 # ── 3. Refresh packwiz index (picks up config/ files) ─────────────────────────
 log "Refreshing packwiz index..."
@@ -71,8 +75,8 @@ InstanceType=OneSix
 name=Cozy Create
 iconKey=cozycreate
 OverrideMemory=true
-MinMemAlloc=4096
-MaxMemAlloc=12288
+MinMemAlloc=2048
+MaxMemAlloc=6144
 OverrideJavaArgs=true
 JvmArgs=-XX:+UnlockExperimentalVMOptions -XX:+UseZGC -XX:+ZGenerational -XX:+AlwaysPreTouch
 EOF
@@ -134,6 +138,16 @@ done
 log "Copying configs..."
 cp -r config/. "$CLIENT_DIR/.minecraft/config/"
 
+log "Copying kubejs..."
+mkdir -p "$CLIENT_DIR/.minecraft/kubejs"
+cp -r kubejs/. "$CLIENT_DIR/.minecraft/kubejs/"
+
+log "Copying patchouli external books..."
+if [[ -d server/patchouli_books ]]; then
+  mkdir -p "$CLIENT_DIR/.minecraft/patchouli_books"
+  cp -r server/patchouli_books/. "$CLIENT_DIR/.minecraft/patchouli_books/"
+fi
+
 # Low-end baseline options.txt — Minecraft fills in any keys we don't set
 if [[ -f assets/options.txt ]]; then
   cp assets/options.txt "$CLIENT_DIR/.minecraft/options.txt"
@@ -172,8 +186,9 @@ for toml in mods/*.pw.toml; do
   fi
 done
 
-# Configs and server icon
+# Configs, kubejs, and server icon
 cp -r config "$SERVER_DIR/config"
+cp -r kubejs "$SERVER_DIR/kubejs"
 [[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/server-icon.png"
 
 # Start script: installs NeoForge once, then starts

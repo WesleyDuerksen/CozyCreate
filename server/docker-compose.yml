@@ -7,6 +7,7 @@ services:
     restart: unless-stopped
     ports:
       - "25565:25565"
+      - "24454:24454/udp"
     environment:
       EULA: "TRUE"
       TYPE: NEOFORGE

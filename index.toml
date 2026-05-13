@@ -505,6 +505,22 @@ file = "config/friendsandfoes.json"
 hash = "858c5784048dbedf407356cabc4cda234b5c3419bec9563d31c2378277e2d5b0"
 
 [[files]]
+file = "config/ftbquests/quests/chapter_groups.snbt"
+hash = "e57d8311aec9f524911ed1313cabf138bb7fa5a2d3ba985a00a2a267ff35ef78"
+
+[[files]]
+file = "config/ftbquests/quests/chapters/getting_started.snbt"
+hash = "b99e9159bd8837b11e1f288284a895d50b0bd0a52d6cf02e00be73f93348ea38"
+
+[[files]]
+file = "config/ftbquests/quests/data.snbt"
+hash = "47bb2468670865d35b52b1a8d238cfe98f8f176f5df912628fcf7ee672a514c7"
+
+[[files]]
+file = "config/ftbquests/quests/lang/en_us.snbt"
+hash = "c66ef2a3107b0138130a35e42e87706d4cec62d96c8f873f8120c07f1280d39c"
+
+[[files]]
 file = "config/ftbteams-server.snbt"
 hash = "0cb54f6b7568ca7fff6b6a1320eb4ef455941c83a932f5dd8c6ad1c5741e0458"
 
@@ -875,6 +891,26 @@ hash = "121b93764159be6fb7dab523b29a844e2bb78400ce8c48f52135a097e9b0006e"
 [[files]]
 file = "config/zeta-common.toml"
 hash = "ea1fa91de03d8f6f3c36b0c6cef77375a8365790ac0acb63fd558643d54d677f"
+
+[[files]]
+file = "kubejs/README.txt"
+hash = "989f3737ae4621b8ff6730bce4cbeeee756921e7e510e0c281c8a350501d98af"
+
+[[files]]
+file = "kubejs/config/common.json"
+hash = "e00a67922942660d77c213379b5128a46c5abc894178b0be04006d325ff5f6b3"
+
+[[files]]
+file = "kubejs/config/web_server.json"
+hash = "317715f1dc2f7435464bad8b2224911e4e01b9ccebf028352c47e7a4a5b2077b"
+
+[[files]]
+file = "kubejs/server_scripts/main.js"
+hash = "dae099ae3be7f033c0c190ee8c3b023b42f6b235d9d0591be5926e8435dbd67f"
+
+[[files]]
+file = "kubejs/startup_scripts/main.js"
+hash = "5c4659e7bb368960801ccfce24ac3493fa14aae88a7e17b2a9cdfe1931985ffe"
 
 [[files]]
 file = "mods/3dskinlayers.pw.toml"

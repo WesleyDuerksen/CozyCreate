@@ -1,0 +1,20 @@
+{
+  "name": "Finding Things",
+  "icon": "minecraft:compass",
+  "category": "patchouli:world",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Two compasses.$()$(br2)$(item)Explorer's Compass$() finds any named structure — right-click in hand, pick from the menu, follow the needle.$(br2)$(item)Nature's Compass$() does the same for biomes. Want a desert? It'll point you there.$(br2)Both are craftable early."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold) Press $(thing)M$() for the full world map. Place waypoints, see who's where.$(br2)$(item)Antique Atlas$() is the aesthetic option — hand-drawn, fills in as you walk, reads like a journal. Craft one to use."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Travel titles.$()$(br2)$(item)Traveller's Titles$() flashes a biome or dimension name on screen when you cross into a new one. Quiet, useful, easy to turn off if you don't want it.$(br2)Combined with the compasses, you stop getting lost."
+    }
+  ]
+}

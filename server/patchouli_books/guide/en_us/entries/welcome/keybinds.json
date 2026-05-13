@@ -1,0 +1,24 @@
+{
+  "name": "Keys Worth Knowing",
+  "icon": "minecraft:lever",
+  "category": "patchouli:welcome",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)The big three.$()$(br2)$(item)JEI$() — press $(thing)R$() on any item for its recipe, $(thing)U$() to see what uses it. The search box accepts $(thing)@create$() to filter by mod.$(br2)$(item)Ponder$() — press $(thing)W$() while hovering any Create block. Animated, in-game tutorial. This one is a gift.$(br2)$(item)Jade$() — names whatever you're looking at, top of screen. Always on."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Maps and finding things. Press $(thing)M$() for the full world map.$(br2)$(item)Antique Atlas$() — craft one. Hand-drawn aesthetic map for the journal-keepers among you.$(br2)$(item)Explorer's Compass$() and $(item)Nature's Compass$() — right-click in hand to find any named structure or biome."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Quality of life.$()$(br2)$(item)Quest book$() — opens with the button on your inventory sidebar. This guide reopens the same way.$(br2)$(item)Voice chat$() — press $(thing)V$() to talk. Proximity-based, so step closer.$(br2)$(item)Curios slot$() — for elytra, backpacks, trinkets. Open it via the button in your inventory."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)If something feels off,$() the $(thing)Controls$() menu is the truth. Anything listed here is just the default — rebind freely.$(br2)Anything you can't find? Ask whoever's on voice. Server mates beat documentation every time."
+    }
+  ]
+}
