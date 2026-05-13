@@ -460,6 +460,8 @@ More leak hunting configs
 ```
 
 **1.1.0** 
+- [ ] Add https://modrinth.com/mod/create-railways-navigator
+- [ ] Add https://modrinth.com/mod/create-track-map
 - [ ] Add https://modrinth.com/mod/create-bits-n-bobs
 - [ ] Add https://modrinth.com/mod/create-copper-zinc
 
