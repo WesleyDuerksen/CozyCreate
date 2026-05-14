@@ -30,6 +30,20 @@ services:
         -XX:SoftMaxHeapSize=${SOFT_MAX_HEAP:-14G}
 
       ONLINE_MODE: "TRUE"
+      ENFORCE_WHITELIST: "TRUE"
+      WHITE_LIST: "TRUE"
+
+      GAMEMODE: "survival"
+      DIFFICULTY: "normal"
+      HARDCORE: "FALSE"
+      PVP: "TRUE"
+      ALLOW_FLIGHT: "TRUE"
+
+      MAX_PLAYERS: "20"
+      OP_PERMISSION_LEVEL: "4"
+      PLAYER_IDLE_TIMEOUT: "5"
+      FORCE_GAMEMODE: "FALSE"
+
       SPAWN_PROTECTION: "0"
       MOTD: "CozyCreate"
       LOG_LEVEL: "WARN"
