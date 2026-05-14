@@ -20,6 +20,8 @@ server/*.jar
 server/usercache.json
 server/usernamecache.json
 server/can-be-zeus.json
+server/rcon-password.txt
+server/backups/
 
 # Build artifacts (export.sh writes here)
 build/
@@ -35,3 +37,5 @@ client/mods/*.jar
 
 # Shader packs — large binaries, not tracked in git
 shaderpacks/
+
+Speech.txt

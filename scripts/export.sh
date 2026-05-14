@@ -186,9 +186,12 @@ for toml in mods/*.pw.toml; do
   fi
 done
 
-# Configs, kubejs, and server icon
+# Configs, kubejs, patchouli books, and server icon
 cp -r config "$SERVER_DIR/config"
 cp -r kubejs "$SERVER_DIR/kubejs"
+if [[ -d server/patchouli_books ]]; then
+  cp -r server/patchouli_books "$SERVER_DIR/patchouli_books"
+fi
 [[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/server-icon.png"
 
 # Start script: installs NeoForge once, then starts

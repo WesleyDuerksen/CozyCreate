@@ -1,34 +1,55 @@
 services:
   minecraft:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server:java21
     container_name: cozycreate
     tty: true
     stdin_open: true
     restart: unless-stopped
-    ports:
-      - "25565:25565"
-      - "24454:24454/udp"
+    network_mode: host
+    stop_grace_period: 5m
     environment:
       EULA: "TRUE"
       TYPE: NEOFORGE
       VERSION: "1.21.1"
       NEOFORGE_VERSION: "21.1.228"
 
-      INIT_MEMORY: 4G
+      EXEC_DIRECTLY: "TRUE"
+      STOP_DURATION: "240"
+
+      INIT_MEMORY: 16G
       MAX_MEMORY: 16G
 
       # JVM tuning for 12-core / 16 GB host
-      JVM_OPTS: "-Dfml.loginTimeout=600"
+      JVM_OPTS: "-Dfml.loginTimeout=600 -Dchunky.maxWorkingCount=200"
       JVM_XX_OPTS: >-
         -XX:+UnlockExperimentalVMOptions
         -XX:+UseZGC
         -XX:+ZGenerational
         -XX:+AlwaysPreTouch
-        -XX:+ParallelRefProcEnabled
+        -XX:+DisableExplicitGC
+        -XX:SoftMaxHeapSize=14G
 
       ONLINE_MODE: "TRUE"
       SPAWN_PROTECTION: "0"
       MOTD: "CozyCreate"
+      LOG_LEVEL: "WARN"
+
+      VIEW_DISTANCE: "10"
+      SIMULATION_DISTANCE: "6"
+
+      ENABLE_RCON: "TRUE"
+      RCON_PORT: "25575"
+      RCON_PASSWORD_FILE: /run/secrets/rcon_password
+
+    secrets:
+      - rcon_password
+
+    healthcheck:
+      test: ["CMD", "mc-health"]
+      start_period: 10m
+      interval: 30s
+      timeout: 10s
+      retries: 10
 
     volumes:
       - .:/data
@@ -38,3 +59,35 @@ services:
         limits:
           memory: 16g
           cpus: "12"
+
+  backups:
+    image: itzg/mc-backup:latest
+    container_name: cozycreate-backups
+    depends_on:
+      minecraft:
+        condition: service_healthy
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      BACKUP_INTERVAL: "6h"
+      INITIAL_DELAY: "10m"
+      PAUSE_IF_NO_PLAYERS: "true"
+      PLAYERS_ONLINE_CHECK_INTERVAL: "5m"
+      PRUNE_BACKUPS_DAYS: "14"
+      BACKUP_METHOD: tar
+      TAR_COMPRESS_METHOD: zstd
+      LINK_LATEST: "true"
+      BACKUP_NAME: cozycreate
+      EXCLUDES: "*.jar,cache,logs,*.tmp,crash-reports,libraries"
+      RCON_HOST: localhost
+      RCON_PORT: "25575"
+      RCON_PASSWORD_FILE: /run/secrets/rcon_password
+    volumes:
+      - .:/data:ro
+      - ./backups:/backups
+    secrets:
+      - rcon_password
+
+secrets:
+  rcon_password:
+    file: ./rcon-password.txt

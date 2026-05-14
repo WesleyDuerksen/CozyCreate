@@ -45,6 +45,10 @@ Modrinth page: https://modrinth.com/modpack/homestead
 
 Project memories live in `.claude/memory/` and are committed to this repo. Always write new memories there (not to the global `~/.claude/projects/` location). The index is `.claude/memory/MEMORY.md`.
 
+## Mod List
+
+The canonical mod list lives at `docs/modList.md`. **Whenever a mod is added or removed via packwiz, update `docs/modList.md` immediately** — add the mod to the appropriate category with its side and a one-line description, or remove its row.
+
 ## Status
 
 Early planning phase. Mod list not yet finalized.
