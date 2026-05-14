@@ -6,6 +6,10 @@ services:
     stdin_open: true
     restart: unless-stopped
     stop_grace_period: 5m
+    ports:
+      - "25565:25565"
+      - "25575:25575"
+      - "24454:24454/udp"
     environment:
       TZ: "America/Los_Angeles"
       EULA: "TRUE"
