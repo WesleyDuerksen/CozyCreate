@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PACK_VERSION="1.0.0"
-MINECRAFT_VERSION="1.21.1"
-NEOFORGE_VERSION="21.1.228"
+PACK_TOML="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/pack.toml"
+PACK_VERSION=$(grep '^version' "$PACK_TOML" | sed 's/version = "\(.*\)"/\1/')
+MINECRAFT_VERSION=$(grep '^minecraft' "$PACK_TOML" | sed 's/minecraft = "\(.*\)"/\1/')
+NEOFORGE_VERSION=$(grep '^neoforge' "$PACK_TOML" | sed 's/neoforge = "\(.*\)"/\1/')
 PACK_NAME="CozyCreate"
 BUILD_DIR="build"
 TOOLS_DIR="$BUILD_DIR/tools"
