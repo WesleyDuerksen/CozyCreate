@@ -181,6 +181,7 @@ KNOWN_OK_PATTERNS=(
   "FTBChunksKubeJSPlugin.*does not have required mod.*ftbchunks"
   "Failed to process update information"
   "The following mods have version differences that were not resolved"
+  "supplementaries:inject/pillager_quiver"
 )
 
 analyze_logs() {

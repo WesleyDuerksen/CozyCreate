@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "Speech.txt"
+hash = "8f12dc7917cd2c335708ed1a7d16e88ce65837d215daf10e4f8cdf41fe2af40b"
+
+[[files]]
 file = "config/CoroUtil/General.toml"
 hash = "6003299fd97cb6b383ca3df88a2a676c565585799b1e14bb2987617ee189c7c2"
 
@@ -510,7 +514,7 @@ hash = "e57d8311aec9f524911ed1313cabf138bb7fa5a2d3ba985a00a2a267ff35ef78"
 
 [[files]]
 file = "config/ftbquests/quests/chapters/getting_started.snbt"
-hash = "b99e9159bd8837b11e1f288284a895d50b0bd0a52d6cf02e00be73f93348ea38"
+hash = "866fd0e8e8a0c72969a63ccd8d8590b25b8d38f47299ae34a3cc242101b8568e"
 
 [[files]]
 file = "config/ftbquests/quests/data.snbt"
@@ -518,7 +522,7 @@ hash = "47bb2468670865d35b52b1a8d238cfe98f8f176f5df912628fcf7ee672a514c7"
 
 [[files]]
 file = "config/ftbquests/quests/lang/en_us.snbt"
-hash = "c66ef2a3107b0138130a35e42e87706d4cec62d96c8f873f8120c07f1280d39c"
+hash = "9362e518cf71e3a4d75d47f9bf09190240c460df7fe4b0c97b0169df4e035c4f"
 
 [[files]]
 file = "config/ftbteams-server.snbt"
@@ -606,7 +610,7 @@ hash = "ee24e2b1bc100942a1c605f996255742cd6a5bb3662877aa906bc301100ccf27"
 
 [[files]]
 file = "config/modernfix-mixins.properties"
-hash = "597d73c5354d6600f5e2d76375ac7fcfef9c35ad3a044eb6ea3f11da695c2e9f"
+hash = "0ab8ff2f48668728818e0085248bf89bd8dd370fe48d4b2bb75c98f3cd96171f"
 
 [[files]]
 file = "config/moonlight-common.toml"
