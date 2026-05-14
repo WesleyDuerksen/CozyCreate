@@ -1,2 +1,0 @@
-# Memory and JVM flags are managed via docker-compose.yml (INIT_MEMORY, MAX_MEMORY, JVM_XX_OPTS).
-# Do not set -Xmx/-Xms here — they would override the docker-compose values.

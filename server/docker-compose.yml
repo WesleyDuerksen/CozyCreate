@@ -53,6 +53,12 @@ services:
 
     volumes:
       - ./data:/data
+      - ./content/mods:/data/mods
+      - ./content/config:/data/config
+      - ./content/kubejs:/data/kubejs
+      - ./content/patchouli_books:/data/patchouli_books
+      - ./content/defaultconfigs:/data/defaultconfigs
+      - ./content/server-icon.png:/data/server-icon.png
 
     deploy:
       resources:

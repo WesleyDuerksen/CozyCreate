@@ -23,14 +23,14 @@ fi
 log "packwiz: $PACKWIZ_BIN"
 
 # ── 2. Sync configs to pack root ───────────────────────────────────────────────
-log "Syncing server/data/config/ → config/ ..."
+log "Syncing server/content/config/ → config/ ..."
 rm -rf config
-cp -r server/data/config config
+cp -r server/content/config config
 rm -rf config/spark/tmp-client config/waila
 
-log "Syncing server/data/kubejs/ → kubejs/ ..."
+log "Syncing server/content/kubejs/ → kubejs/ ..."
 rm -rf kubejs
-cp -r server/data/kubejs kubejs
+cp -r server/content/kubejs kubejs
 
 # ── 3. Refresh packwiz index (picks up config/ files) ─────────────────────────
 log "Refreshing packwiz index..."
@@ -86,10 +86,10 @@ if [[ -f assets/icon.png ]]; then
   cp assets/icon.png "$CLIENT_DIR/cozycreate.png"
 fi
 
-# Collect mods for client + both sides; CurseForge mods have no URL, copy from server/data/mods/
+# Collect mods for client + both sides; CurseForge mods have no URL, copy from server/content/mods/
 log "Resolving client mod list (skipping server-only mods)..."
 declare -a DOWNLOAD_ENTRIES=()   # "url filename"
-declare -a COPY_FILENAMES=()     # filenames to copy from server/data/mods/
+declare -a COPY_FILENAMES=()     # filenames to copy from server/content/mods/
 for toml in mods/*.pw.toml; do
   side=$(grep '^side = ' "$toml" | sed 's/side = "\(.*\)"/\1/')
   [[ "$side" == "server" ]] && continue
@@ -101,16 +101,16 @@ for toml in mods/*.pw.toml; do
     COPY_FILENAMES+=("$filename")
   fi
 done
-log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/data/mods/ or client/mods/"
+log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/content/mods/ or client/mods/"
 
-# Copy CurseForge mods — check server/data/mods/ first, then client/mods/ (for client-only jars)
+# Copy CurseForge mods — check server/content/mods/ first, then client/mods/ (for client-only jars)
 for filename in "${COPY_FILENAMES[@]}"; do
-  if [[ -f "server/data/mods/$filename" ]]; then
-    cp "server/data/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
+  if [[ -f "server/content/mods/$filename" ]]; then
+    cp "server/content/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
   elif [[ -f "client/mods/$filename" ]]; then
     cp "client/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
   else
-    warn "Missing in server/data/mods/ and client/mods/: $filename"
+    warn "Missing in server/content/mods/ and client/mods/: $filename"
   fi
 done
 
@@ -143,9 +143,9 @@ mkdir -p "$CLIENT_DIR/.minecraft/kubejs"
 cp -r kubejs/. "$CLIENT_DIR/.minecraft/kubejs/"
 
 log "Copying patchouli external books..."
-if [[ -d server/data/patchouli_books ]]; then
+if [[ -d server/content/patchouli_books ]]; then
   mkdir -p "$CLIENT_DIR/.minecraft/patchouli_books"
-  cp -r server/data/patchouli_books/. "$CLIENT_DIR/.minecraft/patchouli_books/"
+  cp -r server/content/patchouli_books/. "$CLIENT_DIR/.minecraft/patchouli_books/"
 fi
 
 # Low-end baseline options.txt — Minecraft fills in any keys we don't set
@@ -170,7 +170,8 @@ SERVER_DIR="$BUILD_DIR/server"
 log "Building server zip..."
 
 rm -rf "$SERVER_DIR"
-mkdir -p "$SERVER_DIR/data/mods"
+mkdir -p "$SERVER_DIR/content/mods" "$SERVER_DIR/data"
+touch "$SERVER_DIR/data/.gitkeep"
 
 # Mods: server + both sides only
 log "Copying server mods..."
@@ -178,45 +179,47 @@ for toml in mods/*.pw.toml; do
   side=$(grep '^side = ' "$toml" | sed 's/side = "\(.*\)"/\1/')
   [[ "$side" == "client" ]] && continue
   filename=$(grep '^filename = ' "$toml" | sed 's/filename = "\(.*\)"/\1/')
-  src="server/data/mods/$filename"
+  src="server/content/mods/$filename"
   if [[ -f "$src" ]]; then
-    cp "$src" "$SERVER_DIR/data/mods/$filename"
+    cp "$src" "$SERVER_DIR/content/mods/$filename"
   else
     warn "Missing server mod: $filename"
   fi
 done
 
-# Configs, kubejs, patchouli books, and server icon
-cp -r config "$SERVER_DIR/data/config"
-cp -r kubejs "$SERVER_DIR/data/kubejs"
-if [[ -d server/data/patchouli_books ]]; then
-  cp -r server/data/patchouli_books "$SERVER_DIR/data/patchouli_books"
+# Configs, kubejs, patchouli books, defaultconfigs, and server icon
+cp -r config "$SERVER_DIR/content/config"
+cp -r kubejs "$SERVER_DIR/content/kubejs"
+if [[ -d server/content/patchouli_books ]]; then
+  cp -r server/content/patchouli_books "$SERVER_DIR/content/patchouli_books"
 fi
-[[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/data/server-icon.png"
-
-# Start script (for non-Docker users): installs NeoForge once, then starts. Run from inside data/.
-cat > "$SERVER_DIR/data/start.sh" <<'STARTSCRIPT'
-#!/usr/bin/env bash
-set -euo pipefail
-
-NF_VERSION="21.1.228"
-NF_INSTALLER="neoforge-${NF_VERSION}-installer.jar"
-NF_URL="https://maven.neoforged.net/releases/net/neoforged/neoforge/${NF_VERSION}/neoforge-${NF_VERSION}-installer.jar"
-
-if [[ ! -f "libraries/net/neoforged/neoforge/${NF_VERSION}/unix_args.txt" ]]; then
-  echo "[start] Installing NeoForge ${NF_VERSION}..."
-  [[ ! -f "$NF_INSTALLER" ]] && curl -fL --progress-bar -o "$NF_INSTALLER" "$NF_URL"
-  java -jar "$NF_INSTALLER" --install-server . --http-proxy ""
-  rm -f "$NF_INSTALLER"
+if [[ -d server/content/defaultconfigs ]]; then
+  cp -r server/content/defaultconfigs "$SERVER_DIR/content/defaultconfigs"
 fi
-
-echo "eula=true" > eula.txt
-exec java @user_jvm_args.txt \
-  @libraries/net/neoforged/neoforge/${NF_VERSION}/unix_args.txt "$@"
-STARTSCRIPT
-chmod +x "$SERVER_DIR/data/start.sh"
+[[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/content/server-icon.png"
 
 cp server/docker-compose.yml "$SERVER_DIR/docker-compose.yml"
+
+# Recipient instructions
+cat > "$SERVER_DIR/README.txt" <<'README'
+CozyCreate server bundle
+
+Requirements: Docker + docker compose v2.
+
+Setup:
+  1. echo "$(openssl rand -base64 24)" > rcon-password.txt
+     chmod 600 rcon-password.txt
+  2. docker compose up -d
+  3. docker compose logs -f minecraft
+
+Layout:
+  content/  — the pack (mods, config, kubejs, patchouli_books). Read-write bind-mounted.
+  data/     — server instance state (world, logs, libraries, player files). Generated by the container.
+  backups/  — created by the mc-backup sidecar on first run.
+
+To migrate to a new host: copy content/ (already shipped), copy data/ from your old host,
+copy rcon-password.txt, and docker compose up.
+README
 
 log "Zipping server package..."
 rm -f "$SERVER_ZIP"

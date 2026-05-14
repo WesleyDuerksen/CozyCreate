@@ -1,6 +1,6 @@
 ---
 name: Packwiz validation workflow and debugging
-description: How to run validate.sh, known issues encountered, and how to fix them
+description: How validate.sh works (Docker-based), known issues, false-positive log patterns
 type: project
 originSessionId: b9be44d2-2eda-41f8-8f08-179adfedd8e4
 ---
@@ -10,23 +10,18 @@ originSessionId: b9be44d2-2eda-41f8-8f08-179adfedd8e4
 ./scripts/validate.sh
 ```
 
-Run from `/Users/wesley/Documents/CozyCreate`. First run installs NeoForge server automatically. Every run syncs mods via `file://` path to packwiz-installer-bootstrap, starts the server on port 25575, waits for `Done (` in logs, checks for errors/fatals, stops cleanly.
+Run from the repo root. validate.sh is Docker-based: it ensures missing Modrinth mods are downloaded into `server/content/mods/`, runs `docker compose up -d minecraft` in `server/`, polls the container healthcheck until `healthy` (timeout 600s, since mod loading is slow), parses `server/data/logs/latest.log` against `KNOWN_OK_PATTERNS`, then `docker compose down`. No more direct NeoForge launch on the host.
 
-**Why port 25575:** dedicated test port to avoid conflicts with any real server on 25565.
+**Requires:** docker daemon access. If `docker version` fails with permission denied, add your user to the `docker` group and re-login, or run validate.sh with sudo.
 
-## Before running run.sh directly (not via validate.sh)
+**RCON password:** validate.sh auto-generates `server/rcon-password.txt` if missing (read by the compose stack via Docker secrets).
 
-Always kill port 25575 first — validate.sh does this automatically but run.sh does not:
+## Mod sourcing
 
-```bash
-kill $(lsof -ti :25575) 2>/dev/null
-```
+- Modrinth mods: validate.sh downloads them via the `url = ` field in each `mods/*.pw.toml` directly into `server/content/mods/`. Cached jars are skipped.
+- CurseForge mods (no `url = ` in the toml): must be placed in `server/content/mods/` manually. validate.sh fails fast if any are missing.
 
-## Critical: --side server flag required
-
-validate.sh calls packwiz-installer-bootstrap with `--side server`. Without this flag the installer uses `cachedSide` from `server/data/packwiz.json`, which can be "client" if you ever ran it without the flag. This causes client-only mods to be deployed to the server and crash it. If the flag was ever missing, delete `server/data/packwiz.json` to force a clean install, then re-run with the flag.
-
-## Known false-positive error patterns (already in KNOWN_OK_PATTERNS in validate.sh)
+## Known false-positive error patterns (KNOWN_OK_PATTERNS in validate.sh)
 
 - `RuntimeDistCleaner/DISTXFORM` — client-only classes scanned on server, NeoForge filters them
 - `Native backend failed to load` — Power Grid native lib unavailable on macOS, falls back to software
@@ -39,6 +34,8 @@ validate.sh calls packwiz-installer-bootstrap with `--side server`. Without this
 - `Parsing error loading recipe dndesires:crafting/` — Dreams & Desires omni_gearbox recipe format mismatch
 - `is a Fabric mod and cannot be loaded` — Decorative Lamps jar skipped on server, loads via Connector client-side
 
+(Full list is in validate.sh — keep that authoritative.)
+
 ## Steam 'n' Rails: pinned to v0.1.0
 
 0.2.0-beta.2 crashes the server with `Entity railways:conductor has no attributes` → cascades into Create's RegisterEvent → fatal crash. v0.1.0 is stable. Do not upgrade without testing.
@@ -46,7 +43,7 @@ validate.sh calls packwiz-installer-bootstrap with `--side server`. Without this
 ## Prism bootstrap debugging
 
 If the Prism pre-launch bootstrap only downloads CLAUDE.md or shows "(1/1)":
-1. Delete `/Users/wesley/Library/Application Support/PrismLauncher/instances/1.21.1/minecraft/packwiz.json`
+1. Delete the stale `packwiz.json` in the Prism instance's `.minecraft/` folder
 2. Delete any stale `CLAUDE.md` from the same folder
 3. If still wrong: bump `version` in `pack.toml`, run `packwiz refresh`, commit and push — forces GitHub CDN cache invalidation
 4. Root cause was GitHub CDN serving stale pack.toml to the installer while WebFetch hit a different (updated) CDN node
@@ -58,9 +55,10 @@ Without `.packwizignore`, `packwiz refresh` sweeps everything into the index. Th
 **Always run `./scripts/validate.sh` before committing** — do not commit immediately after `packwiz refresh`. The validate run catches hash errors and confirms the server still starts cleanly.
 
 **Repo structure — ignored by packwiz via directory entries:**
-- `docs/` — all planning, config-review, research, and audit docs
+- `docs/` — planning, config-review, research, audit docs
 - `scripts/` — export.sh, release.sh, validate.sh
 - `assets/` — icon.png, server-icon.png (plus `*.png`/`*.jpg` catch-all)
-- `server/`, `build/`, `.claude/` — runtime (now under `server/data/`), artifacts, memory
+- `server/` — covers both `server/content/` (authored pack) and `server/data/` (instance state)
+- `build/`, `.claude/` — artifacts, memory
 
 **After adding new files outside `mods/` or `config/`, verify `.packwizignore` covers them** before running `packwiz refresh` — any unignored file gets swept into the index and causes hash errors on client installs.

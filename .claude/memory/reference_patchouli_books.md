@@ -26,14 +26,14 @@ Three separate loaders exist. Understanding which does what is the entire key to
 ## Working layout for this pack
 
 ```
-server/data/patchouli_books/guide/
+server/content/patchouli_books/guide/
   book.json                          ← registers the book as patchouli:guide
   en_us/
     categories/welcome.json etc.
     entries/welcome/intro.json etc.  ← "category": "patchouli:<name>"
 ```
 
-Export script copies `server/data/patchouli_books/` → `.minecraft/patchouli_books/`.
+Export script copies `server/content/patchouli_books/` → `.minecraft/patchouli_books/`.
 
 ## Give command
 
