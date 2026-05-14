@@ -11,6 +11,7 @@ server/content/config/waila/
 # Orchestration secrets and backups
 server/rcon-password.txt
 server/backups/
+server/.env
 
 # Build artifacts (export.sh writes here)
 build/

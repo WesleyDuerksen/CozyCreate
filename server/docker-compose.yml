@@ -16,10 +16,10 @@ services:
       EXEC_DIRECTLY: "TRUE"
       STOP_DURATION: "240"
 
-      INIT_MEMORY: 16G
-      MAX_MEMORY: 16G
+      INIT_MEMORY: ${INIT_MEMORY:-16G}
+      MAX_MEMORY: ${MAX_MEMORY:-16G}
 
-      # JVM tuning for 12-core / 16 GB host
+      # JVM tuning — tune via .env (see .env.example)
       JVM_OPTS: "-Dfml.loginTimeout=600 -Dchunky.maxWorkingCount=200"
       JVM_XX_OPTS: >-
         -XX:+UnlockExperimentalVMOptions
@@ -27,7 +27,7 @@ services:
         -XX:+ZGenerational
         -XX:+AlwaysPreTouch
         -XX:+DisableExplicitGC
-        -XX:SoftMaxHeapSize=14G
+        -XX:SoftMaxHeapSize=${SOFT_MAX_HEAP:-14G}
 
       ONLINE_MODE: "TRUE"
       SPAWN_PROTECTION: "0"
@@ -63,8 +63,8 @@ services:
     deploy:
       resources:
         limits:
-          memory: 16g
-          cpus: "12"
+          memory: ${MEMORY_LIMIT:-16g}
+          cpus: "${CPU_LIMIT:-12}"
 
   backups:
     image: itzg/mc-backup:latest
