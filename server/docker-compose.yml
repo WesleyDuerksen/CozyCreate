@@ -5,9 +5,9 @@ services:
     tty: true
     stdin_open: true
     restart: unless-stopped
-    network_mode: host
     stop_grace_period: 5m
     environment:
+      TZ: "America/Los_Angeles"
       EULA: "TRUE"
       TYPE: NEOFORGE
       VERSION: "1.21.1"
@@ -16,7 +16,7 @@ services:
       EXEC_DIRECTLY: "TRUE"
       STOP_DURATION: "240"
 
-      INIT_MEMORY: ${INIT_MEMORY:-16G}
+      INIT_MEMORY: ${INIT_MEMORY:-4G}
       MAX_MEMORY: ${MAX_MEMORY:-16G}
 
       # JVM tuning — tune via .env (see .env.example)
@@ -89,6 +89,7 @@ services:
     restart: unless-stopped
     network_mode: host
     environment:
+      TZ: "America/Los_Angeles"
       BACKUP_INTERVAL: "6h"
       INITIAL_DELAY: "10m"
       PAUSE_IF_NO_PLAYERS: "true"
