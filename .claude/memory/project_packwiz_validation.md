@@ -24,7 +24,7 @@ kill $(lsof -ti :25575) 2>/dev/null
 
 ## Critical: --side server flag required
 
-validate.sh calls packwiz-installer-bootstrap with `--side server`. Without this flag the installer uses `cachedSide` from `server/packwiz.json`, which can be "client" if you ever ran it without the flag. This causes client-only mods to be deployed to the server and crash it. If the flag was ever missing, delete `server/packwiz.json` to force a clean install, then re-run with the flag.
+validate.sh calls packwiz-installer-bootstrap with `--side server`. Without this flag the installer uses `cachedSide` from `server/data/packwiz.json`, which can be "client" if you ever ran it without the flag. This causes client-only mods to be deployed to the server and crash it. If the flag was ever missing, delete `server/data/packwiz.json` to force a clean install, then re-run with the flag.
 
 ## Known false-positive error patterns (already in KNOWN_OK_PATTERNS in validate.sh)
 
@@ -61,6 +61,6 @@ Without `.packwizignore`, `packwiz refresh` sweeps everything into the index. Th
 - `docs/` — all planning, config-review, research, and audit docs
 - `scripts/` — export.sh, release.sh, validate.sh
 - `assets/` — icon.png, server-icon.png (plus `*.png`/`*.jpg` catch-all)
-- `server/`, `build/`, `.claude/` — runtime, artifacts, memory
+- `server/`, `build/`, `.claude/` — runtime (now under `server/data/`), artifacts, memory
 
 **After adding new files outside `mods/` or `config/`, verify `.packwizignore` covers them** before running `packwiz refresh` — any unignored file gets swept into the index and causes hash errors on client installs.

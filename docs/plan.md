@@ -19,11 +19,11 @@ Both must pass before moving to the next phase.
 ```
 
 What it does on first run: downloads NeoForge server, installs it, accepts EULA, downloads packwiz-installer-bootstrap.
-Every run: serves the pack locally via `packwiz serve`, syncs mods to `server/mods/`, starts the server, waits for the `Done (` ready signal, checks logs for ERROR/FATAL, stops the server, reports pass/fail.
+Every run: serves the pack locally via `packwiz serve`, syncs mods to `server/data/mods/`, starts the server, waits for the `Done (` ready signal, checks logs for ERROR/FATAL, stops the server, reports pass/fail.
 
-The `server/` directory is gitignored — it's a local test artifact.
+The `server/data/` directory holds the runtime — git-tracks authored content (config/, kubejs/, patchouli_books/) but ignores generated state (world/, mods/, logs/).
 
-**Pass criteria:** server reaches ready state + zero errors/fatals in `server/logs/latest.log`.
+**Pass criteria:** server reaches ready state + zero errors/fatals in `server/data/logs/latest.log`.
 **Acceptable warnings:** see `KNOWN_OK_PATTERNS` array in `validate.sh` — add false positives there as you find them.
 
 ### Client Test — Manual Checklist (Prism Launcher)
@@ -410,7 +410,7 @@ Dockerized the server and optimized
 - Change default ram numbers
 
 **0.3.1**
-Memory optimization pass — ModernFix perf/bugfix mixins enabled in `server/config/modernfix-mixins.properties`:
+Memory optimization pass — ModernFix perf/bugfix mixins enabled in `server/data/config/modernfix-mixins.properties`:
 - [x] `mixin.perf.dynamic_resources=true` — lazy block model loading (targets BakedQuad ~267 MB, ModelResourceLocation ~95 MB)
 - [x] `mixin.perf.dynamic_entity_renderers=true` — lazy entity renderer loading
 - [x] `mixin.perf.compact_entity_models=true` — compacted entity model storage

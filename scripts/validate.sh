@@ -6,7 +6,7 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACK_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-SERVER_DIR="$PACK_ROOT/server"
+SERVER_DIR="$PACK_ROOT/server/data"
 NEOFORGE_VERSION="21.1.228"
 INSTALLER_URL="https://maven.neoforged.net/releases/net/neoforged/neoforge/${NEOFORGE_VERSION}/neoforge-${NEOFORGE_VERSION}-installer.jar"
 BOOTSTRAP_URL="https://github.com/packwiz/packwiz-installer-bootstrap/releases/latest/download/packwiz-installer-bootstrap.jar"
@@ -96,10 +96,10 @@ sync_mods() {
   local mod_count
   mod_count=$(find "$SERVER_DIR/mods" -name "*.jar" 2>/dev/null | wc -l | tr -d ' ')
   if (( mod_count == 0 )); then
-    fail "No mods found in server/mods/ after sync — check packwiz-installer output above"
+    fail "No mods found in server/data/mods/ after sync — check packwiz-installer output above"
     exit 1
   fi
-  ok "Mods synced ($mod_count jars in server/mods/)"
+  ok "Mods synced ($mod_count jars in server/data/mods/)"
 }
 
 # ── Server startup & monitoring ───────────────────────────────────────────────

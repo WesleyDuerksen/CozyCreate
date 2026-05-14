@@ -23,14 +23,14 @@ fi
 log "packwiz: $PACKWIZ_BIN"
 
 # ── 2. Sync configs to pack root ───────────────────────────────────────────────
-log "Syncing server/config/ → config/ ..."
+log "Syncing server/data/config/ → config/ ..."
 rm -rf config
-cp -r server/config config
+cp -r server/data/config config
 rm -rf config/spark/tmp-client config/waila
 
-log "Syncing server/kubejs/ → kubejs/ ..."
+log "Syncing server/data/kubejs/ → kubejs/ ..."
 rm -rf kubejs
-cp -r server/kubejs kubejs
+cp -r server/data/kubejs kubejs
 
 # ── 3. Refresh packwiz index (picks up config/ files) ─────────────────────────
 log "Refreshing packwiz index..."
@@ -86,10 +86,10 @@ if [[ -f assets/icon.png ]]; then
   cp assets/icon.png "$CLIENT_DIR/cozycreate.png"
 fi
 
-# Collect mods for client + both sides; CurseForge mods have no URL, copy from server/mods/
+# Collect mods for client + both sides; CurseForge mods have no URL, copy from server/data/mods/
 log "Resolving client mod list (skipping server-only mods)..."
 declare -a DOWNLOAD_ENTRIES=()   # "url filename"
-declare -a COPY_FILENAMES=()     # filenames to copy from server/mods/
+declare -a COPY_FILENAMES=()     # filenames to copy from server/data/mods/
 for toml in mods/*.pw.toml; do
   side=$(grep '^side = ' "$toml" | sed 's/side = "\(.*\)"/\1/')
   [[ "$side" == "server" ]] && continue
@@ -101,16 +101,16 @@ for toml in mods/*.pw.toml; do
     COPY_FILENAMES+=("$filename")
   fi
 done
-log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/mods/ or client/mods/"
+log "Will download ${#DOWNLOAD_ENTRIES[@]} mods, copy ${#COPY_FILENAMES[@]} from server/data/mods/ or client/mods/"
 
-# Copy CurseForge mods — check server/mods/ first, then client/mods/ (for client-only jars)
+# Copy CurseForge mods — check server/data/mods/ first, then client/mods/ (for client-only jars)
 for filename in "${COPY_FILENAMES[@]}"; do
-  if [[ -f "server/mods/$filename" ]]; then
-    cp "server/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
+  if [[ -f "server/data/mods/$filename" ]]; then
+    cp "server/data/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
   elif [[ -f "client/mods/$filename" ]]; then
     cp "client/mods/$filename" "$CLIENT_DIR/.minecraft/mods/$filename"
   else
-    warn "Missing in server/mods/ and client/mods/: $filename"
+    warn "Missing in server/data/mods/ and client/mods/: $filename"
   fi
 done
 
@@ -143,9 +143,9 @@ mkdir -p "$CLIENT_DIR/.minecraft/kubejs"
 cp -r kubejs/. "$CLIENT_DIR/.minecraft/kubejs/"
 
 log "Copying patchouli external books..."
-if [[ -d server/patchouli_books ]]; then
+if [[ -d server/data/patchouli_books ]]; then
   mkdir -p "$CLIENT_DIR/.minecraft/patchouli_books"
-  cp -r server/patchouli_books/. "$CLIENT_DIR/.minecraft/patchouli_books/"
+  cp -r server/data/patchouli_books/. "$CLIENT_DIR/.minecraft/patchouli_books/"
 fi
 
 # Low-end baseline options.txt — Minecraft fills in any keys we don't set
@@ -170,7 +170,7 @@ SERVER_DIR="$BUILD_DIR/server"
 log "Building server zip..."
 
 rm -rf "$SERVER_DIR"
-mkdir -p "$SERVER_DIR/mods"
+mkdir -p "$SERVER_DIR/data/mods"
 
 # Mods: server + both sides only
 log "Copying server mods..."
@@ -178,24 +178,24 @@ for toml in mods/*.pw.toml; do
   side=$(grep '^side = ' "$toml" | sed 's/side = "\(.*\)"/\1/')
   [[ "$side" == "client" ]] && continue
   filename=$(grep '^filename = ' "$toml" | sed 's/filename = "\(.*\)"/\1/')
-  src="server/mods/$filename"
+  src="server/data/mods/$filename"
   if [[ -f "$src" ]]; then
-    cp "$src" "$SERVER_DIR/mods/$filename"
+    cp "$src" "$SERVER_DIR/data/mods/$filename"
   else
     warn "Missing server mod: $filename"
   fi
 done
 
 # Configs, kubejs, patchouli books, and server icon
-cp -r config "$SERVER_DIR/config"
-cp -r kubejs "$SERVER_DIR/kubejs"
-if [[ -d server/patchouli_books ]]; then
-  cp -r server/patchouli_books "$SERVER_DIR/patchouli_books"
+cp -r config "$SERVER_DIR/data/config"
+cp -r kubejs "$SERVER_DIR/data/kubejs"
+if [[ -d server/data/patchouli_books ]]; then
+  cp -r server/data/patchouli_books "$SERVER_DIR/data/patchouli_books"
 fi
-[[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/server-icon.png"
+[[ -f assets/server-icon.png ]] && cp assets/server-icon.png "$SERVER_DIR/data/server-icon.png"
 
-# Start script: installs NeoForge once, then starts
-cat > "$SERVER_DIR/start.sh" <<'STARTSCRIPT'
+# Start script (for non-Docker users): installs NeoForge once, then starts. Run from inside data/.
+cat > "$SERVER_DIR/data/start.sh" <<'STARTSCRIPT'
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -214,7 +214,7 @@ echo "eula=true" > eula.txt
 exec java @user_jvm_args.txt \
   @libraries/net/neoforged/neoforge/${NF_VERSION}/unix_args.txt "$@"
 STARTSCRIPT
-chmod +x "$SERVER_DIR/start.sh"
+chmod +x "$SERVER_DIR/data/start.sh"
 
 cp server/docker-compose.yml "$SERVER_DIR/docker-compose.yml"
 

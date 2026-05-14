@@ -1,35 +1,39 @@
 # Server runtime and generated dirs — do not track
-server/world/
-server/mods/
-server/libraries/
-server/logs/
-server/crash-reports/
-server/local/
-server/dynamic-data-pack-cache/
-server/moonlight-global-datapacks/
-server/.mixin.out/
-server/.sable/
-server/.pg-native/
-server/config/spark/tmp-client/
-server/config/waila/
+server/data/world/
+server/data/mods/
+server/data/libraries/
+server/data/logs/
+server/data/crash-reports/
+server/data/local/
+server/data/dynamic-data-pack-cache/
+server/data/moonlight-global-datapacks/
+server/data/.mixin.out/
+server/data/.sable/
+server/data/.pg-native/
+server/data/.cache/
+server/data/.local/
+server/data/config/spark/tmp-client/
+server/data/config/waila/
 
 # Server installer and runtime state
-server/neoforge-installer.jar
-server/neoforge-installer.jar.log
-server/*.jar
-server/usercache.json
-server/usernamecache.json
-server/can-be-zeus.json
+server/data/neoforge-installer.jar
+server/data/neoforge-installer.jar.log
+server/data/*.jar
+server/data/usercache.json
+server/data/usernamecache.json
+server/data/can-be-zeus.json
+
+# Orchestration secrets and backups (at server/ root)
 server/rcon-password.txt
 server/backups/
 
 # Build artifacts (export.sh writes here)
 build/
 
-# Generated config snapshot (source of truth is server/config/)
+# Generated config snapshot (source of truth is server/data/config/)
 /config/
 
-# Generated kubejs snapshot (source of truth is server/kubejs/)
+# Generated kubejs snapshot (source of truth is server/data/kubejs/)
 /kubejs/
 
 # Client-only CurseForge jars — download manually, not tracked in git

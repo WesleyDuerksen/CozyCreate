@@ -52,7 +52,7 @@ services:
       retries: 10
 
     volumes:
-      - .:/data
+      - ./data:/data
 
     deploy:
       resources:
@@ -83,7 +83,7 @@ services:
       RCON_PORT: "25575"
       RCON_PASSWORD_FILE: /run/secrets/rcon_password
     volumes:
-      - .:/data:ro
+      - ./data:/data:ro
       - ./backups:/backups
     secrets:
       - rcon_password
