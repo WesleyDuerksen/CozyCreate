@@ -1,7 +1,7 @@
 # CozyCreate — Full Mod List
 
 > Source of truth for installed mods. Update this file whenever mods are added or removed.  
-> Generated: 2026-05-14 | 227 mods  
+> Generated: 2026-05-14 | 226 mods  
 > Side key: **B** = both (client + server), **C** = client only, **S** = server only
 
 ---
@@ -248,7 +248,6 @@
 | What Are They Up To | B | Shows what villagers are doing (sleeping, working, etc.) |
 | Trading Post | B | Block that aggregates all nearby villager trades |
 | Universal Bone Meal | B | Bone meal works on more plants |
-| Carry On | B | Pick up and carry tile entities and mobs |
 | Personality | B | Adds personality traits to villagers affecting their trades |
 | Bad Wither No Cookie | C | Suppresses the Wither's dimension-wide sound effect |
 | No Chat Reports | B | Removes chat reporting metadata from messages |

@@ -24,33 +24,32 @@ services:
       MAX_MEMORY: ${MAX_MEMORY:-16G}
 
       # JVM tuning — tune via .env (see .env.example)
-      JVM_OPTS: "-Dfml.loginTimeout=600 -Dchunky.maxWorkingCount=200"
+      JVM_OPTS: "-Dfml.loginTimeout=600 -Dchunky.maxWorkingCount=200 -XX:SoftMaxHeapSize=${SOFT_MAX_HEAP:-14G}"
       JVM_XX_OPTS: >-
         -XX:+UnlockExperimentalVMOptions
         -XX:+UseZGC
         -XX:+ZGenerational
         -XX:+AlwaysPreTouch
         -XX:+DisableExplicitGC
-        -XX:SoftMaxHeapSize=${SOFT_MAX_HEAP:-14G}
 
       ONLINE_MODE: "TRUE"
       ENFORCE_WHITELIST: "TRUE"
       WHITE_LIST: "TRUE"
 
       GAMEMODE: "survival"
-      DIFFICULTY: "normal"
+      DIFFICULTY: "hard"
       HARDCORE: "FALSE"
       PVP: "TRUE"
       ALLOW_FLIGHT: "TRUE"
 
       MAX_PLAYERS: "20"
       OP_PERMISSION_LEVEL: "4"
-      PLAYER_IDLE_TIMEOUT: "5"
+      PLAYER_IDLE_TIMEOUT: "30"
       FORCE_GAMEMODE: "FALSE"
 
       SPAWN_PROTECTION: "0"
       MOTD: "CozyCreate"
-      LOG_LEVEL: "WARN"
+      LOG_LEVEL: "INFO"
 
       VIEW_DISTANCE: "10"
       SIMULATION_DISTANCE: "6"

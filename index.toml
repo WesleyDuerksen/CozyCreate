@@ -133,10 +133,6 @@ file = "config/camerapture.server.json"
 hash = "401c518648e56f8769e5516fd8736d6e18a793044bddd0d6a75d05edb45931ba"
 
 [[files]]
-file = "config/carryon-common.toml"
-hash = "64b3a9808f98d547bfc461f41e159cab6ef3c7525a98479e06adcbf65b027997"
-
-[[files]]
 file = "config/chefsdelight-common.toml"
 hash = "348bf9f89d3dc287ab71039f9151eef027163eb4b1a0c1016ef0ed7248dfb665"
 
@@ -1024,11 +1020,6 @@ metafile = true
 [[files]]
 file = "mods/camerapture.pw.toml"
 hash = "a5202c7c26a0de8a614c52bdfdc61b540b7a6b4dbad4a7497480aea03fcf65ac"
-metafile = true
-
-[[files]]
-file = "mods/carry-on.pw.toml"
-hash = "c5e47d922e39c1556dc2e8c94bfe852cf16de14f65b99eb3e054e41745dddad0"
 metafile = true
 
 [[files]]
