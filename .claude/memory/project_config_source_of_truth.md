@@ -15,6 +15,10 @@ The repo has two config directories and they are not symmetric:
 - All authored config (mod config edits, etc.) goes in `server/content/config/`.
 - Never write directly to root `/config/` — it's an artifact directory.
 
+## Root-level client defaults — EXCEPTION
+
+`options.txt` and `servers.dat` live at the **pack root** (not `server/content/config/`), tracked in `index.toml`. They ship to clients via both mrpack overrides and the client zip. Edit them directly at the pack root. `servers.dat` is binary NBT — refresh by copying from a Prism instance with the desired server added: `cp ~/.local/share/PrismLauncher/instances/<name>/.minecraft/servers.dat servers.dat`.
+
 ## Patchouli books — EXCEPTION
 
 See `reference_patchouli_books.md` for full architecture. Short version:

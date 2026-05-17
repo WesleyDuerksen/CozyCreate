@@ -485,6 +485,10 @@ file = "config/escalated-server.toml"
 hash = "dc38be15cae51c0235f39c08d7055d09b5916234a7761270cc9035201d6cc788"
 
 [[files]]
+file = "config/euphoria_patcher/settings.toml"
+hash = "490ccd1950643d8c5bdbfffc6c679442fc0e3f8761c09ee013f95b2e3b3c71fd"
+
+[[files]]
 file = "config/explorerscompass-common.toml"
 hash = "7108b935c5121649e4bfef5c1f1567325ac77e8fc7e531375602e33c60da7e97"
 
@@ -550,7 +554,7 @@ hash = "008ef7ca6fa759b865a0df2371724f78e4b6e85fb1a449c52d720b2215da2d39"
 
 [[files]]
 file = "config/iris.properties"
-hash = "1e950dbcae56ed0cd2795730fbce74155d51f21abdfd1c2343612e9d7c697df4"
+hash = "9ae4d69d23130669210367c4cc1b7a94a47841b4bb44d0f1409949f36549bc02"
 
 [[files]]
 file = "config/jade/server-plugin-overrides.json"
@@ -1394,7 +1398,7 @@ metafile = true
 
 [[files]]
 file = "mods/euphoria-patches.pw.toml"
-hash = "37995c0f2abd249cc36579043316e0e9f45e38b9e6c3b0b8c1cdbaa25c5d6537"
+hash = "60dce7babfd72cea5cbe174e918d1919bd271af21c6f49f8c8c4663744a194f2"
 metafile = true
 
 [[files]]
@@ -2043,9 +2047,19 @@ hash = "cb474b6c0dde741836ed4f796f3b6ab0b9d3cdc0453e651122cd002d5d1f8df8"
 metafile = true
 
 [[files]]
-file = "shaderpacks/ComplementaryReimagined_r5.7.1.zip"
-hash = "24a20634a7832d422d3cd5023be16829f26840e25c69404dd418306ea79f63f0"
+file = "options.txt"
+hash = "a3b6e95a592e252a13dee3b577ccdacab853da4b62ae356437c04d313368c3c3"
 
 [[files]]
-file = "shaderpacks/ComplementaryUnbound_r5.7.1.zip"
-hash = "5cbf4d99bc7ce4f0df5c15974d276e0949bf6974d48d88a77d5e307b0b9be8af"
+file = "servers.dat"
+hash = "6e9f0dd68d39d73424e7b838cee80f654c881fc1edde6704f0de69bb14fb0a4c"
+
+[[files]]
+file = "shaderpacks/complementary-reimagined.pw.toml"
+hash = "844af68c07eac70b45bb488a7d9af2298cd6f2867d1ad33fd7abe94110dfedb1"
+metafile = true
+
+[[files]]
+file = "shaderpacks/complementary-unbound.pw.toml"
+hash = "4186d52e3f4eadf4ba35098431dd9d209d3f2637b1c7abb5668894594cc88246"
+metafile = true

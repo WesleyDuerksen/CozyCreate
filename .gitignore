@@ -25,7 +25,9 @@ build/
 # Client-only CurseForge jars — download manually, not tracked in git
 client/mods/*.jar
 
-# Shader packs — large binaries, not tracked in git
-shaderpacks/
+# Shader pack zips — large binaries, not tracked in git.
+# packwiz tracks them via shaderpacks/*.pw.toml metadata; export.sh re-downloads
+# missing zips on demand for the client zip bundle.
+shaderpacks/*.zip
 
 Speech.txt

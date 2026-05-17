@@ -313,6 +313,8 @@
 | McQoy | C | Ambient surface/footstep sound improvements |
 | Particle Rain | C | Replaces rain particles with a more performant system |
 | Euphoria Patches | C | Shader compatibility fixes for Iris |
+| Complementary Reimagined | C | Default shader pack (cozy aesthetic, Iris-compatible) |
+| Complementary Unbound | C | Alternative shader pack (visual variant) |
 | AmbientSounds | C | Ambient environmental sound engine — wind, birds, water |
 | Sound Physics Remastered | B | Physics-based reverb and occlusion for sounds |
 | Subtle Effects | B | Screen-edge tint effects from status effects |

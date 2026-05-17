@@ -149,15 +149,38 @@ if [[ -d server/content/patchouli_books ]]; then
   cp -r server/content/patchouli_books/. "$CLIENT_DIR/.minecraft/patchouli_books/"
 fi
 
-# Low-end baseline options.txt — Minecraft fills in any keys we don't set
-if [[ -f assets/options.txt ]]; then
-  cp assets/options.txt "$CLIENT_DIR/.minecraft/options.txt"
+# Default options — Minecraft fills in any keys we don't set
+if [[ -f options.txt ]]; then
+  cp options.txt "$CLIENT_DIR/.minecraft/options.txt"
+fi
+
+# Default server list
+if [[ -f servers.dat ]]; then
+  cp servers.dat "$CLIENT_DIR/.minecraft/servers.dat"
 fi
 
 # Shader packs
 if [[ -d shaderpacks ]]; then
   mkdir -p "$CLIENT_DIR/.minecraft/shaderpacks"
-  cp shaderpacks/* "$CLIENT_DIR/.minecraft/shaderpacks/"
+  shopt -s nullglob
+  # For each packwiz-tracked shader pack, ensure the zip is on disk
+  # (download from the pw.toml URL if missing), then copy into the client zip.
+  for meta in shaderpacks/*.pw.toml; do
+    filename=$(grep '^filename = ' "$meta" | sed 's/filename = "\(.*\)"/\1/')
+    url=$(grep '^url = ' "$meta" | sed 's/url = "\(.*\)"/\1/')
+    zip_path="shaderpacks/$filename"
+    if [[ ! -f "$zip_path" ]]; then
+      log "Downloading shader pack: $filename"
+      curl -fsSL -o "$zip_path" "$url" || fail "Failed to download $filename from $url"
+    fi
+    cp "$zip_path" "$CLIENT_DIR/.minecraft/shaderpacks/"
+  done
+  # Also copy any loose zips not tracked by packwiz (legacy / user-added)
+  for sp in shaderpacks/*.zip; do
+    target="$CLIENT_DIR/.minecraft/shaderpacks/$(basename "$sp")"
+    [[ -f "$target" ]] || cp "$sp" "$target"
+  done
+  shopt -u nullglob
 fi
 
 log "Zipping client instance..."
