@@ -1,0 +1,13 @@
+name = "Create: Mechanical Botany"
+filename = "mechanical_botany-1.1.2+1.21.1-neoforged.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/ZDmMjKj7/versions/dLXxdhCH/mechanical_botany-1.1.2%2B1.21.1-neoforged.jar"
+hash-format = "sha512"
+hash = "a1ceca50ffcdf809efc6f08a7146f40eadc0a3ba7aef3e611c250fb5dc5f7fd569469e286a998695f64f69eeafb7db5962dd33174bef216951fe8ab649892748"
+
+[update]
+[update.modrinth]
+mod-id = "ZDmMjKj7"
+version = "dLXxdhCH"

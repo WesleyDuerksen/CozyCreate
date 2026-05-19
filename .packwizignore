@@ -1,5 +1,7 @@
 client/
 scripts/
+backups/
+data/
 
 # Root project files
 .env.example
@@ -9,6 +11,9 @@ docker-compose.yml
 icon.png
 modList.md
 README.md
+validate.sh
+rcon-password.txt
+.env
 
 # Distribution Arifacts
 distribution/
