@@ -1,6 +1,11 @@
 ## Notes
 rm CozyCreate.zip && zip CozyCreate.zip -r client/
 
+To get a server running 
+- Clone
+- cp -r client/minecraft/mods/ data/cp client/minecraft/
+- docker compose up
+
 ## Understanding Version Numbers
 
 Version numbers follow the format `MAJOR.CONTENT.CONFIG`.
