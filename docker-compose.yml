@@ -89,7 +89,7 @@ services:
     network_mode: host
     environment:
       TZ: "America/Los_Angeles"
-      BACKUP_INTERVAL: "6h"
+      BACKUP_INTERVAL: "24h"
       INITIAL_DELAY: "10m"
       PAUSE_IF_NO_PLAYERS: "true"
       PLAYERS_ONLINE_CHECK_INTERVAL: "5m"

@@ -2129,3 +2129,13 @@ hash = "61dc14a8ed6b7ba1374a6c62e80eaecf1bc0780e5aca9df1173ab3109c6275bb"
 [[files]]
 file = "patchouli_books/guide/en_us/entries/world/discovery.json"
 hash = "839e01830914330578406966eab61e8d99c36be7922c1b04a0b93c00a909401d"
+
+[[files]]
+file = "shaderpacks/complementary-reimagined.pw.toml"
+hash = "844af68c07eac70b45bb488a7d9af2298cd6f2867d1ad33fd7abe94110dfedb1"
+metafile = true
+
+[[files]]
+file = "shaderpacks/complementary-unbound.pw.toml"
+hash = "4186d52e3f4eadf4ba35098431dd9d209d3f2637b1c7abb5668894594cc88246"
+metafile = true
