@@ -14,8 +14,6 @@
 | Chunky | S | Pre-generates chunks around spawn/player areas to eliminate worldgen lag |
 | Server Performance - Smooth Chunk Save | B | Offloads chunk saves to a background thread to prevent TPS lag spikes on save |
 
-> **Answer:** Yes, we have dedicated chunk loading. **Create: Power Loader** is the in-world solution (requires SU). **Chunky** is the admin pre-gen tool.
-
 ---
 
 ## Create — Core
@@ -26,6 +24,7 @@
 | Create: Diesel Generators | B | Diesel-powered rotational energy sources |
 | Create: Power Grid | B | Electric power network system for Create |
 | CreateBetterFps | C | Performance patches for Create rendering |
+| Create Aeronautics | B | Flying contraptions — airships, dirigibles, aerial transport |
 
 ---
 
@@ -107,14 +106,6 @@
 
 ---
 
-## Create — Aeronautics
-
-| Mod | Side | Purpose |
-|-----|------|---------|
-| Create Aeronautics | B | Flying contraptions — airships, dirigibles, aerial transport |
-
----
-
 ## Food & Cooking
 
 | Mod | Side | Purpose |
@@ -159,7 +150,6 @@
 | Simple Hats | B | Decorative hats as wearable items |
 | Camerapture | B | In-game camera that takes and displays photos |
 | Measurements | B | In-game measuring tape tool for block distances |
-| Dusty Decorations | B | Dusty/aged props for workshops and ruins |
 
 ---
 
@@ -343,7 +333,6 @@
 | spark | B | Profiler — identifies TPS lag sources on server |
 | Chunky | S | Pre-generates chunks via command |
 | KubeJS | B | JavaScript scripting for recipes, events, and item/block additions |
-| CraftTweaker | B | Recipe modification scripting |
 | Rhino | B | JavaScript engine used by KubeJS |
 | Configurable | B | Config UI framework |
 
@@ -358,44 +347,3 @@
 | Sinytra Connector | C | Runs Fabric mods on NeoForge |
 | Forgified Fabric API | C | Fabric API port for NeoForge (enables Sinytra Connector mods) |
 | Surveyor Map Framework | C | Client-side map data framework used by Antique Atlas |
-
----
-
-## Libraries & APIs
-
-These mods are required by other mods and provide no gameplay on their own.
-
-| Mod | Side | Purpose |
-|-----|------|---------|
-| Architectury API | B | Cross-loader mod development API |
-| Balm | B | Cross-loader abstraction for some mods |
-| Blueprint | B | Library for team.bizarre mods (Autumnity, Environmental, etc.) |
-| Bookshelf | B | Library for Darkhax mods (Enchantment Descriptions, etc.) |
-| Collective | B | Library for Serilum mods |
-| CorgiLib | B | Library for Oh The Biomes We've Gone and Friends & Foes |
-| CoroUtil | B | Utility library for mods using it |
-| CreativeCore | B | Core library for immersive rendering mods |
-| Cristel Lib | B | Library for Tidal Towns |
-| Cupboard | B | Library for several utility mods |
-| Fzzy Config | B | Configuration system library |
-| GeckoLib | B | Animation engine for mobs/blocks |
-| GlitchCore | B | Library for GeckoLib-based mods |
-| Integrated API | B | Library for Integrated Villages/Dungeons |
-| JamLib | B | Library for Just Enough Breeding |
-| Kotlin for Forge | B | Kotlin runtime for NeoForge mods |
-| Lithostitched | B | Worldgen library |
-| Moonlight Lib | B | Library for Supplementaries, Visual Workbench, etc. |
-| oωo (owo-lib) | B | Library for various Fabric-ported mods |
-| Prickle | B | Library for Create addon mods |
-| Puzzles Lib | B | Library for Fuzs mods (Double Doors, Flower Tweaks, etc.) |
-| Resourceful Lib | B | Library for resourceful team mods |
-| Sable | B | Library for various mods |
-| SuperMartijn642's Config Lib | B | Config library for SuperMartijn642 mods |
-| SuperMartijn642's Core Lib | B | Core library for SuperMartijn642 mods (Trash Cans, etc.) |
-| TerraBlender | B | Biome injection API for world generation |
-| TxniLib | B | Library for Simple Hats and TxniSoft mods |
-| Valhelsia Core | B | Library for Valhelsia Structures |
-| YetAnotherConfigLib (YACL) | B | Config screen API used by many mods |
-| YUNG's API | S | Library for all YUNG's structure mods |
-| Zeta | B | Library for Quark |
-| Biolith | B | Biome placement library for Oh The Biomes We've Gone |
