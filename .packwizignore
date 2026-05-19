@@ -1,32 +1,19 @@
+client/
+scripts/
+backups/
+data/
+
 # Root project files
-CLAUDE.md
-README.md
+.env.example
 .gitignore
 .packwizignore
+docker-compose.yml
+icon.png
+modList.md
+README.md
+validate.sh
+rcon-password.txt
+.env
 
-# Documentation, research, and planning
-docs/
-
-# Scripts
-scripts/
-
-# Assets (pack icons — not part of the mod index)
-assets/
-*.png
-*.jpg
-
-# Server files (not shipped to clients)
-server/
-
-# Client-only CurseForge jars (manually downloaded, not part of the pack index)
-client/
-
-# Shader pack zips — packwiz tracks these via shaderpacks/*.pw.toml metadata;
-# zips are kept locally only so export.sh can bundle them into the client zip.
-shaderpacks/*.zip
-
-# Build artifacts
-build/
-
-# Claude memory and settings
-.claude/
+# Distribution Arifacts
+distribution/

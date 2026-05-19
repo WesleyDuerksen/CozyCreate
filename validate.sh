@@ -6,9 +6,8 @@
 set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACK_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-SERVER_DIR="$PACK_ROOT/server"
-CONTENT_DIR="$SERVER_DIR/content"
+PACK_ROOT="$(cd "$SCRIPT_DIR" && pwd)"
+SERVER_DIR="$PACK_ROOT"
 DATA_DIR="$SERVER_DIR/data"
 SERVER_TIMEOUT=600   # mod loading is slow on first run
 
@@ -49,57 +48,7 @@ preflight() {
     (umask 077 && openssl rand -base64 24 > "$SERVER_DIR/rcon-password.txt")
   fi
 
-  mkdir -p "$CONTENT_DIR/mods" "$DATA_DIR" "$SERVER_DIR/backups"
   ok "Preflight checks passed"
-}
-
-# ── Mod sync ──────────────────────────────────────────────────────────────────
-
-sync_mods() {
-  log "Syncing mods from pack.toml → server/content/mods/..."
-
-  # Walk mods/*.pw.toml on disk, ensure each jar is present in content/mods/
-  local mods_dir="$CONTENT_DIR/mods"
-  local downloads=0 cached=0 missing=0
-  declare -a MISSING=()
-
-  for toml in "$PACK_ROOT"/mods/*.pw.toml; do
-    [[ -f "$toml" ]] || continue
-    local side filename url
-    side=$(grep '^side = ' "$toml" | sed 's/side = "\(.*\)"/\1/')
-    [[ "$side" == "client" ]] && continue
-    filename=$(grep '^filename = ' "$toml" | sed 's/filename = "\(.*\)"/\1/')
-    url=$(grep '^url = ' "$toml" 2>/dev/null | sed 's/url = "\(.*\)"/\1/' || echo "")
-
-    if [[ -f "$mods_dir/$filename" ]]; then
-      ((cached++))
-      continue
-    fi
-
-    if [[ -n "$url" ]]; then
-      if curl -fsSL -o "$mods_dir/$filename" "$url"; then
-        ((downloads++))
-      else
-        warn "Download failed: $filename"
-        ((missing++))
-        MISSING+=("$filename")
-      fi
-    else
-      # CurseForge mod with no URL — must be supplied manually
-      ((missing++))
-      MISSING+=("$filename (CurseForge, no URL)")
-    fi
-  done
-
-  if (( missing > 0 )); then
-    fail "$missing mod(s) missing from server/content/mods/:"
-    printf '    %s\n' "${MISSING[@]}"
-    exit 1
-  fi
-
-  local total
-  total=$(find "$mods_dir" -name "*.jar" | wc -l | tr -d ' ')
-  ok "Mods ready ($total jars, $downloads downloaded, $cached cached)"
 }
 
 # ── Stack startup ─────────────────────────────────────────────────────────────
@@ -229,7 +178,6 @@ main() {
   hr
 
   preflight
-  sync_mods
   hr
 
   local server_ok=0 log_ok=0

@@ -4,18 +4,20 @@ services:
     container_name: cozycreate
     tty: true
     stdin_open: true
-    restart: unless-stopped
+    restart: no
     stop_grace_period: 5m
     ports:
       - "25565:25565"
       - "25575:25575"
       - "24454:24454/udp"
     environment:
-      TZ: "America/Los_Angeles"
-      EULA: "TRUE"
       TYPE: NEOFORGE
       VERSION: "1.21.1"
       NEOFORGE_VERSION: "21.1.228"
+      PACKWIZ_URL: ${BRANCH:-https://downloads.wesleys.world/CozyCreate/pack.toml}
+
+      TZ: "America/Los_Angeles"
+      EULA: "TRUE"
 
       EXEC_DIRECTLY: "TRUE"
       STOP_DURATION: "240"
@@ -48,7 +50,7 @@ services:
       FORCE_GAMEMODE: "FALSE"
 
       SPAWN_PROTECTION: "0"
-      MOTD: "CozyCreate"
+      MOTD: "Dynamic updates PEOPLE"
       LOG_LEVEL: "INFO"
 
       VIEW_DISTANCE: "10"
@@ -70,12 +72,6 @@ services:
 
     volumes:
       - ./data:/data
-      - ./content/mods:/data/mods
-      - ./content/config:/data/config
-      - ./content/kubejs:/data/kubejs
-      - ./content/patchouli_books:/data/patchouli_books
-      - ./content/defaultconfigs:/data/defaultconfigs
-      - ./content/server-icon.png:/data/server-icon.png
 
     deploy:
       resources:

@@ -1,12 +1,12 @@
 name = "Cozy Create"
 author = "Kavikick"
-version = "1.1.5"
+version = "2.0.3"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "de2fbb4a7761b8944fb64c6201dd53744abe3a5c3327ae88ec83c957d12a1641"
+hash = "c4a99652746d54d8523d3980983981c9fbfbd55f320a1f95d7b92bbfd8a86cef"
 
 [versions]
 minecraft = "1.21.1"

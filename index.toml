@@ -1,10 +1,6 @@
 hash-format = "sha256"
 
 [[files]]
-file = "Speech.txt"
-hash = "8f12dc7917cd2c335708ed1a7d16e88ce65837d215daf10e4f8cdf41fe2af40b"
-
-[[files]]
 file = "config/CoroUtil/General.toml"
 hash = "6003299fd97cb6b383ca3df88a2a676c565585799b1e14bb2987617ee189c7c2"
 
@@ -897,8 +893,16 @@ file = "config/zeta-common.toml"
 hash = "ea1fa91de03d8f6f3c36b0c6cef77375a8365790ac0acb63fd558643d54d677f"
 
 [[files]]
+file = "defaultconfigs/biolith/general.json"
+hash = "7f1e58be2cf7db18181869804bb09823ee93a4ea863d560036e8a05954bcf806"
+
+[[files]]
 file = "kubejs/README.txt"
 hash = "989f3737ae4621b8ff6730bce4cbeeee756921e7e510e0c281c8a350501d98af"
+
+[[files]]
+file = "kubejs/assets/cozycreate/lang/en_us.json"
+hash = "aeedca2376829d9114d63d46ba75afc8d55e0479a54de586bcdfb46bbaebcb01"
 
 [[files]]
 file = "kubejs/config/common.json"
@@ -2047,19 +2051,81 @@ hash = "cb474b6c0dde741836ed4f796f3b6ab0b9d3cdc0453e651122cd002d5d1f8df8"
 metafile = true
 
 [[files]]
-file = "options.txt"
-hash = "a3b6e95a592e252a13dee3b577ccdacab853da4b62ae356437c04d313368c3c3"
+file = "patchouli_books/guide/book.json"
+hash = "b0ef3c3c8d3ad0502b4b8656743cf66d9e6699375f26d423e3816cb1cb8b5b7a"
 
 [[files]]
-file = "servers.dat"
-hash = "6e9f0dd68d39d73424e7b838cee80f654c881fc1edde6704f0de69bb14fb0a4c"
+file = "patchouli_books/guide/en_us/categories/cozy.json"
+hash = "404a9819a0ef555c80b9c20e0275d31adbe9e4e19ee7eaefc4fef1c1490b28a7"
 
 [[files]]
-file = "shaderpacks/complementary-reimagined.pw.toml"
-hash = "844af68c07eac70b45bb488a7d9af2298cd6f2867d1ad33fd7abe94110dfedb1"
-metafile = true
+file = "patchouli_books/guide/en_us/categories/create.json"
+hash = "479d9455608c01d3de9201c563e72e28d5a5c7b5b8df93c71ca87d2bc6f03ad9"
 
 [[files]]
-file = "shaderpacks/complementary-unbound.pw.toml"
-hash = "4186d52e3f4eadf4ba35098431dd9d209d3f2637b1c7abb5668894594cc88246"
-metafile = true
+file = "patchouli_books/guide/en_us/categories/multiplayer.json"
+hash = "8493be7b3cdb6a917a5590fcab2ef52fbdd5443323edc07aabb0bf260f8fa53b"
+
+[[files]]
+file = "patchouli_books/guide/en_us/categories/welcome.json"
+hash = "aaa273905bcf91b24afdbc2dc0e3eea1adb460a94e1aefd2d533f911b329a352"
+
+[[files]]
+file = "patchouli_books/guide/en_us/categories/world.json"
+hash = "8dc716e76fbee631c099b5c19eb2ce5e4684481f74b8798f6c9328fe0a7b51f1"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/cozy/decoration.json"
+hash = "17f6fffa49f51976976738a18ea09624da6a794e4be8e23d5f2b07824d9dddd0"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/cozy/food.json"
+hash = "ba419d499c640ffa2fbe6204236fc28f40f8732f5bfa9e8b56915f754a458e8d"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/cozy/seasons.json"
+hash = "f572f2394b557019d2fce610434faf40fa462c5336bc188fc4c1b8c36792275f"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/create/aeronautics.json"
+hash = "a964e712ce35568f0c94714b94ce2295ed718a39127d0608e684b0dcf1af7d0c"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/create/extensions.json"
+hash = "e02e0a55d6fbf8e41634712da4241482a442eee3ed6abf682832413c8228bffb"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/create/power.json"
+hash = "38fe5de370bbf647fd8329cc9d0d5087e2fede53b65e25ddf8f0332264dca885"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/create/rails.json"
+hash = "d148b89ae4e3e5b662aa47673489c39ac6a18986a39f77a361695a14e0264f11"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/create/what_is_create.json"
+hash = "c14173f08910339710a5cd50cf2dac34e015a8b377ef93319bb94b7253da3199"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/multiplayer/overview.json"
+hash = "8fbbebcc1fe8e1d5789544caa8969f312a7366afb1df6f0f2a6fb7e6378ae28d"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/welcome/intro.json"
+hash = "371681077bf001018cba3b67e80cb4ea795692d271b0f5e9fcac905852e99109"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/welcome/keybinds.json"
+hash = "8a8949db5058ed73e000db5c040115eeec9f87704badf47d15f1295b7eea6710"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/world/biomes_structures.json"
+hash = "e818ca7c5bcda6c1ba31451a8b176ac3a6629f0254bc3d56b09e118aa680fc7f"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/world/death.json"
+hash = "61dc14a8ed6b7ba1374a6c62e80eaecf1bc0780e5aca9df1173ab3109c6275bb"
+
+[[files]]
+file = "patchouli_books/guide/en_us/entries/world/discovery.json"
+hash = "839e01830914330578406966eab61e8d99c36be7922c1b04a0b93c00a909401d"
