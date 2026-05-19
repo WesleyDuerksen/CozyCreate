@@ -65,6 +65,7 @@
 | Create: Vibrant Vaults         | B    | Decorative vault and safe blocks with Create integration                     |
 | Steam 'n' Rails                | B    | Advanced train network management, routing, and signaling                    |
 | Sooty Chimneys                 | B    | Chimney blocks that emit particle smoke                                      |
+| Create: Liquid Fuel           | B     | Adds the ability to pipe fuel directly into blaze burners
 
 ---
 
