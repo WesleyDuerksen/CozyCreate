@@ -698,11 +698,11 @@ hash = "9a1ba0617b4544eb8bded0995de05f26837fdc53215453ccc58012b468ff9dde"
 
 [[files]]
 file = "config/sereneseasons/fertility.toml"
-hash = "722f7545a5a592f0aed25ae8dd0a4f53f7abaf0bb53da96417d87e9096e75631"
+hash = "c2f5c4ff3fc4c3068d1f253fa0a3c8cf0ef7d377b70a80f19c2131eeb98e8010"
 
 [[files]]
 file = "config/sereneseasons/seasons.toml"
-hash = "cea3fe7d75dbda3a892f8a05b20615a7f28bc80fcb083be1e339225c2449180d"
+hash = "d0ee403fde54f1443f705a7e2451e21936feeb1fd950526f408ec93c92cce6af"
 
 [[files]]
 file = "config/simplehats.json"
