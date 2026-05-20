@@ -914,7 +914,7 @@ hash = "317715f1dc2f7435464bad8b2224911e4e01b9ccebf028352c47e7a4a5b2077b"
 
 [[files]]
 file = "kubejs/server_scripts/main.js"
-hash = "dae099ae3be7f033c0c190ee8c3b023b42f6b235d9d0591be5926e8435dbd67f"
+hash = "ff3898e8988180bc12608015a609b49001191374c614caa80a467582e7c021c1"
 
 [[files]]
 file = "kubejs/startup_scripts/main.js"
