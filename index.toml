@@ -698,7 +698,7 @@ hash = "9a1ba0617b4544eb8bded0995de05f26837fdc53215453ccc58012b468ff9dde"
 
 [[files]]
 file = "config/sereneseasons/fertility.toml"
-hash = "c2f5c4ff3fc4c3068d1f253fa0a3c8cf0ef7d377b70a80f19c2131eeb98e8010"
+hash = "845e58f9a31a4a4853b53115375d08f778d1ef17563a9cc77de7e9b1252c2add"
 
 [[files]]
 file = "config/sereneseasons/seasons.toml"
